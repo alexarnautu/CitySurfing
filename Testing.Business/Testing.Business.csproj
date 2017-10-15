@@ -7,7 +7,7 @@
     <ProjectGuid>{7CE49DF9-4327-4D56-AED6-CECE178C4BFF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Testing.Business</RootNamespace>
+    <RootNamespace>CitySurfing.Testing.Business</RootNamespace>
     <AssemblyName>Testing.Business</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

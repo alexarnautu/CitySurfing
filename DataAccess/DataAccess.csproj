@@ -7,7 +7,7 @@
     <ProjectGuid>{454056C6-82EE-46C6-8BE8-6E4320B151DC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataAccess</RootNamespace>
+    <RootNamespace>CitySurfing.DataAccess</RootNamespace>
     <AssemblyName>DataAccess</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

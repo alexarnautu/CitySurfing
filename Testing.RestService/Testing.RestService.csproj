@@ -7,7 +7,7 @@
     <ProjectGuid>{6E4181D6-9A89-42C7-89EC-1F66F660E2FE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Testing.RestService</RootNamespace>
+    <RootNamespace>CitySurfing.Testing.RestService</RootNamespace>
     <AssemblyName>Testing.RestService</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

@@ -7,7 +7,7 @@
     <ProjectGuid>{8AED0B8D-B0AD-4E14-8752-696FA216A6AC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Domain</RootNamespace>
+    <RootNamespace>CitySurfing.Domain</RootNamespace>
     <AssemblyName>Domain</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
