@@ -82,5 +82,11 @@
     <Folder Include="Concrete\" />
     <Folder Include="Infrastructure\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{8aed0b8d-b0ad-4e14-8752-696fa216a6ac}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

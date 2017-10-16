@@ -73,5 +73,15 @@
     <Folder Include="Concrete\" />
     <Folder Include="Infrastructure\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{454056c6-82ee-46c6-8be8-6e4320b151dc}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{8aed0b8d-b0ad-4e14-8752-696fa216a6ac}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
