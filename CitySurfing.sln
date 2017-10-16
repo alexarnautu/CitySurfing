@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestService", "CitySurfing\RestService.csproj", "{41484D98-F9C4-4896-9940-219A5CBC1658}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestService", "RestService\RestService.csproj", "{41484D98-F9C4-4896-9940-219A5CBC1658}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data and Schema", "Data and Schema", "{5C83E2E3-C7C0-4EF8-8919-7179998C1CC7}"
 EndProject
