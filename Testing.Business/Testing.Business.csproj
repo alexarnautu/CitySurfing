@@ -54,10 +54,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Business\Business.csproj">
-      <Project>{29d638b5-e341-4fa4-970a-840bdd725feb}</Project>
-      <Name>Business</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{8aed0b8d-b0ad-4e14-8752-696fa216a6ac}</Project>
       <Name>Domain</Name>
