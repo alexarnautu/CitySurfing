@@ -10,33 +10,32 @@ namespace CitySurfing.Domain.Models
 
         public string Description { get; set; }
 
-        public double Price { get; set; }
+        public double? Price { get; set; }
 
-        public DateTime StartDate { get; set; }
+        public DateTime? StartDate { get; set; }
 
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
+
+        public DateTime Created { get; set; }
 
         public string Location { get; set; }
 
-        public User Creator { get; set; }
+        public bool IsAvailable { get; set; }
+
+        public int? Rating { get; set; }
 
         [ForeignKey(nameof(Creator))]
         public string CreatorId { get; set; }
 
-        public Category Type { get; set; }
-
         [ForeignKey(nameof(Type))]
         public int TypeId { get; set; }
 
-        public virtual ICollection<Skill> RequiredSkills { get; set; }
+        public virtual User Creator { get; set; }
 
-        public virtual ICollection<Applyment> Candidates { get; set; }
+        public virtual Category Type { get; set; }
 
-        public bool IsAvailable { get; set; }
+        public virtual ICollection<Skill> RequiredSkills { get; set; } = new HashSet<Skill>();
 
-        public int Rating { get; set; }
-
-        // TODO: clarify status
-
+        public virtual ICollection<Applyment> Applyments { get; set; } = new HashSet<Applyment>();
     }
 }
