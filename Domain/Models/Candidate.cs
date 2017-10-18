@@ -2,7 +2,7 @@
 
 namespace CitySurfing.Domain.Models
 {
-    public class Candidate : ModelBase
+    public class Applyment : ModelBase
     {
 
         public string Proposal { get; set; }
@@ -14,10 +14,10 @@ namespace CitySurfing.Domain.Models
 
         public Job Job { get; set; }
 
+        public bool IsApproved { get; set; }
+
         [ForeignKey(nameof(Job))]
         public int JobId { get; set; }
-
-        // TODO clarify status
 
     }
 }

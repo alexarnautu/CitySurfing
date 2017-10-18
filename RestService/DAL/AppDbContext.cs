@@ -16,7 +16,7 @@ namespace CitySurfing.RestService.DAL
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Candidate> Candidates { get; set; }
+        public DbSet<Applyment> Candidates { get; set; }
 
     }
 }

@@ -23,7 +23,11 @@ namespace CitySurfing.Domain.Models
         [ForeignKey(nameof(Type))]
         public int TypeId { get; set; }
 
-        public ICollection<Skill> RequiredSkills { get; set; }
+        public virtual ICollection<Skill> RequiredSkills { get; set; }
+
+        public virtual ICollection<Applyment> Candidates { get; set; }
+
+        public bool IsAvailable { get; set; }
 
         // TODO: clarify status
 
