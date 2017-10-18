@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace CitySurfing.Domain.Models
 {
     [DataContract]
-    class User : IdentityUser
+    public class User : IdentityUser
     {
 
         [DataMember]

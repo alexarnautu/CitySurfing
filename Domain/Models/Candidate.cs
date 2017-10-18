@@ -2,17 +2,15 @@
 
 namespace CitySurfing.Domain.Models
 {
-    class Candidate : IModel
+    public class Candidate : ModelBase
     {
 
-        public int Id { get; set; }
-        
         public string Proposal { get; set; }
 
         public User User { get; set; }
 
         [ForeignKey(nameof(User))]
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
         public Job Job { get; set; }
 
