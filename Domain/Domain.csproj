@@ -54,7 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Candidate.cs" />
+    <Compile Include="Models\Applyment.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\User.cs" />

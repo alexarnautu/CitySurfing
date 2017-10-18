@@ -18,6 +18,11 @@ namespace CitySurfing.Domain.Models
 
         public string Location { get; set; }
 
+        public User Creator { get; set; }
+
+        [ForeignKey(nameof(Creator))]
+        public string CreatorId { get; set; }
+
         public Category Type { get; set; }
 
         [ForeignKey(nameof(Type))]
@@ -28,6 +33,8 @@ namespace CitySurfing.Domain.Models
         public virtual ICollection<Applyment> Candidates { get; set; }
 
         public bool IsAvailable { get; set; }
+
+        public int Rating { get; set; }
 
         // TODO: clarify status
 

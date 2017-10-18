@@ -19,5 +19,7 @@ namespace CitySurfing.Domain.Models
         [ForeignKey(nameof(Job))]
         public int JobId { get; set; }
 
+        public int Rating { get; set; }
+
     }
 }
