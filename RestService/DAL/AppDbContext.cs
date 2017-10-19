@@ -7,7 +7,7 @@ namespace CitySurfing.RestService.DAL
     public class AppDbContext : IdentityDbContext<User>
     {
 
-        public AppDbContext() : base("CitySurfing") { }
+        public AppDbContext() : base("CitySurfingConnectionString") { }
 
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Job> Jobs { get; set; }

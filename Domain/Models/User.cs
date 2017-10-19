@@ -6,7 +6,6 @@ using System.Runtime.Serialization;
 namespace CitySurfing.Domain.Models
 {
     [DataContract]
-    [Table("Users")]
     public class User : IdentityUser
     {
 

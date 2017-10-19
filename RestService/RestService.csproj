@@ -131,7 +131,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\UnityConfig.cs" />
@@ -141,13 +143,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710182147315_InitialMigration.cs" />
-    <Compile Include="Migrations\201710182147315_InitialMigration.Designer.cs">
-      <DependentUpon>201710182147315_InitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710182200150_UpdateSkillsRelationships.cs" />
-    <Compile Include="Migrations\201710182200150_UpdateSkillsRelationships.Designer.cs">
-      <DependentUpon>201710182200150_UpdateSkillsRelationships.cs</DependentUpon>
+    <Compile Include="Migrations\201710192203292_InitialMigration.cs" />
+    <Compile Include="Migrations\201710192203292_InitialMigration.Designer.cs">
+      <DependentUpon>201710192203292_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -172,11 +170,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710182147315_InitialMigration.resx">
-      <DependentUpon>201710182147315_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710182200150_UpdateSkillsRelationships.resx">
-      <DependentUpon>201710182200150_UpdateSkillsRelationships.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710192203292_InitialMigration.resx">
+      <DependentUpon>201710192203292_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
