@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Http, Response } from "@angular/http";
 import { Observable } from 'rxjs/Observable';
+
 import 'rxjs/add/observable/of';
 
 let counter = 0;
@@ -18,8 +20,17 @@ export class UserService {
 
   private userArray: any[];
 
-  constructor() {
+  constructor(private http: Http) {
     // this.userArray = Object.values(this.users);
+  }
+
+  getJobs(): Observable<any> {
+    const apiUrl = "http://localhost:54278/api/jobs";
+    let data: any = [];
+
+    return this.http.get(apiUrl).map((response: Response) => {
+        return response.json();
+      });
   }
 
   getUsers(): Observable<any> {

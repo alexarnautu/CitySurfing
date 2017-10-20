@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace CitySurfing.RestService
 {
@@ -12,6 +13,12 @@ namespace CitySurfing.RestService
         {
             // Web API configuration and services
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+
+            //Enable Cross-Origin Requests
+            //Change port if your frontend application is running under a different port.
+            var cors = new EnableCorsAttribute("http://localhost:4200", "*", "*");
+            config.EnableCors(cors);
+
 
             // Web API routes
             config.MapHttpAttributeRoutes();

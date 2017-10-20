@@ -15,6 +15,7 @@ export class ContactsComponent implements OnInit, OnDestroy {
   breakpoint: NbMediaBreakpoint;
   breakpoints: any;
   themeSubscription: any;
+  jobs: any[];
 
   constructor(private userService: UserService,
               private themeService: NbThemeService,
@@ -28,6 +29,10 @@ export class ContactsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.userService.getJobs()
+      .subscribe((jobs: any) => {
+        this.jobs = jobs;
+      });
 
     this.userService.getUsers()
       .subscribe((users: any) => {

@@ -12,5 +12,10 @@
         <span class="time">{{ c.time }}</span>
       </div>
     </nb-tab>
+    <nb-tab tabTitle="Recent">
+      <div class="contact" *ngFor="let job of jobs">
+        <h1>{{ job }}</h1>>
+      </div>
+    </nb-tab>
   </nb-tabset>
 </nb-card>
