@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from "@angular/http";
+import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/observable/of';
@@ -25,12 +25,9 @@ export class UserService {
   }
 
   getJobs(): Observable<any> {
-    const apiUrl = "http://localhost:54278/api/jobs";
-    let data: any = [];
+    const apiUrl = 'http://localhost:54278/api/jobs';
 
-    return this.http.get(apiUrl).map((response: Response) => {
-        return response.json();
-      });
+    return this.http.get(apiUrl).map((response: Response) => response.json());
   }
 
   getUsers(): Observable<any> {
