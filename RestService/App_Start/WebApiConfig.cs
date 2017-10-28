@@ -13,6 +13,8 @@ namespace CitySurfing.RestService
         {
             // Web API configuration and services
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+
 
             //Enable Cross-Origin Requests
             //Change port if your frontend application is running under a different port.

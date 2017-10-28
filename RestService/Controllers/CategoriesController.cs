@@ -13,51 +13,51 @@ using CitySurfing.RestService.Dtos;
 
 namespace CitySurfing.RestService.Controllers
 {
-    public class SkillsController : ApiController
+    public class CategoriesController : ApiController
     {
         private readonly AppDbContext _dbContext = new AppDbContext();
 
-        // GET: api/Skills
+        // GET: api/Categories
         [HttpGet]
-        public IList<SkillDto> GetSkills()
+        public IList<CategoryDto> GetCategories()
         {
-            var skills = _dbContext.Skills.ToList();
+            var categories = _dbContext.Categories.ToList();
 
-            return Mapper.Map<List<Skill>, List<SkillDto>>(skills);
+            return Mapper.Map<List<Category>, List<CategoryDto>>(categories);
         }
 
-        // GET: api/Skills/5
+        // GET: api/Categories/5
         [HttpGet]
-        [ResponseType(typeof(Skill))]
-        public async Task<IHttpActionResult> GetSkill(int id)
+        [ResponseType(typeof(Category))]
+        public async Task<IHttpActionResult> GetCategory(int id)
         {
-            var skill = await _dbContext.Skills.FindAsync(id);
-            if (skill == null)
+            var category = await _dbContext.Categories.FindAsync(id);
+            if (category == null)
             {
                 return NotFound();
             }
 
-            return Ok(Mapper.Map<Skill, SkillDto>(skill));
+            return Ok(Mapper.Map<Category, CategoryDto>(category));
         }
 
-        // PUT: api/Skills/5
+        // PUT: api/Categories/5
         [HttpPut]
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> UpdateSkill(int id, SkillDto skillDto)
+        public async Task<IHttpActionResult> UpdateCategory(int id, CategoryDto categoryDto)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != skillDto.Id)
+            if (id != categoryDto.Id)
             {
                 return BadRequest();
             }
 
-            var skill = Mapper.Map<SkillDto, Skill>(skillDto);
+            var category = Mapper.Map<CategoryDto, Category>(categoryDto);
 
-            _dbContext.Entry(skill).State = EntityState.Modified;
+            _dbContext.Entry(category).State = EntityState.Modified;
 
             try
             {
@@ -65,7 +65,7 @@ namespace CitySurfing.RestService.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!SkillExists(id))
+                if (!CategoryExists(id))
                 {
                     return NotFound();
                 }
@@ -76,38 +76,38 @@ namespace CitySurfing.RestService.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Skills
+        // POST: api/Categories
         [HttpPost]
-        [ResponseType(typeof(SkillDto))]
-        public async Task<IHttpActionResult> InertSkill(SkillDto skillDto)
+        [ResponseType(typeof(CategoryDto))]
+        public async Task<IHttpActionResult> InsertCategory(CategoryDto categoryDto)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var skill = Mapper.Map<SkillDto, Skill>(skillDto);
-            _dbContext.Skills.Add(skill);
+            var category = Mapper.Map<CategoryDto, Category>(categoryDto);
+            _dbContext.Categories.Add(category);
             await _dbContext.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = skillDto.Id }, skillDto);
+            return CreatedAtRoute("DefaultApi", new { id = categoryDto.Id }, categoryDto);
         }
 
-        // DELETE: api/Skills/5
+        // DELETE: api/Categories/5
         [HttpDelete]
-        [ResponseType(typeof(SkillDto))]
-        public async Task<IHttpActionResult> DeleteSkill(int id)
+        [ResponseType(typeof(CategoryDto))]
+        public async Task<IHttpActionResult> DeleteCategory(int id)
         {
-            var skill = await _dbContext.Skills.FindAsync(id);
-            if (skill == null)
+            var category = await _dbContext.Categories.FindAsync(id);
+            if (category == null)
             {
                 return NotFound();
             }
 
-            _dbContext.Skills.Remove(skill);
+            _dbContext.Categories.Remove(category);
             await _dbContext.SaveChangesAsync();
 
-            return Ok(Mapper.Map<Skill, SkillDto>(skill));
+            return Ok(Mapper.Map<Category, CategoryDto>(category));
         }
 
         protected override void Dispose(bool disposing)
@@ -119,9 +119,9 @@ namespace CitySurfing.RestService.Controllers
             base.Dispose(disposing);
         }
 
-        private bool SkillExists(int id)
+        private bool CategoryExists(int id)
         {
-            return _dbContext.Skills.Count(e => e.Id == id) > 0;
+            return _dbContext.Categories.Count(e => e.Id == id) > 0;
         }
     }
 }

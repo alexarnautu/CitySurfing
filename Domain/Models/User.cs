@@ -6,8 +6,12 @@ using System.Runtime.Serialization;
 namespace CitySurfing.Domain.Models
 {
     [DataContract]
-    public class User : IdentityUser
+    public sealed class User : IdentityUser
     {
+        public User()
+        {
+            UserName = Email;
+        }
 
         [DataMember]
         public override string Id { get; set; }
@@ -24,10 +28,10 @@ namespace CitySurfing.Domain.Models
         [DataMember]
         public override string PhoneNumber { get; set; }
 
-        public virtual ICollection<Applyment> Applyments { get; set; } = new HashSet<Applyment>();
+        public ICollection<Applyment> Applyments { get; set; } = new HashSet<Applyment>();
 
-        public virtual ICollection<Job> Jobs { get; set; } = new HashSet<Job>();
+        public ICollection<Job> Jobs { get; set; } = new HashSet<Job>();
 
-        public virtual ICollection<Skill> Skills { get; set; } = new HashSet<Skill>();
+        public ICollection<Skill> Skills { get; set; } = new HashSet<Skill>();
     }
 }
