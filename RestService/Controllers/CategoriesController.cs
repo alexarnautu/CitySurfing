@@ -13,50 +13,51 @@ using CitySurfing.RestService.Dtos;
 
 namespace CitySurfing.RestService.Controllers
 {
-    public class JobsController : ApiController
+    public class CategoriesController : ApiController
     {
         private readonly AppDbContext _dbContext = new AppDbContext();
 
-        // GET: api/Jobs
+        // GET: api/Categories
         [HttpGet]
-        public IList<JobDto> GetJobs()
+        public IList<CategoryDto> GetCategories()
         {
-            var jobs = _dbContext.Jobs.ToList();
+            var categories = _dbContext.Categories.ToList();
 
-            return Mapper.Map<List<Job>, List<JobDto>>(jobs);
+            return Mapper.Map<List<Category>, List<CategoryDto>>(categories);
         }
 
-        // GET: api/Jobs/5
+        // GET: api/Categories/5
         [HttpGet]
-        [ResponseType(typeof(JobDto))]
-        public async Task<IHttpActionResult> GetJob(int id)
+        [ResponseType(typeof(Category))]
+        public async Task<IHttpActionResult> GetCategory(int id)
         {
-            var job = await _dbContext.Jobs.FindAsync(id);
-            if (job == null)
+            var category = await _dbContext.Categories.FindAsync(id);
+            if (category == null)
             {
                 return NotFound();
             }
 
-            return Ok(Mapper.Map<Job, JobDto>(job));
+            return Ok(Mapper.Map<Category, CategoryDto>(category));
         }
 
-        // PUT: api/Jobs/5
+        // PUT: api/Categories/5
         [HttpPut]
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> UpdateJob(int id, JobDto jobDto)
+        public async Task<IHttpActionResult> UpdateCategory(int id, CategoryDto categoryDto)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != jobDto.Id)
+            if (id != categoryDto.Id)
             {
                 return BadRequest();
             }
 
-            var job = Mapper.Map<JobDto, Job>(jobDto);
-            _dbContext.Entry(job).State = EntityState.Modified;
+            var category = Mapper.Map<CategoryDto, Category>(categoryDto);
+
+            _dbContext.Entry(category).State = EntityState.Modified;
 
             try
             {
@@ -64,7 +65,7 @@ namespace CitySurfing.RestService.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!JobExists(id))
+                if (!CategoryExists(id))
                 {
                     return NotFound();
                 }
@@ -75,39 +76,38 @@ namespace CitySurfing.RestService.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Jobs
+        // POST: api/Categories
         [HttpPost]
-        [ResponseType(typeof(JobDto))]
-        public async Task<IHttpActionResult> InsertJob(JobDto jobDto)
+        [ResponseType(typeof(CategoryDto))]
+        public async Task<IHttpActionResult> InsertCategory(CategoryDto categoryDto)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var job = Mapper.Map<JobDto, Job>(jobDto);
-
-            _dbContext.Jobs.Add(job);
+            var category = Mapper.Map<CategoryDto, Category>(categoryDto);
+            _dbContext.Categories.Add(category);
             await _dbContext.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = jobDto.Id }, jobDto);
+            return CreatedAtRoute("DefaultApi", new { id = categoryDto.Id }, categoryDto);
         }
 
-        // DELETE: api/Jobs/5
+        // DELETE: api/Categories/5
         [HttpDelete]
-        [ResponseType(typeof(Job))]
-        public async Task<IHttpActionResult> DeleteJob(int id)
+        [ResponseType(typeof(CategoryDto))]
+        public async Task<IHttpActionResult> DeleteCategory(int id)
         {
-            var job = await _dbContext.Jobs.FindAsync(id);
-            if (job == null)
+            var category = await _dbContext.Categories.FindAsync(id);
+            if (category == null)
             {
                 return NotFound();
             }
 
-            _dbContext.Jobs.Remove(job);
+            _dbContext.Categories.Remove(category);
             await _dbContext.SaveChangesAsync();
 
-            return Ok(job);
+            return Ok(Mapper.Map<Category, CategoryDto>(category));
         }
 
         protected override void Dispose(bool disposing)
@@ -119,9 +119,9 @@ namespace CitySurfing.RestService.Controllers
             base.Dispose(disposing);
         }
 
-        private bool JobExists(int id)
+        private bool CategoryExists(int id)
         {
-            return _dbContext.Jobs.Count(e => e.Id == id) > 0;
+            return _dbContext.Categories.Count(e => e.Id == id) > 0;
         }
     }
 }

@@ -64,9 +64,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Skill.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dtos\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>

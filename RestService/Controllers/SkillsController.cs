@@ -13,50 +13,51 @@ using CitySurfing.RestService.Dtos;
 
 namespace CitySurfing.RestService.Controllers
 {
-    public class JobsController : ApiController
+    public class SkillsController : ApiController
     {
         private readonly AppDbContext _dbContext = new AppDbContext();
 
-        // GET: api/Jobs
+        // GET: api/Skills
         [HttpGet]
-        public IList<JobDto> GetJobs()
+        public IList<SkillDto> GetSkills()
         {
-            var jobs = _dbContext.Jobs.ToList();
+            var skills = _dbContext.Skills.ToList();
 
-            return Mapper.Map<List<Job>, List<JobDto>>(jobs);
+            return Mapper.Map<List<Skill>, List<SkillDto>>(skills);
         }
 
-        // GET: api/Jobs/5
+        // GET: api/Skills/5
         [HttpGet]
-        [ResponseType(typeof(JobDto))]
-        public async Task<IHttpActionResult> GetJob(int id)
+        [ResponseType(typeof(Skill))]
+        public async Task<IHttpActionResult> GetSkill(int id)
         {
-            var job = await _dbContext.Jobs.FindAsync(id);
-            if (job == null)
+            var skill = await _dbContext.Skills.FindAsync(id);
+            if (skill == null)
             {
                 return NotFound();
             }
 
-            return Ok(Mapper.Map<Job, JobDto>(job));
+            return Ok(Mapper.Map<Skill, SkillDto>(skill));
         }
 
-        // PUT: api/Jobs/5
+        // PUT: api/Skills/5
         [HttpPut]
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> UpdateJob(int id, JobDto jobDto)
+        public async Task<IHttpActionResult> UpdateSkill(int id, SkillDto skillDto)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != jobDto.Id)
+            if (id != skillDto.Id)
             {
                 return BadRequest();
             }
 
-            var job = Mapper.Map<JobDto, Job>(jobDto);
-            _dbContext.Entry(job).State = EntityState.Modified;
+            var skill = Mapper.Map<SkillDto, Skill>(skillDto);
+
+            _dbContext.Entry(skill).State = EntityState.Modified;
 
             try
             {
@@ -64,7 +65,7 @@ namespace CitySurfing.RestService.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!JobExists(id))
+                if (!SkillExists(id))
                 {
                     return NotFound();
                 }
@@ -75,39 +76,38 @@ namespace CitySurfing.RestService.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Jobs
+        // POST: api/Skills
         [HttpPost]
-        [ResponseType(typeof(JobDto))]
-        public async Task<IHttpActionResult> InsertJob(JobDto jobDto)
+        [ResponseType(typeof(SkillDto))]
+        public async Task<IHttpActionResult> InertSkill(SkillDto skillDto)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var job = Mapper.Map<JobDto, Job>(jobDto);
-
-            _dbContext.Jobs.Add(job);
+            var skill = Mapper.Map<SkillDto, Skill>(skillDto);
+            _dbContext.Skills.Add(skill);
             await _dbContext.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = jobDto.Id }, jobDto);
+            return CreatedAtRoute("DefaultApi", new { id = skillDto.Id }, skillDto);
         }
 
-        // DELETE: api/Jobs/5
+        // DELETE: api/Skills/5
         [HttpDelete]
-        [ResponseType(typeof(Job))]
-        public async Task<IHttpActionResult> DeleteJob(int id)
+        [ResponseType(typeof(SkillDto))]
+        public async Task<IHttpActionResult> DeleteSkill(int id)
         {
-            var job = await _dbContext.Jobs.FindAsync(id);
-            if (job == null)
+            var skill = await _dbContext.Skills.FindAsync(id);
+            if (skill == null)
             {
                 return NotFound();
             }
 
-            _dbContext.Jobs.Remove(job);
+            _dbContext.Skills.Remove(skill);
             await _dbContext.SaveChangesAsync();
 
-            return Ok(job);
+            return Ok(Mapper.Map<Skill, SkillDto>(skill));
         }
 
         protected override void Dispose(bool disposing)
@@ -119,9 +119,9 @@ namespace CitySurfing.RestService.Controllers
             base.Dispose(disposing);
         }
 
-        private bool JobExists(int id)
+        private bool SkillExists(int id)
         {
-            return _dbContext.Jobs.Count(e => e.Id == id) > 0;
+            return _dbContext.Skills.Count(e => e.Id == id) > 0;
         }
     }
 }

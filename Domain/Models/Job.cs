@@ -6,6 +6,12 @@ namespace CitySurfing.Domain.Models
 {
     public class Job : ModelBase
     {
+        public Job()
+        {
+            IsAvailable = true;
+            Created = DateTime.Now;
+        }
+
         public string Title { get; set; }
 
         public string Description { get; set; }

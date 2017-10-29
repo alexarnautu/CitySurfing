@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Http;
+using CitySurfing.RestService.Dtos;
 
 namespace CitySurfing.RestService
 {
@@ -8,6 +9,7 @@ namespace CitySurfing.RestService
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            AutoMapperConfiguration.Configure();
         }
     }
 }
