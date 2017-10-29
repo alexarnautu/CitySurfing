@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CitySurfing.Domain.Models;
+using System;
 
 namespace CitySurfing.RestService.Dtos
 {
@@ -10,7 +11,7 @@ namespace CitySurfing.RestService.Dtos
 
         public DateTime Created { get; set; }
 
-        public int? Rating { get; set; }
+        public Review Review { get; set; }
 
         public UserDto User { get; set; }
 
