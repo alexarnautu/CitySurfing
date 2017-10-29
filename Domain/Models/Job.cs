@@ -43,5 +43,8 @@ namespace CitySurfing.Domain.Models
         public virtual ICollection<Skill> RequiredSkills { get; set; } = new HashSet<Skill>();
 
         public virtual ICollection<Applyment> Applyments { get; set; } = new HashSet<Applyment>();
+
+        public virtual ICollection<Review> Reviews { get; set; } = new HashSet<Review>();
+
     }
 }

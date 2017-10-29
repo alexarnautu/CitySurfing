@@ -24,5 +24,7 @@ namespace CitySurfing.Domain.Models
         public virtual User User { get; set; }
 
         public virtual Job Job { get; set; }
+
+        public virtual Review Review { get; set; }
     }
 }
