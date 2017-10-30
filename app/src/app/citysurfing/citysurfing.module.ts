@@ -16,9 +16,6 @@ const CITYSURFING_COMPONENTS = [
   declarations: [
     ...CITYSURFING_COMPONENTS,
   ],
-  exports: [
-    CitysurfingComponent
-  ]
 })
 export class CitysurfingModule {
 }
