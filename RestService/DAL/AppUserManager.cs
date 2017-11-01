@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Concrete
+namespace DataAccess
 {
     public class AppUserManager : UserManager<User>
     {
@@ -19,13 +19,9 @@ namespace DataAccess.Concrete
 
         public static AppUserManager Create(IdentityFactoryOptions<AppUserManager> options, IOwinContext context)
         {
-            var db = context.Get<AppDbContext> ();
+            var db = new AppDbContext();
             return new AppUserManager (new UserStore<User> (db));
         }
 
-        internal Task CreateAsync(User newUser, object password)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

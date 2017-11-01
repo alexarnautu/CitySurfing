@@ -161,13 +161,16 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\SkillsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DAL\AppDbContext.cs" />
+    <Compile Include="DAL\AppRoleManager.cs" />
     <Compile Include="DAL\AppUserManager.cs" />
     <Compile Include="Dtos\ApplymentDto.cs" />
     <Compile Include="Dtos\AutoMapperConfiguration.cs" />
@@ -178,6 +181,10 @@
     <Compile Include="Dtos\UserDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711011917385_DbChanges.cs" />
+    <Compile Include="Migrations\201711011917385_DbChanges.Designer.cs">
+      <DependentUpon>201711011917385_DbChanges.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -200,6 +207,11 @@
       <Project>{8aed0b8d-b0ad-4e14-8752-696fa216a6ac}</Project>
       <Name>Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711011917385_DbChanges.resx">
+      <DependentUpon>201711011917385_DbChanges.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

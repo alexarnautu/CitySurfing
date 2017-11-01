@@ -1,5 +1,4 @@
-﻿using DataAccess.Concrete;
-using System.Web;
+﻿using System.Web;
 using Microsoft.AspNet.Identity.Owin;
 using System.Net.Http;
 using System.Linq;
@@ -12,8 +11,9 @@ using System.Web.Security;
 using CitySurfing.Domain.Models;
 using CitySurfing.RestService.Dtos;
 using AutoMapper;
+using DataAccess;
 
-namespace Business
+namespace Services
 {
     public class AuthProvider
     {
@@ -32,12 +32,12 @@ namespace Business
             _userManager.AddToRole(userId, role);
         }
 
-        public async Task Register(RegistrationDto user)
+        public async Task<IEnumerable<string>> Register(RegistrationDto user)
         {
             var newUser = Mapper.Map<RegistrationDto, User>(user);
-            
-            await _userManager.CreateAsync(newUser, user.Password);
-            _userManager.AddToRole(newUser.Id, "User");
+
+            var ans = await _userManager.CreateAsync(newUser, user.Password);
+            return ans.Errors;
         }
 
         public async Task<bool> Login (string username, string password)
