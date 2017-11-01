@@ -11,5 +11,7 @@ namespace CitySurfing.RestService.Dtos
         public string FullName { get; internal set; }
         public string PhoneNumber { get; internal set; }
         public string Password { get; internal set; }
+        public string About { get; internal set; }
+
     }
 }

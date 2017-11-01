@@ -11,6 +11,7 @@ using System;
 using System.Web.Security;
 using CitySurfing.Domain.Models;
 using CitySurfing.RestService.Dtos;
+using AutoMapper;
 
 namespace Business
 {
@@ -33,13 +34,7 @@ namespace Business
 
         public async Task Register(RegistrationDto user)
         {
-            var newUser = new User
-            {
-                UserName = user.Email,
-                FullName = user.FullName,
-                Email = user.Email,
-                PhoneNumber = user.PhoneNumber,
-            };
+            var newUser = Mapper.Map<RegistrationDto, User>(user);
             
             await _userManager.CreateAsync(newUser, user.Password);
             _userManager.AddToRole(newUser.Id, "User");
