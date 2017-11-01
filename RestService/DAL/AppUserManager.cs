@@ -23,5 +23,9 @@ namespace DataAccess.Concrete
             return new AppUserManager (new UserStore<User> (db));
         }
 
+        internal Task CreateAsync(User newUser, object password)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
