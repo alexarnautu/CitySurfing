@@ -165,6 +165,7 @@
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\SkillsController.cs" />
     <Compile Include="DAL\AppDbContext.cs" />
+    <Compile Include="DAL\AppUserManager.cs" />
     <Compile Include="Dtos\ApplymentDto.cs" />
     <Compile Include="Dtos\AutoMapperConfiguration.cs" />
     <Compile Include="Dtos\CategoryDto.cs" />
