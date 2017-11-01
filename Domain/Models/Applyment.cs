@@ -6,6 +6,12 @@ namespace CitySurfing.Domain.Models
 {
     public class Applyment
     {
+        public Applyment()
+        {
+            Created = DateTime.Now;
+            IsApproved = false;
+        }
+
         //Primary key would be composed of UserId and JobId in order to prevent duplicate applyments.
         [Key, Column(Order = 0), ForeignKey(nameof(User))]
         public string UserId { get; set; }
@@ -18,8 +24,6 @@ namespace CitySurfing.Domain.Models
         public bool IsApproved { get; set; }
 
         public DateTime Created { get; set; }
-
-        public int? Rating { get; set; }
 
         public virtual User User { get; set; }
 

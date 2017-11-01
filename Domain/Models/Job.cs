@@ -28,8 +28,6 @@ namespace CitySurfing.Domain.Models
 
         public bool IsAvailable { get; set; }
 
-        public int? Rating { get; set; }
-
         [ForeignKey(nameof(Creator))]
         public string CreatorId { get; set; }
 
