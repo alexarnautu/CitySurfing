@@ -16,7 +16,7 @@ namespace CitySurfing.RestService.Controllers
 {
     public class UsersController : ApiController
     {
-        // THIS DEPENDENCIES CRY TO BE INJECTED
+        // THOSE DEPENDENCIES CRY TO BE INJECTED
         private readonly AppDbContext _dbContext = new AppDbContext();
         private readonly AuthProvider _authProv = new AuthProvider();
 
