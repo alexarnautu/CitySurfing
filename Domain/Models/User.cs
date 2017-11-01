@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Runtime.Serialization;
+using System.ComponentModel.DataAnnotations;
 
 namespace CitySurfing.Domain.Models
 {
@@ -17,9 +18,12 @@ namespace CitySurfing.Domain.Models
         public override string Id { get; set; }
 
         [DataMember]
+        [Required]
+        [EmailAddress]
         public override string Email { get; set; }
 
         [DataMember]
+        [Required]
         public string FullName { get; set; }
 
         [DataMember]
