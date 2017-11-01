@@ -14,7 +14,7 @@ using System.Web.Http.Description;
 
 namespace CitySurfing.RestService.Controllers
 {
-    public class UserController : ApiController
+    public class UsersController : ApiController
     {
         // THIS DEPENDENCIES CRY TO BE INJECTED
         private readonly AppDbContext _dbContext = new AppDbContext();

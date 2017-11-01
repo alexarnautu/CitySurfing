@@ -168,7 +168,7 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\SkillsController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="DAL\AppDbContext.cs" />
     <Compile Include="DAL\AppRoleManager.cs" />
     <Compile Include="DAL\AppUserManager.cs" />
@@ -181,10 +181,6 @@
     <Compile Include="Dtos\UserDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711011917385_DbChanges.cs" />
-    <Compile Include="Migrations\201711011917385_DbChanges.Designer.cs">
-      <DependentUpon>201711011917385_DbChanges.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
