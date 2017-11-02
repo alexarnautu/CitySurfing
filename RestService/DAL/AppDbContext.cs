@@ -13,5 +13,7 @@ namespace CitySurfing.RestService.DAL
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Applyment> Applyments { get; set; }
+
+        public DbSet<Review> Reviews { get; set; }
     }
 }
