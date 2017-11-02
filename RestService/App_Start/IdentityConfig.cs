@@ -1,5 +1,4 @@
 ﻿using CitySurfing.RestService.DAL;
-using DataAccess;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Owin;

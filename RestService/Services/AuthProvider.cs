@@ -11,7 +11,7 @@ using System.Web.Security;
 using CitySurfing.Domain.Models;
 using CitySurfing.RestService.Dtos;
 using AutoMapper;
-using DataAccess;
+using CitySurfing.RestService.DAL;
 
 namespace Services
 {
