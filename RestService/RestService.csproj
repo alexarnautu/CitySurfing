@@ -165,6 +165,7 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ApplymentsController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\SkillsController.cs" />
@@ -177,6 +178,7 @@
     <Compile Include="Dtos\CategoryDto.cs" />
     <Compile Include="Dtos\JobDto.cs" />
     <Compile Include="Dtos\RegistrationDto.cs" />
+    <Compile Include="Dtos\ReviewDto.cs" />
     <Compile Include="Dtos\SkillDto.cs" />
     <Compile Include="Dtos\UserDto.cs" />
     <Compile Include="Global.asax.cs">

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CitySurfing.Domain.Models;
+using System;
 using System.Collections.Generic;
 
 namespace CitySurfing.RestService.Dtos
@@ -23,7 +24,7 @@ namespace CitySurfing.RestService.Dtos
 
         public bool IsAvailable { get; set; }
 
-        public int? Rating { get; set; }
+        public Review Review { get; set; }
 
         public UserDto Creator { get; set; }
 
