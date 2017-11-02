@@ -13,7 +13,7 @@ using CitySurfing.RestService.Dtos;
 using AutoMapper;
 using CitySurfing.RestService.DAL;
 
-namespace Services
+namespace CitySurfing.RestService.Services
 {
     public class AuthProvider
     {
