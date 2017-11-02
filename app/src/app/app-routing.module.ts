@@ -11,15 +11,18 @@ import {
 
 
 import { HomeComponent } from './user/home.component';
+import { LoginComponent } from './pages/authentication/login/login.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: '/index',
+  { path: '',
+    redirectTo: 'index',
     pathMatch: 'full',
   }, {
     path: 'index',
     component: HomeComponent,
+  }, {
+    path: 'login',
+    component: LoginComponent,
   },
 ];
 
