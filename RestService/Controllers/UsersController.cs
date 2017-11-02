@@ -2,7 +2,7 @@
 using CitySurfing.Domain.Models;
 using CitySurfing.RestService.DAL;
 using CitySurfing.RestService.Dtos;
-using Services;
+using CitySurfing.RestService.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
