@@ -25,6 +25,8 @@ namespace CitySurfing.RestService.Dtos
                 
                 config.CreateMap<User, UserDto>();
                 config.CreateMap<UserDto, User>();
+                config.CreateMap<User, RegistrationDto>();
+                config.CreateMap<RegistrationDto, User>();
             });
         }
     }
