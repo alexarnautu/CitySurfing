@@ -14,7 +14,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { HomeModule } from './user/home.module';
-import { LoginModule } from './pages/authentiofication/login/login.module';
+import { LoginModule } from './pages/authentication/login/login.module';
 
 
 import { ThemeModule } from './@theme/theme.module';

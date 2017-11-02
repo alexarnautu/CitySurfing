@@ -11,12 +11,12 @@ import {
 
 
 import { HomeComponent } from './user/home.component';
-import { LoginComponent } from './pages/authentiofication/login/login.component';
+import { LoginComponent } from './pages/authentication/login/login.component';
 
 const routes: Routes = [
   { path: '', 
     redirectTo: 'index', 
-    pathMatch: 'full' 
+    pathMatch: 'full', 
   }, {
     path: 'index',
     component: HomeComponent,
