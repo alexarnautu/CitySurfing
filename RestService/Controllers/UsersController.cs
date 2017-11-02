@@ -38,6 +38,15 @@ namespace CitySurfing.RestService.Controllers
             return Ok();
         }
 
+        [HttpPost]
+        [Route("api/Users/Login")]
+        public async Task<IHttpActionResult> Login(string username, string password)
+        {
+            await _authProv.Login(username, password);
+
+            return Ok();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
