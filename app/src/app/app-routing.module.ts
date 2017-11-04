@@ -10,7 +10,7 @@ import {
 } from '@nebular/auth';
 
 
-import { HomeComponent } from './user/home.component';
+import { BaseComponent } from './cs/pages/base.component';
 import { LoginComponent } from './pages/authentication/login/login.component';
 
 const routes: Routes = [
@@ -19,7 +19,7 @@ const routes: Routes = [
     pathMatch: 'full',
   }, {
     path: 'index',
-    component: HomeComponent,
+    loadChildren: './cs/pages/base.module#BaseModule' ,
   }, {
     path: 'login',
     component: LoginComponent,
