@@ -39,6 +39,11 @@
   background-size: cover;
 }
 
+.job-list-wrapper li a img {
+  width: 100%;
+  display: block;
+}
+
 .job-list-wrapper li div{
   float: left;
   box-sizing: border-box;
