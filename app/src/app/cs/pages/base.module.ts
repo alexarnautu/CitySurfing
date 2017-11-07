@@ -6,7 +6,12 @@ import { LandingComponent } from './landing/landing.component';
 import { ComponentsModule } from './../components/components.module';
 import { ThemeModule } from '../../@theme/theme.module';
 import { BaseRoutingModule } from './base-routing.module'
+<<<<<<< HEAD
 
+=======
+import {ListingComponent} from './listing/listing.component';
+import {JobListingComponent} from '../components/job-listing/job-listing.component';
+>>>>>>> Initial markup + design
 
 const config: ExtraOptions = {
   useHash: true,
@@ -21,6 +26,8 @@ const config: ExtraOptions = {
   declarations: [
     BaseComponent,
     LandingComponent,
+    ListingComponent,
+    JobListingComponent
   ],
   exports: [
     BaseRoutingModule,
