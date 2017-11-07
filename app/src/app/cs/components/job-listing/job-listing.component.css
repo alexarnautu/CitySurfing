@@ -4,7 +4,7 @@
 }
 
 
-.article-list-vertical{
+.job-list-wrapper{
   list-style:none;
   margin: 0 auto;
   max-width: 600px;
@@ -12,7 +12,7 @@
   padding: 0;
 }
 
-.article-list-vertical li{
+.job-list-wrapper li{
   display: block;
   box-sizing:border-box;
   border-radius: 3px;
@@ -30,7 +30,7 @@
 
 /* Article photo */
 
-.article-list-vertical li > a{
+.job-list-wrapper li > a{
   float: left;
   width: 200px;
   height: 200px;
@@ -39,7 +39,7 @@
   background-size: cover;
 }
 
-.article-list-vertical li div{
+.job-list-wrapper li div{
   float: left;
   box-sizing: border-box;
 
@@ -49,7 +49,7 @@
 
 /* Article title */
 
-.article-list-vertical li div h2{
+.job-list-wrapper li div h2{
   font-size: 16px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -57,21 +57,21 @@
   margin:0;
 }
 
-.article-list-vertical li div h2 a{
+.job-list-wrapper li div h2 a{
   color: #2b2b2b;
   text-decoration: none;
 }
 
 /* Article excerpt */
 
-.article-list-vertical li div p{
+.job-list-wrapper li div p{
   line-height: 20px;
   color: #5d5d5d;
 
   margin: 20px 0;
 }
 
-.article-list-vertical li a.read-more{
+.job-list-wrapper li a.read-more{
   background-color: #87bcd7;
   cursor: pointer;
   font-size: 12px;
@@ -85,20 +85,20 @@
 
 @media (max-width: 600px){
 
-  .article-list-vertical{
+  .job-list-wrapper{
     max-width: 350px;
   }
 
-  .article-list-vertical li{
+  .job-list-wrapper li{
     max-width: 325px;
   }
 
-  .article-list-vertical li > a{
+  .job-list-wrapper li > a{
     float: none;
     width: 100%;
   }
 
-  .article-list-vertical li div{
+  .job-list-wrapper li div{
     float: none;
     padding: 30px;
   }

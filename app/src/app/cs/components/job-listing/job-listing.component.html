@@ -1,31 +1,12 @@
-<div class="job-listing-wrapper">
-  <ul class="article-list-vertical">
-    <li>
-      <a href="#" style="background-image: url('../../../../assets/images/alan.png')"></a>
+<div class="job-listing">
+  <ul class="job-list-wrapper">
+    <li *ngFor="let jobListingItem of jobList">
+      <a href="#">
+        <img [src]="jobListingItem.path">
+      </a>
       <div>
-        <h2><a href="#">Descriptive Job Title</a></h2>
-        <p>If ur asking who is the dude/gal on the left she/he is the one who posted the job.
-          Suspendisse eu lacus mattis laoreet diam a volutpat magna.</p>
-        <a href="#" class="read-more">Read more &rarr;</a>
-      </div>
-    </li>
-
-    <li>
-      <a href="#" style="background-image: url('../../../../assets/images/jack.png')"></a>
-      <div>
-        <h2><a href="#">Descriptive Job Title</a></h2>
-        <p>If ur asking who is the dude/gal on the left she/he is the one who posted the job.
-          Suspendisse eu lacus mattis laoreet diam a volutpat magna.</p>
-        <a href="#" class="read-more">Read more &rarr;</a>
-      </div>
-    </li>
-
-    <li>
-      <a href="#" style="background-image: url('../../../../assets/images/eva.png')"></a>
-      <div>
-        <h2><a href="#">Descriptive Job Title</a></h2>
-        <p>Lorem Ipsum eu lacus mattis  Suspendisse  diam a volutpat ma
-          Suspendisse eu lacus mattis laoreet diam a volutpat magna.</p>
+        <h2><a href="#">{{jobListingItem.title}}</a></h2>
+        <p>{{jobListingItem.description}}</p>
         <a href="#" class="read-more">Read more &rarr;</a>
       </div>
     </li>
