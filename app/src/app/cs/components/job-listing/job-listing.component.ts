@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+
+import { JobListingItem } from './job-listing-item';
 import { JOB_LISTING_ITEMS } from './mock-jobs';
+import { JobListingService } from './job-listing.service';
 
 @Component({
   selector: 'cs-job-listing-component',
@@ -8,6 +11,16 @@ import { JOB_LISTING_ITEMS } from './mock-jobs';
 })
 
 export class JobListingComponent {
- // item = JOB_LISTING_ITEMS[0];
-  jobList = JOB_LISTING_ITEMS;
+
+  jobList: JobListingItem[];
+
+  constructor(private jobListingService: JobListingService) { }
+
+  getJobs(): void {
+    this.jobList = this.jobListingService.getJobs();
+  }
+
+  ngOnInit() {
+    this.getJobs();
+  }
 }
