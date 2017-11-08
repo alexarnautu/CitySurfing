@@ -1,1 +1,14 @@
-Hello world
+<nb-layout>
+  <nb-layout-header fixed>
+    <cs-header></cs-header>
+  </nb-layout-header>
+
+  <nb-layout-column>
+    List of jobs
+    <ul>
+      <li *ngFor="let job of jobs">{{job.Id}} {{job.Name}</li>
+    </ul>
+  </nb-layout-column>
+
+  <nb-layout-footer>Contact us</nb-layout-footer>
+</nb-layout>
