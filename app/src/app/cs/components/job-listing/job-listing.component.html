@@ -2,11 +2,11 @@
   <ul class="job-list-wrapper">
     <li *ngFor="let jobListingItem of jobList">
       <a href="#">
-        <img [src]="jobListingItem.path">
+        <img src="../../../../assets/images/alan.png">
       </a>
       <div>
-        <h2><a href="#">{{jobListingItem.title}}</a></h2>
-        <p>{{jobListingItem.description}}</p>
+        <h2><a href="#">{{jobListingItem.Title}}</a></h2>
+        <p>{{jobListingItem.Description}}</p>
         <a href="#" class="read-more">Read more &rarr;</a>
       </div>
     </li>

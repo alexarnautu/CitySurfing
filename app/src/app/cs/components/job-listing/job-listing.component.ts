@@ -1,7 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 
-import { JobListingItem } from './job-listing-item';
-import { JobListingService } from './job-listing.service';
+import {Job} from '../../models/job';
+import { JobsService } from '../../services/jobs.service';
+
+/* @TODO Remove */
+// import { JobListingService } from './job-listing.service';
+// import { JobListingItem } from './job-listing-item';
 
 @Component({
   selector: 'cs-job-listing-component',
@@ -11,16 +15,15 @@ import { JobListingService } from './job-listing.service';
 
 export class JobListingComponent implements OnInit {
 
-  jobList: JobListingItem[];
+  jobList: Job[];
 
-  constructor(private jobListingService: JobListingService) { }
+  constructor(private jobListingService: JobsService) { }
 
   getJobs(): void {
     this.jobListingService.getJobs().subscribe(
       jobs => this.jobList = jobs,
     );
   }
-
   ngOnInit() {
     this.getJobs();
   }

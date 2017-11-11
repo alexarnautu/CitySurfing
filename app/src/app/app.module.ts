@@ -20,14 +20,11 @@ import { LoginModule } from './pages/authentication/login/login.module';
 
 import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-<<<<<<< HEAD
 
 import { JobsService } from './cs/services/jobs.service';
 
-
-=======
 import {JobListingService} from './cs/components/job-listing/job-listing.service';
->>>>>>> Made use of service
+// import {JobListingService} from './cs/components/job-listing/job-listing.service';
 
 
 @NgModule({
@@ -47,9 +44,9 @@ import {JobListingService} from './cs/components/job-listing/job-listing.service
   ],
   bootstrap: [AppComponent],
   providers: [
-    JobListingService,
     { provide: APP_BASE_HREF, useValue: '/' },
-    JobsService,
+     JobListingService,
+     JobsService,
   ],
 })
 export class AppModule {
