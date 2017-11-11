@@ -40,11 +40,17 @@ namespace CitySurfing.RestService.Controllers
 
         [HttpPost]
         [Route("api/Users/Login")]
-        public async Task<IHttpActionResult> Login(string username, string password)
+        public async Task<IHttpActionResult> Login(LoginDto login)
         {
-            await _authProv.Login(username, password);
-
-            return Ok();
+            if (await _authProv.Login(login.Username, login.Password))
+            {
+                return Ok(
+                    Mapper.Map<User, UserDto>(
+                        _dbContext.Users.FirstOrDefault(x => x.UserName == login.Username)
+                    )
+                );
+            }
+            return BadRequest();
         }
 
         protected override void Dispose(bool disposing)

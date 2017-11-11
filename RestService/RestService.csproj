@@ -177,6 +177,7 @@
     <Compile Include="Dtos\AutoMapperConfiguration.cs" />
     <Compile Include="Dtos\CategoryDto.cs" />
     <Compile Include="Dtos\JobDto.cs" />
+    <Compile Include="Dtos\LoginDto.cs" />
     <Compile Include="Dtos\RegistrationDto.cs" />
     <Compile Include="Dtos\ReviewDto.cs" />
     <Compile Include="Dtos\SkillDto.cs" />
