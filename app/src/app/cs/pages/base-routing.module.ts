@@ -5,6 +5,9 @@ import { BaseComponent } from './base.component';
 import { LandingComponent } from './landing/landing.component';
 
 const routes: Routes = [{
+      path: '',
+      component: BaseComponent,
+      children: [{
         path: 'landing',
         component: LandingComponent,
       },
@@ -12,8 +15,8 @@ const routes: Routes = [{
         path: '',
         redirectTo: 'landing',
         pathMatch: 'full',
-      }];
-
+      }],
+    }];
 const config: ExtraOptions = {
   useHash: true,
 };
