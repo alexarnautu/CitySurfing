@@ -17,7 +17,7 @@ export class JobListingComponent implements OnInit {
 
   getJobs(): void {
     this.jobListingService.getJobs().subscribe(
-      jobs => this.jobList = jobs
+      jobs => this.jobList = jobs,
     );
   }
 
