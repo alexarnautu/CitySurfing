@@ -18,5 +18,7 @@ namespace CitySurfing.RestService.DAL
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Applyment> Applyments { get; set; }
+
+        public DbSet<Review> Reviews { get; set; }
     }
 }
