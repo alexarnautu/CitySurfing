@@ -13,13 +13,14 @@ import { CoreModule } from './@core/core.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { HomeModule } from './user/home.module';
+import { BaseModule} from './cs/pages/base.module';
 import { LoginModule } from './pages/authentication/login/login.module';
 
 
 import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { JobsService } from './cs/services/jobs.service';
 
 
 @NgModule({
@@ -29,8 +30,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserAnimationsModule,
     HttpModule,
     AppRoutingModule,
-    HomeModule,
     LoginModule,
+    BaseModule,
 
     NgbModule.forRoot(),
     ThemeModule.forRoot(),
@@ -39,6 +40,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   bootstrap: [AppComponent],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
+    JobsService,
   ],
 })
 export class AppModule {
