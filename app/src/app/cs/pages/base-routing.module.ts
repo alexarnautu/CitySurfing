@@ -11,7 +11,8 @@ const routes: Routes = [{
       children: [{
         path: 'landing',
         component: LandingComponent,
-      },{
+      },
+      {
         path: 'listing',
         component: ListingComponent,
       },

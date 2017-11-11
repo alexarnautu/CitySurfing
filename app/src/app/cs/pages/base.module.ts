@@ -27,7 +27,7 @@ const config: ExtraOptions = {
     BaseComponent,
     LandingComponent,
     ListingComponent,
-    JobListingComponent
+    JobListingComponent,
   ],
   exports: [
     BaseRoutingModule,
