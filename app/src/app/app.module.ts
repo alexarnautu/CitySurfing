@@ -22,6 +22,7 @@ import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { JobsService } from './cs/services/jobs.service';
+import {ApplymentsService} from './cs/services/applyments.service';
 
 
 
@@ -45,6 +46,7 @@ import { JobsService } from './cs/services/jobs.service';
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
     JobsService,
+    ApplymentsService,
   ],
 })
 export class AppModule {
