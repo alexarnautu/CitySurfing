@@ -24,6 +24,7 @@
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
       "styles": [
+        "../node_modules/materialize-css/dist/css/materialize.css",
         "../node_modules/bootstrap/dist/css/bootstrap.css",
         "../node_modules/typeface-exo/index.css",
         "../node_modules/roboto-fontface/css/roboto/roboto-fontface.css",
@@ -43,7 +44,10 @@
         "../node_modules/tinymce/plugins/table/plugin.min.js",
         "./assets/vendors/echarts.min.js",
         "./assets/vendors/echarts.world.min.js",
-        "../node_modules/chart.js/dist/Chart.min.js"
+        "../node_modules/chart.js/dist/Chart.min.js",
+        "../node_modules/jquery/dist/jquery.js",
+        "../node_modules/hammerjs/hammer.js",
+        "../node_modules/materialize-css/dist/js/materialize.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
