@@ -27,6 +27,15 @@ namespace CitySurfing.RestService.Controllers
             return Mapper.Map<List<Applyment>, List<ApplymentDto>>(applyments);
         }
 
+        [HttpGet]
+        [Route("api/Applyments/{userId}")]
+        public IList<ApplymentDto> GetApplymentsForUser(string userId)
+        {
+            var userApplyments = _dbContext.Applyments.ToList().Where(a => a.UserId == userId).ToList();
+
+            return Mapper.Map<List<Applyment>, List<ApplymentDto>>(userApplyments);
+        }
+
         // GET: api/Applyments/foobar/4
         [HttpGet]
         [Route("api/Applyments/{userId}/{jobId}")]
