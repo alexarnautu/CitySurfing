@@ -7,8 +7,15 @@ namespace CitySurfing.RestService.DAL
 {
     public class AppDbContext : IdentityDbContext<User>
     {
+        //TODO(filip): look for a nicer way to solve this issue.
+#if RELEASE
+        private static string _connectionString = "CitySurfingConnectionStringProduction";
+#else
+        private static string _connectionString = "CitySurfingConnectionString";
+#endif
 
-        public AppDbContext() : base("CitySurfingConnectionString") { }
+
+        public AppDbContext() : base(_connectionString) { }
 
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Job> Jobs { get; set; }
