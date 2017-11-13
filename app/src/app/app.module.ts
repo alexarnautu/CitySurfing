@@ -23,7 +23,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { JobsService } from './cs/services/jobs.service';
 
-
+import {JobListingService} from './cs/components/job-listing/job-listing.service';
+// import {JobListingService} from './cs/components/job-listing/job-listing.service';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { JobsService } from './cs/services/jobs.service';
   bootstrap: [AppComponent],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
-    JobsService,
+     JobListingService,
+     JobsService,
   ],
 })
 export class AppModule {
