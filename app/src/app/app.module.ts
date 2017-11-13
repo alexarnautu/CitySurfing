@@ -10,7 +10,6 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { CoreModule } from './@core/core.module';
 import { MaterializeModule } from 'angular2-materialize';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -22,6 +21,7 @@ import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { JobsService } from './cs/services/jobs.service';
+import { AuthenticationService } from './@core/data/authentification.service';
 
 
 
@@ -45,6 +45,7 @@ import { JobsService } from './cs/services/jobs.service';
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
     JobsService,
+    AuthenticationService,
   ],
 })
 export class AppModule {
