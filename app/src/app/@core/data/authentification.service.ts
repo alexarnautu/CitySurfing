@@ -11,25 +11,19 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string): Observable<boolean> {
-
         var urlPost = "http://city-surfingapi.azurewebsites.net/api/Users/Login";
-
         return this.http.post(urlPost, {Username : username , Password: password})
             .map((response: Response) => {
-                let responseStatus = response.status;
-                if (responseStatus === 200) {
-
-                    localStorage.setItem('currentUser', JSON.stringify({ username: username }));
-
-                    // return true to indicate successful login
+                if (response.status === 200) {
+                    let responseText = response.text();
+                    localStorage.setItem('currentUser', JSON.stringify(JSON.parse(responseText)));
                     return true;
                 } else {
-                    // return false to indicate failed login
                     return false;
                 }
-
-
-            });
+         }).catch((err: Response) => {
+             return Observable.of(false);
+         });
     }
 
     logout(): void {
