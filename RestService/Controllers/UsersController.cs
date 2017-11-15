@@ -21,6 +21,7 @@ namespace CitySurfing.RestService.Controllers
         private readonly AuthProvider _authProv = new AuthProvider();
 
         [HttpGet]
+        [Authorize]
         public IEnumerable<UserDto> GetUsers() =>
             Mapper.Map<IEnumerable<User>, IEnumerable<UserDto>>(_dbContext.Users.ToList());
 
