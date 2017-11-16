@@ -24,7 +24,7 @@ namespace CitySurfing.RestService.Dtos
 
         public bool IsAvailable { get; set; }
 
-        public Review Review { get; set; }
+        public ICollection<Review> Reviews { get; set; }
 
         public UserDto Creator { get; set; }
 
