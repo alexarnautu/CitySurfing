@@ -21,7 +21,7 @@ namespace CitySurfing.RestService.Controllers
 
         // GET: api/Jobs
         [HttpGet]
-        public async Task<IHttpActionResult> GetJobs(JobFilterCriteriaDto criteria)
+        public async Task<IHttpActionResult> GetJobs([FromUri] JobFilterCriteriaDto criteria)
         {
             IQueryable<Job> jobQuery = _dbContext.Jobs;
 
