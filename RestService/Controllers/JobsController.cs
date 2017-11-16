@@ -10,6 +10,8 @@ using AutoMapper;
 using CitySurfing.Domain.Models;
 using CitySurfing.RestService.DAL;
 using CitySurfing.RestService.Dtos;
+using CitySurfing.RestService.Services;
+using Microsoft.AspNet.Identity;
 
 namespace CitySurfing.RestService.Controllers
 {
@@ -117,6 +119,16 @@ namespace CitySurfing.RestService.Controllers
             var job = Mapper.Map<JobDto, Job>(jobDto);
 
             _dbContext.Jobs.Add(job);
+
+            // If i delete this foreach, the skill objects are newly created in the 
+            // database instead of using the already existing ones
+            foreach (Skill skill in job.RequiredSkills)
+            {
+                _dbContext.Entry(skill).State = EntityState.Unchanged;
+            }
+
+            job.CreatorId = User.Identity.GetUserId();
+
             await _dbContext.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = jobDto.Id }, jobDto);
