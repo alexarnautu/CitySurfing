@@ -19,11 +19,40 @@ namespace CitySurfing.RestService.Controllers
 
         // GET: api/Jobs
         [HttpGet]
-        public IList<JobDto> GetJobs()
+        public async Task<IHttpActionResult> GetJobs(JobFilterCriteriaDto criteria)
         {
-            var jobs = _dbContext.Jobs.ToList();
+            IQueryable<Job> jobQuery = _dbContext.Jobs;
 
-            return Mapper.Map<List<Job>, List<JobDto>>(jobs);
+            if (criteria != null)
+            {
+                if ((criteria.EndDate != null) != (criteria.StartDate != null))
+                {
+                    return BadRequest("EndDate and StartDate must be both null or both different from null");
+                }
+                else if (criteria.EndDate != null) // Filter by date
+                {
+                    jobQuery = jobQuery.Where(x => x.StartDate >= criteria.StartDate && x.EndDate <= criteria.EndDate);
+                }
+
+                if (criteria.MinPrice != null) // Filter by price
+                {
+                    jobQuery = jobQuery.Where(x => x.Price >= criteria.MinPrice);
+                }
+                if (criteria.MaxPrice != null) // Filter by price
+                {
+                    jobQuery = jobQuery.Where(x => x.Price <= criteria.MaxPrice);
+                }
+                if (criteria.Location != null) // Filter by location
+                {
+                    jobQuery = jobQuery.Where(x => x.Location == criteria.Location);
+                }
+                if (criteria.SkillNames != null) // Filter by skill names
+                {
+                    jobQuery = jobQuery.Where(x => x.RequiredSkills.Any(y => criteria.SkillNames.Contains(y.Name)));
+                }
+            }
+
+            return Ok(Mapper.Map<IEnumerable<Job>, IEnumerable<JobDto>>(await jobQuery.ToListAsync()));
         }
 
         // GET: api/Jobs/5
