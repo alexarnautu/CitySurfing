@@ -90,7 +90,7 @@ namespace CitySurfing.RestService.Controllers
             _dbContext.Skills.Add(skill);
             await _dbContext.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = skillDto.Id }, skillDto);
+            return CreatedAtRoute("DefaultApi", new { id = skillDto.Id }, skill);
         }
 
         // DELETE: api/Skills/5
