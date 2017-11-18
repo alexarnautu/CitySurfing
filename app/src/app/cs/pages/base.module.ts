@@ -5,7 +5,10 @@ import { BaseComponent } from './base.component';
 import { LandingComponent } from './landing/landing.component';
 import { ComponentsModule } from './../components/components.module';
 import { ThemeModule } from '../../@theme/theme.module';
-import { BaseRoutingModule } from './base-routing.module'
+import { BaseRoutingModule } from './base-routing.module';
+import { LoginModule } from './authentication/login/login.module';
+
+import { AuthenticationService } from "../../@core/data/authentification.service";
 
 
 const config: ExtraOptions = {
@@ -17,6 +20,7 @@ const config: ExtraOptions = {
     ThemeModule,
     ComponentsModule,
     BaseRoutingModule,
+    LoginModule,
   ],
   declarations: [
     BaseComponent,
@@ -24,6 +28,9 @@ const config: ExtraOptions = {
   ],
   exports: [
     BaseRoutingModule,
+  ],
+  providers: [
+    AuthenticationService,
   ],
 })
 export class BaseModule {

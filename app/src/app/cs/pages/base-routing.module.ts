@@ -4,6 +4,8 @@ import { Routes, ExtraOptions, RouterModule} from '@angular/router';
 import { BaseComponent } from './base.component';
 import { LandingComponent } from './landing/landing.component';
 
+import { LoginComponent } from './authentication/login/login.component'
+
 const routes: Routes = [{
       path: '',
       component: BaseComponent,
@@ -15,7 +17,11 @@ const routes: Routes = [{
         path: '',
         redirectTo: 'landing',
         pathMatch: 'full',
-      }],
+      },
+      {
+        path: 'login',
+        component: LoginComponent,
+      },],
     }];
 const config: ExtraOptions = {
   useHash: true,

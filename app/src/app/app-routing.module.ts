@@ -11,7 +11,6 @@ import {
 
 
 import { BaseComponent } from './cs/pages/base.component';
-import { LoginComponent } from './pages/authentication/login/login.component';
 
 const routes: Routes = [
   { path: '',
@@ -20,10 +19,7 @@ const routes: Routes = [
   }, {
     path: 'index',
     loadChildren: './cs/pages/base.module#BaseModule' ,
-  }, {
-    path: 'login',
-    component: LoginComponent,
-  },
+  }
 ];
 
 const config: ExtraOptions = {

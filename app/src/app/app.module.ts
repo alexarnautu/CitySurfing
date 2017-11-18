@@ -14,7 +14,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { BaseModule} from './cs/pages/base.module';
-import { LoginModule } from './pages/authentication/login/login.module';
 
 
 import { ThemeModule } from './@theme/theme.module';
@@ -33,7 +32,6 @@ import { AuthenticationService } from './@core/data/authentification.service';
     BrowserAnimationsModule,
     HttpModule,
     AppRoutingModule,
-    LoginModule,
     BaseModule,
     MaterializeModule,
 
