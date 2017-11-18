@@ -173,6 +173,8 @@
     <Compile Include="DAL\AppDbContext.cs" />
     <Compile Include="DAL\AppRoleManager.cs" />
     <Compile Include="DAL\AppUserManager.cs" />
+    <Compile Include="DAL\Repositories.cs" />
+    <Compile Include="DAL\Repository.cs" />
     <Compile Include="Dtos\ApplymentDto.cs" />
     <Compile Include="Dtos\AutoMapperConfiguration.cs" />
     <Compile Include="Dtos\CategoryDto.cs" />
