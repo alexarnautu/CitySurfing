@@ -3,6 +3,7 @@ import { Routes, ExtraOptions, RouterModule} from '@angular/router';
 
 import { BaseComponent } from './base.component';
 import { LandingComponent } from './landing/landing.component';
+import { ListingComponent } from './listing/listing.component';
 
 import { LoginComponent } from './authentication/login/login.component'
 
@@ -12,6 +13,10 @@ const routes: Routes = [{
       children: [{
         path: 'landing',
         component: LandingComponent,
+      },
+      {
+        path: 'listing',
+        component: ListingComponent,
       },
       {
         path: '',
