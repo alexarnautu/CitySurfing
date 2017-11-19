@@ -20,12 +20,15 @@ export class CsHeaderComponent implements OnInit {
 
   userMenu = [{ title: 'Profile' }, { title: 'Log out' }];
 
-  constructor(private sidebarService: NbSidebarService, private menuService: NbMenuService, private userService: UserService, private analyticsService: AnalyticsService, private router: Router) {
-    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  constructor(private sidebarService: NbSidebarService,
+    private menuService: NbMenuService,
+    private userService: UserService,
+    private analyticsService: AnalyticsService,
+    private router: Router) {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser != null) {
       this.autentificat = true;
-    }
-    else {
+    } else {
       this.autentificat = false;
     }
   }
@@ -35,11 +38,10 @@ export class CsHeaderComponent implements OnInit {
   }
 
   getAutentificat(): boolean {
-    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser != null) {
       this.autentificat = true;
-    }
-    else {
+    } else {
       this.autentificat = false;
     }
     return this.autentificat;

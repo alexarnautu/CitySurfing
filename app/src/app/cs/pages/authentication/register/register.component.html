@@ -1,0 +1,85 @@
+<div class="col-md-6 offset-md-3" style="text-align: center">
+  <h2 class="title">Sign Up</h2>
+  <form (ngSubmit)="register()" #form="ngForm">
+
+    <div class="form-group">
+      <label for="input-email" class="sr-only">Email address</label>
+      <input name="email" [(ngModel)]="emailUser" id="input-email" #email="ngModel" class="form-control" placeholder="Email address*"
+        pattern=".+@.+\..+" type="text" [class.form-control-danger]="email.invalid && email.touched || nullEmail" (ngModelChange)="emailChange($event)">
+        <small class="form-text error" *ngIf="nullEmail">
+          Email is required!
+        </small>
+      <small class="form-text error" *ngIf="email.invalid && email.touched && email.errors?.pattern">
+        Email should be the real one!
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="input-name" class="sr-only">Full name</label>
+      <input name="fullName" [(ngModel)]="fullNameUser" id="input-name" #fullName="ngModel" class="form-control" placeholder="Full name*"
+        type="text" [class.form-control-danger]="fullName.invalid && fullName.touched || nullName" (ngModelChange)="nameChange($event)">
+      <small class="form-text error" *ngIf="nullName">
+        Full name is required!
+      </small>
+      <small class="form-text error" *ngIf="fullName.invalid && fullName.touched && (fullName.errors?.minlength || fullName.errors?.maxlength)">
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="input-phone" class="sr-only">Phone number</label>
+      <input name="phoneNo" [(ngModel)]="phoneNumber" type="text" id="input-phone" class="form-control" placeholder="Phone number*"
+        #phoneNo="ngModel" pattern="[0-9]{10}" [class.form-control-danger]="phoneNo.errors?.pattern || nullPhone" (ngModelChange)="phoneChange($event)">
+      <small class="form-text error" *ngIf="phoneNo.touched && phoneNo.errors?.pattern">
+        Phone number is invalid!
+      </small>
+      <small class="form-text error" *ngIf="nullPhone">
+        Phone number is required!
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="input-password" class="sr-only">Password</label>
+      <input name="password" [(ngModel)]="passwordUser" type="password" id="input-password" class="form-control" placeholder="Password*"
+        #password="ngModel" [class.form-control-danger]="password.invalid && password.touched || nullPassword" pattern="[a-zA-Z0-9]{8,255}" (ngModelChange)="passwordChange($event)">
+      <small class="form-text error" *ngIf="nullPassword">
+        Password is required!
+      </small>
+      <small class="form-text error" *ngIf="password.invalid && password.touched && password.errors?.pattern">
+        Password must have at least 8 characters!
+      </small>
+
+    </div>
+    <div class="form-group">
+      <label for="input-re-password" class="sr-only">Repeat password</label>
+      <input name="rePass" [(ngModel)]="confirmPassword" type="password" id="input-re-password" class="form-control" placeholder="Confirm Password*"
+        #rePass="ngModel" [class.form-control-danger]="(rePass.invalid || password.value != rePass.value) && rePass.touched">
+      <small class="form-text error" *ngIf="rePass.invalid && rePass.touched && rePass.errors?.required">
+        Password confirmation is required!
+      </small>
+      <small class="form-text error" *ngIf="rePass.touched && password.value != rePass.value && !rePass.errors?.required">
+        Password does not match the confirm password.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="input-about" class="sr-only">About</label>
+      <input name="about" [(ngModel)]="aboutUser" type="text" id="input-about" class="form-control" placeholder="About you"
+        #about="ngModel" >
+    </div>
+
+
+    <small class="form-text error" *ngIf="registerError">
+      Ragister failed!
+    </small>
+    <button [disabled]="submitted || !form.valid || password.value != rePass.value || nullEmail || nullName || nullPassword || nullPhone" class="btn btn-block btn-hero-success" [class.btn-pulse]="submitted">
+      Register
+    </button>
+  </form>
+  <div class="links">
+    <small class="form-text">
+      Already have an account?
+      <a routerLink="../login">
+        <strong>Sign in</strong>
+      </a>
+    </small>
+  </div>
+</div>

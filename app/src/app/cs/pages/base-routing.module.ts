@@ -6,6 +6,7 @@ import { LandingComponent } from './landing/landing.component';
 import { ListingComponent } from './listing/listing.component';
 
 import { LoginComponent } from './authentication/login/login.component'
+import { RegisterComponent } from './authentication/register/register.component'
 
 const routes: Routes = [{
       path: '',
@@ -19,14 +20,18 @@ const routes: Routes = [{
         component: ListingComponent,
       },
       {
+        path: 'login',
+        component: LoginComponent,
+      },
+      {
+        path: 'register',
+        component: RegisterComponent,
+      },
+      {
         path: '',
         redirectTo: 'landing',
         pathMatch: 'full',
-      },
-      {
-        path: 'login',
-        component: LoginComponent,
-      },],
+      }],
     }];
 const config: ExtraOptions = {
   useHash: true,

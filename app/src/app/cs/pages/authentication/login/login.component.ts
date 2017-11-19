@@ -34,8 +34,8 @@ export class LoginComponent {
     this.errors = false;
     this.nullPassword = false;
     this.nullEmail = false;
-    var rememberUser = JSON.parse(localStorage.getItem('userRemember'));
-    if (rememberUser!=null) {
+    const rememberUser = JSON.parse(localStorage.getItem('userRemember'));
+    if (rememberUser != null) {
       this.userEmail = JSON.parse(localStorage.getItem('userRemember'));
       this.userPassword = JSON.parse(localStorage.getItem('passwordRemember'));
       this.rememberMe = true;
@@ -43,10 +43,10 @@ export class LoginComponent {
   }
 
   loginPress(): void {
-    if (this.userPassword.length == 0) {
+    if (this.userPassword.length === 0) {
       this.nullPassword = true;
     }
-    if (this.userEmail.length == 0) {
+    if (this.userEmail.length === 0) {
       this.nullEmail = true;
     }
     this.authentificationService.login(this.userEmail, this.userPassword).subscribe(
@@ -55,8 +55,7 @@ export class LoginComponent {
           if (this.rememberMe) {
             localStorage.setItem('userRemember', JSON.stringify(this.userEmail));
             localStorage.setItem('passwordRemember', JSON.stringify(this.userPassword));
-          }
-          else {
+          } else {
             localStorage.removeItem('userRemember');
             localStorage.removeItem('passwordRemember');
           }
@@ -68,21 +67,19 @@ export class LoginComponent {
       });
   }
 
-  emailChange(newValue) : void {
-    if (newValue.length>0) {
-      this.nullEmail=false;
-    }
-    else {
-      this.nullEmail=true;
+  emailChange(newValue): void {
+    if (newValue.length > 0) {
+      this.nullEmail = false;
+    } else {
+      this.nullEmail = true;
     }
   }
 
-  passwordChange(newValue) : void {
-    if (newValue.length>0) {
-      this.nullPassword=false;
-    }
-    else {
-      this.nullPassword=true;
+  passwordChange(newValue): void {
+    if (newValue.length > 0) {
+      this.nullPassword = false;
+    } else {
+      this.nullPassword = true;
     }
   }
 

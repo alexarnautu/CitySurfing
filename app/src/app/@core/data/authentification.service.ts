@@ -7,15 +7,15 @@ import 'rxjs/add/operator/map'
 export class AuthenticationService {
 
     constructor(private http: Http) {
-        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
     login(username: string, password: string): Observable<boolean> {
-        var urlPost = "http://city-surfingapi.azurewebsites.net/api/Users/Login";
+        const urlPost = 'http://city-surfingapi.azurewebsites.net/api/Users/Login';
         return this.http.post(urlPost, {Username : username , Password: password})
             .map((response: Response) => {
                 if (response.status === 200) {
-                    let responseText = response.text();
+                    const responseText = response.text();
                     localStorage.setItem('currentUser', JSON.stringify(JSON.parse(responseText)));
                     return true;
                 } else {
