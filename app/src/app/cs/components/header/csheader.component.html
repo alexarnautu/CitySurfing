@@ -13,9 +13,9 @@
     <a style="cursor: pointer;">Log Out</a>
   </nb-action>
   <nb-action *ngIf="getAutentificat()">
-    <nb-user [menu]="userMenu" [name]="user?.name" [picture]="user?.picture"></nb-user>
+    <nb-user [menu]="userMenu" [name]="getUserEmail()" [picture]="user?.picture"></nb-user>
   </nb-action>
   <nb-action class="links" *ngIf="!getAutentificat()"> 
-    <a href="../#/index/login">Sing In</a>
+    <a href="../#/index/login">Sign In</a>
   </nb-action>
 </nb-actions>
