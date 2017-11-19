@@ -30,6 +30,10 @@ export class CsHeaderComponent implements OnInit {
     }
   }
 
+  getUserEmail(): String {
+    return JSON.parse(localStorage.getItem('currentUser')).FullName;
+  }
+
   getAutentificat(): boolean {
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser != null) {
