@@ -16,12 +16,33 @@ export class CsHeaderComponent implements OnInit {
 
   user: any;
 
+  autentificat: boolean;
+
   userMenu = [{ title: 'Profile' }, { title: 'Log out' }];
 
-  constructor(private sidebarService: NbSidebarService,
-              private menuService: NbMenuService,
-              private userService: UserService,
-              private analyticsService: AnalyticsService) {
+  constructor(private sidebarService: NbSidebarService, private menuService: NbMenuService, private userService: UserService, private analyticsService: AnalyticsService) {
+    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser != null) {
+      this.autentificat = true;
+    }
+    else {
+      this.autentificat = false;
+    }
+  }
+
+  getAutentificat(): boolean {
+    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser != null) {
+      this.autentificat = true;
+    }
+    else {
+      this.autentificat = false;
+    }
+    return this.autentificat;
+  }
+
+  logOutUser() {
+    localStorage.removeItem('currentUser');
   }
 
   ngOnInit() {

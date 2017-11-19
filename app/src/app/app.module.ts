@@ -14,7 +14,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { BaseModule} from './cs/pages/base.module';
-import { LoginModule } from './pages/authentication/login/login.module';
 
 
 import { ThemeModule } from './@theme/theme.module';
@@ -34,7 +33,6 @@ import {JobListingService} from './cs/components/job-listing/job-listing.service
     BrowserAnimationsModule,
     HttpModule,
     AppRoutingModule,
-    LoginModule,
     BaseModule,
     MaterializeModule,
 
