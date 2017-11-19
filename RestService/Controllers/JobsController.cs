@@ -118,7 +118,7 @@ namespace CitySurfing.RestService.Controllers
 
             var job = Mapper.Map<JobDto, Job>(jobDto);
 
-            _dbContext.Jobs.Add(job);
+            job.CategoryId = job.Category.Id;
 
             // If i delete this foreach, the skill objects are newly created in the 
             // database instead of using the already existing ones
@@ -129,6 +129,7 @@ namespace CitySurfing.RestService.Controllers
 
             job.CreatorId = User.Identity.GetUserId();
 
+            _dbContext.Jobs.Add(job);
             await _dbContext.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = jobDto.Id }, jobDto);

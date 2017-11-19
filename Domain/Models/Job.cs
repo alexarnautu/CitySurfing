@@ -31,12 +31,12 @@ namespace CitySurfing.Domain.Models
         [ForeignKey(nameof(Creator))]
         public string CreatorId { get; set; }
 
-        [ForeignKey(nameof(Type))]
-        public int TypeId { get; set; }
+        [ForeignKey(nameof(Category))]
+        public int CategoryId { get; set; }
 
         public virtual User Creator { get; set; }
 
-        public virtual Category Type { get; set; }
+        public virtual Category Category { get; set; }
 
         public virtual ICollection<Skill> RequiredSkills { get; set; } = new HashSet<Skill>();
 
