@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { NbMenuService, NbSidebarService } from '@nebular/theme';
 import { UserService } from '../../../@core/data/users.service';
 import { AnalyticsService } from '../../../@core/utils/analytics.service';
@@ -20,7 +20,7 @@ export class CsHeaderComponent implements OnInit {
 
   userMenu = [{ title: 'Profile' }, { title: 'Log out' }];
 
-  constructor(private sidebarService: NbSidebarService, private menuService: NbMenuService, private userService: UserService, private analyticsService: AnalyticsService) {
+  constructor(private sidebarService: NbSidebarService, private menuService: NbMenuService, private userService: UserService, private analyticsService: AnalyticsService, private router: Router) {
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser != null) {
       this.autentificat = true;
@@ -43,6 +43,7 @@ export class CsHeaderComponent implements OnInit {
 
   logOutUser() {
     localStorage.removeItem('currentUser');
+    this.router.navigate(['index/landing']);
   }
 
   ngOnInit() {
