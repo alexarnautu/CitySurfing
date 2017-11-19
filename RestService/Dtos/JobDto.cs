@@ -28,7 +28,7 @@ namespace CitySurfing.RestService.Dtos
 
         public UserDto Creator { get; set; }
 
-        public CategoryDto Type { get; set; }
+        public CategoryDto Category { get; set; }
 
         public ICollection<SkillDto> RequiredSkills { get; set; }
 
