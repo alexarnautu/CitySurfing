@@ -19,7 +19,7 @@ const routes: Routes = [
   }, {
     path: 'index',
     loadChildren: './cs/pages/base.module#BaseModule' ,
-  }
+  },
 ];
 
 const config: ExtraOptions = {
