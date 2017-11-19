@@ -186,6 +186,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711191326483_ChangeJobTypeName.cs" />
+    <Compile Include="Migrations\201711191326483_ChangeJobTypeName.Designer.cs">
+      <DependentUpon>201711191326483_ChangeJobTypeName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthProvider.cs" />
@@ -208,6 +212,11 @@
       <Project>{8aed0b8d-b0ad-4e14-8752-696fa216a6ac}</Project>
       <Name>Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711191326483_ChangeJobTypeName.resx">
+      <DependentUpon>201711191326483_ChangeJobTypeName.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
