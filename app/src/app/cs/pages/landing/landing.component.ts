@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StyleService } from '../../services/style.service';
 
 @Component({
     selector: 'cs-landing-component',
@@ -14,8 +15,14 @@ import { Component, OnInit } from '@angular/core';
                 border-radius: 8px;
         }`,
     `.big-text {
-        font-size: 20px;
-    }`],
+        font-size: 20px;`,
+    ],
 })
 export class LandingComponent {
+    constructor(private styleService: StyleService) {
+        styleService.setStyle('custom_background');
+    }
+    getClass() {
+        return "custom_background";
+    }
 }
