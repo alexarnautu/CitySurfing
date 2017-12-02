@@ -1,8 +1,31 @@
 import React, { Component } from 'react';
-import { StyleSheet, Modal, Text, TextInput, View, Button } from 'react-native';
+import { StyleSheet, Modal, Text, TextInput, View, Button, ToastAndroid } from 'react-native';
+import AuthenticationService from '../services/AuthenticationService'
 
 export default class ModalExample extends Component {
 
+    authService = new AuthenticationService({
+        scope: this,
+
+        registerSuccess: function(resp) {
+            switch(resp.status) {
+                case 400:
+                    resp.json().then(data => {
+                        var inval = "Register form invalid: "
+                        for(var key in data.ModelState) {
+                            inval += `${key.split('.')[1]}: ${data.ModelState[key].join()}\n`
+                        }
+                        alert(inval)
+                    })
+                    break;
+                case 200:
+                    ToastAndroid.show("Register successful!", ToastAndroid.SHORT)
+                    this.props.onRequestClose();
+                    break;
+            }
+        }
+        
+    })
 
     constructor(props) {
         super()
@@ -14,11 +37,11 @@ export default class ModalExample extends Component {
     }
 
     state = {
-        modalVisible: false,
+        modalVisible: false
     }
 
-    setModalVisible(visible) {
-        this.setState({ modalVisible: visible });
+    setModalVisible(modalVisible) {
+        this.setState({ modalVisible });
     }
 
     render() {
@@ -32,25 +55,25 @@ export default class ModalExample extends Component {
                 <View style={styles.view}>
 
                     <Text>Email:</Text>
-                    <TextInput style={styles.textInput} />
+                    <TextInput style={styles.textInput} onChangeText={email => this.setState({email})} />
                 
                     <Text>Full name:</Text>
-                    <TextInput style={styles.textInput} />
+                    <TextInput style={styles.textInput} onChangeText={fullName => this.setState({fullName})} />
 
                     <Text>Phone number:</Text>
-                    <TextInput style={styles.textInput} />
+                    <TextInput style={styles.textInput} onChangeText={phoneNumber => this.setState({phoneNumber})} />
 
                     <Text>Password:</Text>
-                    <TextInput style={styles.textInput} secureTextEntry />
+                    <TextInput style={styles.textInput} secureTextEntry onChangeText={password => this.setState({password})} />
 
                     <Text>Confirm password:</Text>
-                    <TextInput style={styles.textInput} secureTextEntry />
+                    <TextInput style={styles.textInput} secureTextEntry onChangeText={passwordConfirm => this.setState({passwordConfirm})} />
 
                     <Text>About: </Text>
-                    <TextInput style={styles.textInput} />
+                    <TextInput style={styles.textInput} onChangeText={about => this.setState({about})} multiline />
 
                     <View style={{flexDirection: 'row'}}>
-                        <Button title="Register"/>
+                        <Button title="Register" onPress={this.onRegisterSubmit.bind(this)}/>
                     </View>
 
                 </View>
@@ -58,6 +81,10 @@ export default class ModalExample extends Component {
             </Modal>
 
         );
+    }
+
+    onRegisterSubmit() {
+        this.authService.register(this.state)
     }
 }
 

@@ -1,34 +1,27 @@
 import {ToastAndroid} from 'react-native'
+import HttpServieWrapper from '../interface/HttpServiceWrapper'
+import HttpServiceWrapper from '../interface/HttpServiceWrapper';
 
 export default class AuthenticationService {
 
-    static apiBaseUrl = "http://city-surfingapi.azurewebsites.net/api"
-
     constructor(options = {}) {
 
-        var identity = () => {};
-        var scope = options.scope || this;
-
-        this.loginSuccess = (options.loginSuccess || identity).bind(scope);
-        this.loginFailure = (options.loginFailure || identity).bind(scope);
-        this.loginAlways = (options.loginAlways || identity).bind(scope);
-        this.beforeLogin = (options.beforeLogin || identity).bind(scope);
+        var noop = () => {};
+        options.scope = options.scope || this;
+        ['loginSuccess', 'loginFailure', 'loginAlways', 'beforeLogin',
+        'registerSuccess', 'registerFailure', 'registerAlways', 'beforeRegister'
+        ].forEach(x => 
+            options[x] = (options[x] || noop).bind(options.scope));
+        
+        this.options = options;
 
     }
 
     login(username, password) {
-        this.beforeLogin();
-        fetch(`${AuthenticationService.apiBaseUrl}/Users/Login`, {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json'
-            },
-
-            body: JSON.stringify({
-                Username: username,
-                Password: password
-            })
+        this.options.beforeLogin();
+        HttpServiceWrapper.post('/Users/Login', {
+            Username: username,
+            Password: password
         })
         .then((response) => {
             
@@ -41,9 +34,25 @@ export default class AuthenticationService {
             }
 
         })
-        .then(this.loginSuccess)
-        .catch(this.loginFailure)
-        .finally(this.loginAlways)
+        .then(this.options.loginSuccess)
+        .catch(this.options.loginFailure)
+        .finally(this.options.loginAlways)
+    }
+
+    register(registerData) {
+        this.options.beforeRegister();
+        HttpServiceWrapper.post('/Users', {
+            Email: registerData.email,
+            FullName: registerData.fullName,
+            PhoneNumber: registerData.phoneNumber,
+            About: registerData.about,
+            UserName: registerData.email,
+            Password: registerData.password
+        })
+        .then(this.options.registerSuccess)
+        .catch(this.options.registerFailure)
+        .finally(this.options.registerAlways)
+
     }
 
 }
