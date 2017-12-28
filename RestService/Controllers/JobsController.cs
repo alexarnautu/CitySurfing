@@ -12,6 +12,7 @@ using CitySurfing.RestService.DAL;
 using CitySurfing.RestService.Dtos;
 using CitySurfing.RestService.Services;
 using Microsoft.AspNet.Identity;
+using System;
 
 namespace CitySurfing.RestService.Controllers
 {
@@ -116,9 +117,12 @@ namespace CitySurfing.RestService.Controllers
                 return BadRequest(ModelState);
             }
 
-            var job = Mapper.Map<JobDto, Job>(jobDto);
+            string loggedUserId = User.Identity.GetUserId();
 
+            var job = Mapper.Map<JobDto, Job>(jobDto);
+            job.Created = DateTime.Now;
             job.CategoryId = job.Category.Id;
+            job.Creator = await _dbContext.Users.SingleAsync(u => u.Id == loggedUserId);
 
             // If i delete this foreach, the skill objects are newly created in the 
             // database instead of using the already existing ones
@@ -127,11 +131,10 @@ namespace CitySurfing.RestService.Controllers
                 _dbContext.Entry(skill).State = EntityState.Unchanged;
             }
 
-            job.CreatorId = User.Identity.GetUserId();
-
             _dbContext.Jobs.Add(job);
             await _dbContext.SaveChangesAsync();
 
+            jobDto = Mapper.Map<Job, JobDto>(job);
             return CreatedAtRoute("DefaultApi", new { id = jobDto.Id }, jobDto);
         }
 
