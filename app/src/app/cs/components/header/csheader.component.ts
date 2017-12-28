@@ -18,7 +18,7 @@ export class CsHeaderComponent implements OnInit {
 
   autentificat: boolean;
 
-  userMenu = [{ title: 'Profile' }, { title: 'Log out' }];
+  userMenu = [ { title: 'Profile' }, { title: 'Log out' }];
 
   constructor(private sidebarService: NbSidebarService,
     private menuService: NbMenuService,
@@ -33,6 +33,9 @@ export class CsHeaderComponent implements OnInit {
     }
   }
 
+  goToDashboard() {
+    this.router.navigate(['index/dashboard']);
+  }
   getUserEmail(): String {
     return JSON.parse(localStorage.getItem('currentUser')).FullName;
   }
@@ -68,7 +71,7 @@ export class CsHeaderComponent implements OnInit {
   }
 
   goToHome() {
-    this.menuService.navigateHome();
+    this.router.navigate(['index/landing']);
   }
 
   startSearch() {
