@@ -26,6 +26,10 @@ import {Applyment} from '../../models/applyment';
 export class DashboardComponent implements OnInit {
     jobList: Job[]= [];
     applymentsList: Applyment[] = [];
+    activeJobs: Job[] = [];
+    pastJobs: Job[] = [];
+    activeApplyments: Applyment[] = [];
+    pastApplyments: Applyment[] = []
 
     constructor(private styleService: StyleService, private jobListingService: JobsService,
                 private applymentsService: ApplymentsService) {
@@ -40,15 +44,16 @@ export class DashboardComponent implements OnInit {
 
     getApplyments(): void {
         this.applymentsService.getApplyments(JSON.parse(localStorage.getItem('currentUser')).Id).subscribe(
-        (applyments)=>{
-            debugger;
-             this.applymentsList = applyments;
-        }
+            applyments =>  this.applymentsList = applyments
         );
     }
 
     ngOnInit() {
         this.getApplyments();
         this.getJobs();
+        this.activeJobs.filter(x =>x.IsAvailable==true)
+        this.pastJobs.filter(x =>x.IsAvailable==false)
+        this.activeApplyments.filter(x=>x.IsApproved==null)
+        this.pastApplyments.filter(x=>x.IsApproved!=null)
   }
 }
