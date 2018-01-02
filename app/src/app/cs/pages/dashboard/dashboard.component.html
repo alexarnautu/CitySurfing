@@ -17,7 +17,7 @@
                 <ul *ngIf="activeJobs.length">
                     <li *ngFor="let activeJob of activeJobs">
                         <h2>
-                            <a href="#">{{activeJob.Title}}</a>
+                            <a href="#">{{activeJob.Title}}</a> <button class="btn btn-xs btn-danger" (click)="removeJob(activeJob.Id)">X</button>
                         </h2>
                     </li>
                 </ul>
@@ -58,7 +58,7 @@
                 <ul *ngIf="activeApplyments.length">
                     <li *ngFor="let activeApplyment of activeApplyments">
                         <h2>
-                            <a href="#">{{activeApplyment.Proposal}}</a>
+                            <a href="#">{{getJobTitle(activeApplyment.JobId)}}</a>
                         </h2>
                     </li>
                 </ul>
@@ -68,16 +68,17 @@
         </nb-card>
         <nb-card>
             <nb-card-header>
-                Past applyments
+                Past applyments (job names)
             </nb-card-header>
             <nb-card-body>
-                <div *ngIf="!activeJobs.length">
+                <div *ngIf="!pastApplyments.length">
                     You don't have any Past applyments.
                 </div>
                 <ul *ngIf="pastApplyments.length">
+
                     <li *ngFor="let pastApplyment of pastApplyments">
                         <h2>
-                            <a href="#">{{pastApplyment.Proposal}}</a>
+                            <a href="#">{{getJobTitle(pastApplyment.JobId)  }}</a>
                         </h2>
                     </li>
                 </ul>

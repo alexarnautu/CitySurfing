@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { StyleService } from '../../services/style.service';
 import { JobsService } from '../../services/jobs.service';
 import { ApplymentsService } from '../../services/applyment.service';
@@ -32,28 +33,37 @@ export class DashboardComponent implements OnInit {
     pastApplyments: Applyment[] = []
 
     constructor(private styleService: StyleService, private jobListingService: JobsService,
-                private applymentsService: ApplymentsService) {
+                private applymentsService: ApplymentsService, private router: Router) {
         styleService.setStyle('no_background');
     }
 
     getJobs(): void {
         this.jobListingService.getJobs().subscribe(
-          jobs => this.jobList = jobs.filter(x=>x.Creator===JSON.parse(localStorage.getItem('currentUser')).Id),
+          jobs => {
+              this.jobList = jobs.filter(x=>x.Creator && x.Creator.Id===JSON.parse(localStorage.getItem('currentUser')).Id);
+              this.activeJobs = jobs.filter(x=>x.Creator && x.Creator.Id===JSON.parse(localStorage.getItem('currentUser')).Id && x.IsAvailable===true);
+              this.pastJobs = jobs.filter(x=>x.Creator && x.Creator.Id===JSON.parse(localStorage.getItem('currentUser')).Id && x.IsAvailable===false);
+
+              this.applymentsService.getApplyments(JSON.parse(localStorage.getItem('currentUser')).Id).subscribe(
+                applyments =>  {
+                    this.applymentsList = applyments;
+                    this.activeApplyments = applyments.filter(x => x.IsApproved==null);
+                    this.pastApplyments = applyments.filter(x => x.IsApproved!=null);
+                }
+            );
+          },
         );
     }
 
-    getApplyments(): void {
-        this.applymentsService.getApplyments(JSON.parse(localStorage.getItem('currentUser')).Id).subscribe(
-            applyments =>  this.applymentsList = applyments
-        );
+    removeJob(jobId) {
+        this.jobListingService.deleteJob(jobId).subscribe(() => window.location.reload());
+    }
+
+    getJobTitle(jobId) {
+        return this.jobList.filter(x => x.Id == jobId)[0].Title;
     }
 
     ngOnInit() {
-        this.getApplyments();
         this.getJobs();
-        this.activeJobs.filter(x =>x.IsAvailable==true)
-        this.pastJobs.filter(x =>x.IsAvailable==false)
-        this.activeApplyments.filter(x=>x.IsApproved==null)
-        this.pastApplyments.filter(x=>x.IsApproved!=null)
   }
 }

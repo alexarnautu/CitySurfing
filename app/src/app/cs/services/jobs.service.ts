@@ -16,4 +16,8 @@ export class JobsService {
   getJobs(): Observable<Job[]> {
     return this.http.get<Job[]>(this.jobsUrl)
   }
+
+  deleteJob(jobId): Observable<Object> {
+    return this.http.delete(this.jobsUrl + '/' + jobId);
+  }
 }
