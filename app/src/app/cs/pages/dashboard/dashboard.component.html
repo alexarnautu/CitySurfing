@@ -58,7 +58,7 @@
                 <ul *ngIf="activeApplyments.length">
                     <li *ngFor="let activeApplyment of activeApplyments">
                         <h2>
-                            <a href="#">{{getJobTitle(activeApplyment.JobId)}}</a>
+                            <a href="#">{{getJobTitle(activeApplyment.JobId)}}</a> <button class="btn btn-xs btn-danger" (click)="removeApplyment(activeApplyment.UserId, activeApplyment.JobId)">X</button>
                         </h2>
                     </li>
                 </ul>

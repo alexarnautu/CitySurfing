@@ -25,6 +25,7 @@ import {Applyment} from '../../models/applyment';
     ],
 })
 export class DashboardComponent implements OnInit {
+    allJobs: Job[] =[];
     jobList: Job[]= [];
     applymentsList: Applyment[] = [];
     activeJobs: Job[] = [];
@@ -40,6 +41,7 @@ export class DashboardComponent implements OnInit {
     getJobs(): void {
         this.jobListingService.getJobs().subscribe(
           jobs => {
+              this.allJobs = jobs;
               this.jobList = jobs.filter(x=>x.Creator && x.Creator.Id===JSON.parse(localStorage.getItem('currentUser')).Id);
               this.activeJobs = jobs.filter(x=>x.Creator && x.Creator.Id===JSON.parse(localStorage.getItem('currentUser')).Id && x.IsAvailable===true);
               this.pastJobs = jobs.filter(x=>x.Creator && x.Creator.Id===JSON.parse(localStorage.getItem('currentUser')).Id && x.IsAvailable===false);
@@ -47,8 +49,8 @@ export class DashboardComponent implements OnInit {
               this.applymentsService.getApplyments(JSON.parse(localStorage.getItem('currentUser')).Id).subscribe(
                 applyments =>  {
                     this.applymentsList = applyments;
-                    this.activeApplyments = applyments.filter(x => x.IsApproved==null);
-                    this.pastApplyments = applyments.filter(x => x.IsApproved!=null);
+                    this.activeApplyments = applyments.filter(x => this.allJobs.filter(y => y.IsAvailable == true && x.JobId == y.Id));
+                    this.pastApplyments = applyments.filter(x => this.allJobs.filter(y => y.IsAvailable == false && x.JobId == y.Id));
                 }
             );
           },
@@ -59,8 +61,13 @@ export class DashboardComponent implements OnInit {
         this.jobListingService.deleteJob(jobId).subscribe(() => window.location.reload());
     }
 
+    removeApplyment(userId, jobId) {
+        this.applymentsService.deleteApplyment(userId, jobId).subscribe(() => window.location.reload());
+    }
+
+
     getJobTitle(jobId) {
-        return this.jobList.filter(x => x.Id == jobId)[0].Title;
+        return this.allJobs.filter(x => x.Id == jobId)[0].Title;
     }
 
     ngOnInit() {

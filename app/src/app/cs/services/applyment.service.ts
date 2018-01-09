@@ -17,4 +17,8 @@ export class ApplymentsService {
   getApplyments(userId): Observable<Applyment[]> {
     return this.http.get<Applyment[]>(this.applymentsUrl + userId)
   }
+
+  deleteApplyment(userId, jobId): Observable<Object> {
+    return this.http.delete(this.applymentsUrl + userId + '/' + jobId);
+  }
 }
