@@ -7,7 +7,7 @@
       <div>
         <h2><a href="#">{{jobListingItem.Title}}</a></h2>
         <p>{{jobListingItem.Description}}</p>
-        <a href="#" class="read-more">Read more &rarr;</a>
+        <a routerLink="../jobDetail/{{jobListingItem.Id}}" class="read-more">Read more &rarr;</a>
       </div>
     </li>
   </ul>

@@ -8,13 +8,17 @@ import { ThemeModule } from '../../@theme/theme.module';
 
 import { AuthenticationService } from '../../@core/data/authentification.service';
 import { RegisterService } from '../../@core/data/register.service';
+import { CreateJobService } from '../../@core/data/createJob.service';
+import { JobDetailService } from '../../@core/data/jobDetails.service';
 
-import { BaseRoutingModule } from './base-routing.module'
+import { BaseRoutingModule } from './base-routing.module';
 import { ListingComponent } from './listing/listing.component';
 import { JobListingComponent } from '../components/job-listing/job-listing.component';
 
 import { LoginComponent } from './authentication/login/login.component';
 import { RegisterComponent } from './authentication/register/register.component';
+import { CreateJobComponent } from './createJob/createJob.component';
+import { JobDetailComponent } from './jobDetails/jobDetails.component';
 
 const config: ExtraOptions = {
   useHash: true,
@@ -24,7 +28,7 @@ const config: ExtraOptions = {
   imports: [
     ThemeModule,
     ComponentsModule,
-    BaseRoutingModule,
+    BaseRoutingModule
   ],
   declarations: [
     BaseComponent,
@@ -33,6 +37,8 @@ const config: ExtraOptions = {
     JobListingComponent,
     LoginComponent,
     RegisterComponent,
+    CreateJobComponent,
+    JobDetailComponent,
   ],
   exports: [
     BaseRoutingModule,
@@ -40,6 +46,8 @@ const config: ExtraOptions = {
   providers: [
     AuthenticationService,
     RegisterService,
+    CreateJobService,
+    JobDetailService,
   ],
 })
 export class BaseModule {

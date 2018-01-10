@@ -7,6 +7,8 @@ import { ListingComponent } from './listing/listing.component';
 
 import { LoginComponent } from './authentication/login/login.component'
 import { RegisterComponent } from './authentication/register/register.component'
+import { CreateJobComponent } from './createJob/createJob.component';
+import { JobDetailComponent } from './jobDetails/jobDetails.component';
 
 const routes: Routes = [{
       path: '',
@@ -28,10 +30,18 @@ const routes: Routes = [{
         component: RegisterComponent,
       },
       {
+        path: 'createJob',
+        component: CreateJobComponent,
+      },
+      {
+        path: 'jobDetail/:id',
+        component: JobDetailComponent,
+      },
+      {
         path: '',
         redirectTo: 'landing',
         pathMatch: 'full',
-      }],
+      }]
     }];
 const config: ExtraOptions = {
   useHash: true,

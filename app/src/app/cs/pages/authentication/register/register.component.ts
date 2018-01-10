@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { StyleService } from '../../../services/style.service';
 import { RegisterService } from '../../../../@core/data/register.service';
 
 
@@ -21,12 +22,14 @@ export class RegisterComponent {
     nullPassword: boolean;
     nullPhone: boolean;
     registerError: boolean;
-    constructor(protected router: Router, protected registerService: RegisterService) {
+    constructor(protected router: Router, protected registerService: RegisterService, private styleService: StyleService) {
         this.nullEmail = false;
         this.nullName = false;
         this.nullPassword = false;
         this.nullPhone = false;
         this.registerError = false;
+        styleService.setStyle('no_background');
+
     }
 
     register() {

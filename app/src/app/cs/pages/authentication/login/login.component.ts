@@ -6,6 +6,7 @@
 import { Component, Inject, Input, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { StyleService } from '../../../services/style.service';
 import { AuthenticationService } from '../../../../@core/data/authentification.service';
 
 @Component({
@@ -30,10 +31,12 @@ export class LoginComponent {
   user: any = {};
   submitted: boolean = false;
 
-  constructor(protected router: Router, protected authentificationService: AuthenticationService) {
+  constructor(protected router: Router, protected authentificationService: AuthenticationService, private styleService: StyleService) {
     this.errors = false;
     this.nullPassword = false;
     this.nullEmail = false;
+    styleService.setStyle('no_background');
+
     const rememberUser = JSON.parse(localStorage.getItem('userRemember'));
     if (rememberUser != null) {
       this.userEmail = JSON.parse(localStorage.getItem('userRemember'));
