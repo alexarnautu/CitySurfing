@@ -99,7 +99,7 @@ namespace CitySurfing.RestService.Controllers
         // DELETE: api/Skills/5
         [HttpDelete]
         [ResponseType(typeof(SkillDto))]
-        public async Task<IHttpActionResult> Delete(int id)
+        public async Task<IHttpActionResult> DeleteSkill(int id)
         {
             var skill = await _dbContext.Skills.FindAsync(id);
             if (skill == null)
