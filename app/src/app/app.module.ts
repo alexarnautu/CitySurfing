@@ -20,6 +20,7 @@ import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { JobsService } from './cs/services/jobs.service';
+import { ApplymentsService } from './cs/services/applyment.service';
 import { AuthenticationService } from './@core/data/authentification.service';
 
 import {JobListingService} from './cs/components/job-listing/job-listing.service';
@@ -46,6 +47,7 @@ import {JobListingService} from './cs/components/job-listing/job-listing.service
      AuthenticationService,
      JobListingService,
      JobsService,
+     ApplymentsService,
   ],
 })
 export class AppModule {
