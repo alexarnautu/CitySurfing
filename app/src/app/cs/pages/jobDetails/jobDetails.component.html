@@ -34,11 +34,13 @@
               <label style="font-size: 20px" class="form-control-label">Applicants:</label>
               <ul>
                 <li *ngFor="let applicants of job.Applyments">
-                  <nb-checkbox id="{{ applicants.UserId }}">
+                    <!--
+                      Va fi redirect catre pagina utilizatorului. In viitor
+                    -->
                       <a style="font-size:18px" routerLink="../../register">
                         {{ applicants.UserId }}
                       </a>
-                  </nb-checkbox>
+                      
                 </li>
               </ul>
             </div>
