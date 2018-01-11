@@ -68,7 +68,7 @@ export class CsHeaderComponent implements OnInit {
   }
 
   goToHome() {
-    this.menuService.navigateHome();
+    this.router.navigate(['index/landing']);
   }
 
   startSearch() {

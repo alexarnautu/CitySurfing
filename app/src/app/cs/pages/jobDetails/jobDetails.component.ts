@@ -20,8 +20,11 @@ export class JobDetailComponent {
     constructor(private route: ActivatedRoute, private jobDetail: JobDetailService, private styleService: StyleService) {
         this.job = new Job;
         styleService.setStyle('no_background');
-
     }
+
+    getUserEmail(): String {
+        return JSON.parse(localStorage.getItem('currentUser')).Email;
+      }
 
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {

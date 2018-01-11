@@ -1,30 +1,53 @@
-<div style="text-align: center">
-    <h1 class="title">Job detail</h1>
-    <br>
-    <br>
-    <br>
-    <br>
-      <div>
-        <label style="font-size: 30px; color: rgb(48, 238, 41)">Job title: </label>
-        <label style="font-size: 30px; color: rgb(48, 238, 41)">{{job.Title}}</label>
+<nb-card>
+  <nb-card-header style="font-size: 30px">
+    Job details
+  </nb-card-header>
+  <nb-card-body>
+      <div class="row">
+      <div class="col-md-5 col-sm-12">
+        <div class="form-group">
+          <label style="font-size: 20px" class="form-control-label">Title:</label>
+          <input style="color: black" class="form-control" [(ngModel)]="job.Title" name="title" disabled=true>
+        </div>
+        <div class="form-group">
+          <label style="font-size: 20px" class="form-control-label">Description:</label>
+          <input style="color: black" class="form-control" [(ngModel)]="job.Description" name="description" disabled=true>
+        </div>
+        <div class="form-group">
+          <label style="font-size: 20px" class="form-control-label">Price:</label>
+          <input style="color: black" class="form-control" [(ngModel)]="job.Price" name="price" disabled=true>
+        </div>
+        <div class="form-group">
+          <label style="font-size: 20px" class="form-control-label">Location:</label>
+          <input style="color: black" class="form-control" [(ngModel)]="job.Location" name="Location" disabled=true>
+        </div>
       </div>
-      <br>
-      <br>
-      <div>
-        <label style="font-size: 30px; color: rgb(48, 238, 41)">Job Description: </label>
-        <label style="font-size: 30px; color: rgb(48, 238, 41)">{{job.Description}}</label>
+      
+      <div class="col-md-1 col-sm-12">
+        </div>
+      <!--
+        urmatorul div trebuie inlocuit cu:
+        <div class="col-md-6 col-sm-12" *ngIf="job.Creator.Email === this.getUserEmail()">
+      -->
+      <div class="col-md-6 col-sm-12">
+          <div class="form-group">
+              <label style="font-size: 20px" class="form-control-label">Applicants:</label>
+              <ul>
+                <li *ngFor="let applicants of job.Applyments">
+                  <nb-checkbox id="{{ applicants.UserId }}">
+                      <a style="font-size:18px" routerLink="../../register">
+                        {{ applicants.UserId }}
+                      </a>
+                  </nb-checkbox>
+                </li>
+              </ul>
+            </div>
       </div>
-      <br>
-      <br>
-      <div>
-        <label style="font-size: 30px; color: rgb(48, 238, 41)">Job price: </label>
-        <label style="font-size: 30px; color: rgb(48, 238, 41)">{{job.Price}}</label>
       </div>
-      <br>
-      <br>
-      <div>
-        <label style="font-size: 30px; color: rgb(48, 238, 41)">Location: </label>
-        <label style="font-size: 30px; color: rgb(48, 238, 41)">{{job.Location}}</label>
-      </div>
-  
-  </div>
+  </nb-card-body>
+
+  <nb-card-footer>
+      <button class="btn btn-primary">Apply to this job</button>
+      <button class="btn btn-success">Accept this user to work for you</button>
+    </nb-card-footer>
+</nb-card>

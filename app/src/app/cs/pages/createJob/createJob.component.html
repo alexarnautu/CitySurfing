@@ -44,8 +44,26 @@
       <small class="form-text error" *ngIf="createError">
         Create new job failed!
       </small>
-      <button [disabled]="submitted || !form.valid || nullTitle || nullDescription || nullPrice || nullLocation" class="btn btn-block btn-hero-success" [class.btn-pulse]="submitted">
+      <button [disabled]="submitted || !form.valid || nullTitle || nullDescription || nullPrice || nullLocation || notLogged" class="btn btn-block btn-hero-success" [class.btn-pulse]="submitted">
         Create
       </button>
+      <small style="font-size: 30px" class="form-text error" *ngIf="notLogged">
+        You need to be logged in to create a new job offer! 
+      </small>
+
+      <div class="links" *ngIf="notLogged">
+          <small class="form-text">
+              Don't have an account?
+              <a routerLink="../register">
+                <strong>Sign Up</strong>
+              </a>
+            </small>
+        <small class="form-text">
+          Already have an account?
+          <a routerLink="../login">
+            <strong>Sign in</strong>
+          </a>
+        </small>
+      </div>
     </form>
   </div>

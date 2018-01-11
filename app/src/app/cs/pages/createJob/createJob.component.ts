@@ -20,6 +20,7 @@ export class CreateJobComponent {
     nullPrice: boolean;
     nullLocation: boolean;
     createError: boolean;
+    notLogged: boolean;
     constructor(protected router: Router, protected createJobService: CreateJobService, private styleService: StyleService) {
         this.nullTitle = false;
         this.nullDescription = false;
@@ -27,11 +28,21 @@ export class CreateJobComponent {
         this.nullLocation = false;
         this.createError = false;
         styleService.setStyle('no_background');
-
+        if (this.getUserEmail() === "false") {
+            this.notLogged = true;
+        }
+        else {
+            this.notLogged = false;
+        }
     }
 
-    getUserEmail(): String {
-        return JSON.parse(localStorage.getItem('currentUser')).FullName;
+    getUserEmail(): string {
+        if (localStorage.getItem('currentUser') === null) {
+            return "false";
+        }
+        else {
+            return localStorage.getItem('currentUser').toString();
+        }
       }
 
     createJob() {
@@ -47,7 +58,6 @@ export class CreateJobComponent {
         if (this.LocationInput.length === 0) {
             this.nullLocation = true;
         }
-        const user = this.getUserEmail();
         this.createJobService.createJob(this.jobTitleInput, this.DescriptionInput, this.PriceInput,
             this.LocationInput).subscribe(
             response => {
