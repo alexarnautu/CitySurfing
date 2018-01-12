@@ -16,6 +16,7 @@ import { JobListingComponent } from '../components/job-listing/job-listing.compo
 import { LoginComponent } from './authentication/login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './authentication/register/register.component';
+import { CreateApplymentComponent } from './create-applyment/create-applyment.component';
 
 const config: ExtraOptions = {
   useHash: true,
@@ -34,6 +35,7 @@ const config: ExtraOptions = {
     JobListingComponent,
     LoginComponent,
     RegisterComponent,
+    CreateApplymentComponent,
     DashboardComponent,
   ],
   exports: [

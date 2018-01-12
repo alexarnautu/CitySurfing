@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { LoginComponent } from './authentication/login/login.component'
 import { RegisterComponent } from './authentication/register/register.component'
+import { CreateApplymentComponent } from 'app/cs/pages/create-applyment/create-applyment.component';
 
 const routes: Routes = [{
       path: '',
@@ -31,6 +32,10 @@ const routes: Routes = [{
       {
         path: 'register',
         component: RegisterComponent,
+      },
+      {
+        path: 'create-applyment',
+        component: CreateApplymentComponent
       },
       {
         path: '',
