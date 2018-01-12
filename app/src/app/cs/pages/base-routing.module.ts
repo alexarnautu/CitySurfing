@@ -9,6 +9,7 @@ import { LoginComponent } from './authentication/login/login.component'
 import { RegisterComponent } from './authentication/register/register.component'
 import { CreateJobComponent } from './createJob/createJob.component';
 import { JobDetailComponent } from './jobDetails/jobDetails.component';
+import { UserDetailComponent } from './userDetails/userDetails.component';
 
 const routes: Routes = [{
       path: '',
@@ -36,6 +37,10 @@ const routes: Routes = [{
       {
         path: 'jobDetail/:id',
         component: JobDetailComponent,
+      },
+      {
+        path: 'userDetail/:id',
+        component: UserDetailComponent,
       },
       {
         path: '',

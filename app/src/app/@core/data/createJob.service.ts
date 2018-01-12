@@ -12,7 +12,11 @@ export class CreateJobService {
         location: string): Observable<boolean> {
         const urlPost = 'http://city-surfingapi.azurewebsites.net/api/Jobs';
         return this.http.post(urlPost, {Title: jobTitle, Description: description, Price: +price,
-            Location: location, IsAvailable: true})
+            Location: location, IsAvailable: true, Category: {
+                "Id": 1,
+                "Name": "Babysitting",
+                "Description": "descripyion"
+              }})
         .map((response: Response) => {
             if (response.status === 200) {
                 return true;
