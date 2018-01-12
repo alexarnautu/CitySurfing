@@ -14,6 +14,7 @@ import { ListingComponent } from './listing/listing.component';
 import { JobListingComponent } from '../components/job-listing/job-listing.component';
 
 import { LoginComponent } from './authentication/login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './authentication/register/register.component';
 import { CreateApplymentComponent } from './create-applyment/create-applyment.component';
 
@@ -35,6 +36,7 @@ const config: ExtraOptions = {
     LoginComponent,
     RegisterComponent,
     CreateApplymentComponent,
+    DashboardComponent,
   ],
   exports: [
     BaseRoutingModule,

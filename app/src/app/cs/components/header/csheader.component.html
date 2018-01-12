@@ -9,8 +9,12 @@
   class="header-container inverse"
   [class.right]="position === 'normal'"
   [class.left]="position === 'inverse'">
+
   <nb-action *ngIf="getAutentificat()" class="links" (click)="logOutUser()">
     <a style="cursor: pointer;">Log Out</a>
+  </nb-action>
+  <nb-action *ngIf="getAutentificat()" class="links" (click)="goToDashboard()">
+      <a style="cursor: pointer;">Dashboard</a>
   </nb-action>
   <nb-action *ngIf="getAutentificat()">
     <nb-user [menu]="userMenu" [name]="getUserEmail()" [picture]="user?.picture"></nb-user>
@@ -18,4 +22,5 @@
   <nb-action class="links" *ngIf="!getAutentificat()"> 
     <a href="../#/index/login">Sign In</a>
   </nb-action>
+  
 </nb-actions>
