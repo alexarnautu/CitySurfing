@@ -16,7 +16,7 @@ import { AuthenticationService } from '../../../../@core/data/authentification.s
 
 
 export class LoginComponent {
-
+  loading: boolean = false;
   userEmail: string = '';
   userPassword: string = '';
   redirectDelay: number = 0;
@@ -52,9 +52,11 @@ export class LoginComponent {
     if (this.userEmail.length === 0) {
       this.nullEmail = true;
     }
+    this.loading = true;
     this.authentificationService.login(this.userEmail, this.userPassword).subscribe(
       response => {
         if (response === true) {
+          this.loading = false;
           if (this.rememberMe) {
             localStorage.setItem('userRemember', JSON.stringify(this.userEmail));
             localStorage.setItem('passwordRemember', JSON.stringify(this.userPassword));
@@ -66,6 +68,7 @@ export class LoginComponent {
           this.router.navigate(['/']);
         } else {
           this.errors = true;
+          this.loading = false;
         }
       });
   }

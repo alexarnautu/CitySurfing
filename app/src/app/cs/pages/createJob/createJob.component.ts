@@ -11,6 +11,7 @@ import { CreateJobService } from '../../../@core/data/createJob.service';
 })
 
 export class CreateJobComponent {
+    loading: boolean = false;
     jobTitleInput: string = '';
     DescriptionInput: string = '';
     PriceInput: Number;
@@ -46,6 +47,7 @@ export class CreateJobComponent {
       }
 
     createJob() {
+        this.loading = true;
         if (this.jobTitleInput.length === 0) {
             this.nullTitle = true;
         }
@@ -64,8 +66,10 @@ export class CreateJobComponent {
                 if (response === true) {
                     this.router.navigate(['index/login']);
                     this.createError = false;
+                    this.loading = false;
                 } else {
                     this.createError = true;
+                    this.loading = false;
                 }
             });
     }

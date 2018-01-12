@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, ExtraOptions, RouterModule} from '@angular/router';
+import { LoadingModule } from 'ngx-loading';
 
 import { BaseComponent } from './base.component';
 import { LandingComponent } from './landing/landing.component';
@@ -30,7 +31,8 @@ const config: ExtraOptions = {
   imports: [
     ThemeModule,
     ComponentsModule,
-    BaseRoutingModule
+    BaseRoutingModule,
+    LoadingModule,
   ],
   declarations: [
     BaseComponent,

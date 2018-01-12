@@ -11,6 +11,7 @@ import { RegisterService } from '../../../../@core/data/register.service';
 })
 
 export class RegisterComponent {
+    loading: boolean = false;
     fullNameUser: string = '';
     emailUser: string = '';
     passwordUser: string = '';
@@ -48,6 +49,7 @@ export class RegisterComponent {
         if (this.aboutUser.length === 0) {
             this.aboutUser = 'No details about this user!';
         }
+        this.loading = true;
         this.registerService.register(this.emailUser, this.fullNameUser, this.phoneNumber,
             this.passwordUser, this.aboutUser).subscribe(
             response => {
@@ -56,8 +58,10 @@ export class RegisterComponent {
                     localStorage.setItem('passwordRemember', JSON.stringify(this.passwordUser));
                     this.router.navigate(['index/login']);
                     this.registerError = false;
+                    this.loading = false;
                 } else {
                     this.registerError = true;
+                    this.loading = false;
                 }
             });
     }
