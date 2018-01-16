@@ -17,7 +17,7 @@
       <a style="cursor: pointer;">Dashboard</a>
   </nb-action>
   <nb-action *ngIf="getAutentificat()">
-    <nb-user [menu]="userMenu" [name]="getUserEmail()" [picture]="user?.picture"></nb-user>
+    <nb-user [menu]="userMenu" [name]="getUserEmail()" [picture]="user?.picture" (click)="getUserProfile()" style="cursor: pointer"></nb-user>
   </nb-action>
   <nb-action class="links" *ngIf="!getAutentificat()"> 
     <a href="../#/index/login">Sign In</a>

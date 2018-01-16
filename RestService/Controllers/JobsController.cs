@@ -55,7 +55,16 @@ namespace CitySurfing.RestService.Controllers
                 }
             }
 
-            return Ok(Mapper.Map<IEnumerable<Job>, IEnumerable<JobDto>>(await jobQuery.ToListAsync()));
+            var res = Mapper.Map<IEnumerable<Job>, IEnumerable<JobDto>>(await jobQuery.ToListAsync());
+
+            foreach (var job in res) {
+                foreach (var app in job.Applyments)
+                {
+                    app.FullName = _dbContext.Users.Find(app.UserId).FullName;
+                }
+            }
+
+            return Ok(res);
         }
 
         // GET: api/Jobs/5
@@ -64,6 +73,10 @@ namespace CitySurfing.RestService.Controllers
         public async Task<IHttpActionResult> GetJob(int id)
         {
             var job = await _dbContext.Jobs.FindAsync(id);
+            foreach (var app in job.Applyments)
+            {
+                app.FullName = _dbContext.Users.Find(app.UserId).FullName;
+            }
             if (job == null)
             {
                 return NotFound();
@@ -117,12 +130,10 @@ namespace CitySurfing.RestService.Controllers
                 return BadRequest(ModelState);
             }
 
-            string loggedUserId = User.Identity.GetUserId();
-
             var job = Mapper.Map<JobDto, Job>(jobDto);
             job.Created = DateTime.Now;
             job.CategoryId = job.Category.Id;
-            job.Creator = await _dbContext.Users.SingleAsync(u => u.Id == loggedUserId);
+            job.Creator = await _dbContext.Users.SingleAsync(u => u.Id == jobDto.Creator.Id);
 
             // If i delete this foreach, the skill objects are newly created in the 
             // database instead of using the already existing ones
@@ -136,6 +147,16 @@ namespace CitySurfing.RestService.Controllers
 
             jobDto = Mapper.Map<Job, JobDto>(job);
             return CreatedAtRoute("DefaultApi", new { id = jobDto.Id }, jobDto);
+        }
+
+        [HttpPost]
+        [Route("api/Jobs/SetUnavailable/{id}")]
+        public IHttpActionResult SetUnavailable(int id)
+        {
+            var job = _dbContext.Jobs.Find(id);
+            job.IsAvailable = false;
+            _dbContext.SaveChanges();
+            return Ok();
         }
 
         // DELETE: api/Jobs/5

@@ -62,5 +62,36 @@ namespace CitySurfing.RestService.Controllers
             base.Dispose(disposing);
         }
 
+        [HttpGet]
+        [Route("api/Users/{id}")]
+        public async Task<IHttpActionResult> GetById(string id)
+        {
+            var user = _dbContext.Users.FirstOrDefault(x => x.Id == id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(user);
+            }
+        }
+
+        [HttpGet]
+        [Authorize]
+        [Route("api/Users/GetReviews/{toId}")]
+        public IHttpActionResult GetReviews(string toId)
+        {
+            return Ok(_dbContext.Reviews.Where(x => x.UserToId == toId));
+        }
+
+        [HttpGet]
+        [Authorize]
+        [Route("api/Users/GetReviewsCount/{toId}")]
+        public IHttpActionResult GetReviewsCount(string toId)
+        {
+            return Ok(_dbContext.Reviews.Where(x => x.UserToId == toId).Count());
+        }
+
     }
 }

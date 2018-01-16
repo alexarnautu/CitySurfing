@@ -26,6 +26,7 @@ import { CreateJobComponent } from './createJob/createJob.component';
 import { JobDetailComponent } from './jobDetails/jobDetails.component';
 import { UserDetailComponent } from './userDetails/userDetails.component';
 import { CreateApplymentComponent } from './create-applyment/create-applyment.component';
+import { SelectApplymentComponent } from 'app/cs/pages/select-applyment/selectApplyment';
 
 
 const config: ExtraOptions = {
@@ -46,6 +47,7 @@ const config: ExtraOptions = {
     JobListingComponent,
     LoginComponent,
     RegisterComponent,
+    SelectApplymentComponent,
 
     CreateJobComponent,
     JobDetailComponent,

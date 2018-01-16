@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response, ResponseOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map'
-
+ 
 @Injectable()
 export class CreateJobService {
     constructor(private http: Http) {
     }
-
+ 
     createJob(jobTitle: string, description: string, price: Number,
         location: string, userId: string): Observable<boolean> {
         const urlPost = 'http://192.168.0.103:54278/api/Jobs';

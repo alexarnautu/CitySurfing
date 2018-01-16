@@ -168,6 +168,7 @@
     <Compile Include="Controllers\ApplymentsController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
+    <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\SkillsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="DAL\AppDbContext.cs" />
@@ -186,9 +187,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711191326483_ChangeJobTypeName.cs" />
-    <Compile Include="Migrations\201711191326483_ChangeJobTypeName.Designer.cs">
-      <DependentUpon>201711191326483_ChangeJobTypeName.cs</DependentUpon>
+    <Compile Include="Migrations\201801161829290_Mig.cs" />
+    <Compile Include="Migrations\201801161829290_Mig.Designer.cs">
+      <DependentUpon>201801161829290_Mig.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -214,8 +215,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711191326483_ChangeJobTypeName.resx">
-      <DependentUpon>201711191326483_ChangeJobTypeName.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801161829290_Mig.resx">
+      <DependentUpon>201801161829290_Mig.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
