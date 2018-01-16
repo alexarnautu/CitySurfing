@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Runtime.Serialization;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Script.Serialization;
 
 namespace CitySurfing.Domain.Models
 {
@@ -32,6 +33,7 @@ namespace CitySurfing.Domain.Models
         [DataMember]
         public override string PhoneNumber { get; set; }
 
+        [ScriptIgnore]
         public ICollection<Applyment> Applyments { get; set; } = new HashSet<Applyment>();
 
         public ICollection<Job> Jobs { get; set; } = new HashSet<Job>();

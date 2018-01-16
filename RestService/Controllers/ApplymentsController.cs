@@ -137,11 +137,19 @@ namespace CitySurfing.RestService.Controllers
             return Ok(Mapper.Map<Applyment, ApplymentDto>(applyment));
         }
 
-        [HttpGet]
-        [Route("api/Applyments/ByJobId/{jobId}")]
-        public IHttpActionResult GetAllByJobId(int jobId)
+        [HttpPost]
+        [Route("api/Applyments/Approve/{jobId}/{userId}")]
+        public IHttpActionResult Approve(int jobId, string userId)
         {
-            return Ok(_dbContext.Applyments.Where(x => x.JobId == jobId));
+            var app = _dbContext.Applyments
+                .FirstOrDefault(x => x.JobId == jobId && x.UserId == userId);
+            if (app == null)
+            {
+                return NotFound();
+            }
+            app.IsApproved = true;
+            _dbContext.SaveChanges();
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)

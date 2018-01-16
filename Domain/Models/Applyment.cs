@@ -30,5 +30,9 @@ namespace CitySurfing.Domain.Models
         public virtual Job Job { get; set; }
 
         public virtual Review Review { get; set; }
+
+        [NotMapped]
+        public string FullName { get; set; }
+
     }
 }

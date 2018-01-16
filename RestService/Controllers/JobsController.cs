@@ -56,9 +56,9 @@ namespace CitySurfing.RestService.Controllers
             }
 
             var res = Mapper.Map<IEnumerable<Job>, IEnumerable<JobDto>>(await jobQuery.ToListAsync());
-            
-            foreach(var job in res) {
-                foreach(var app in job.Applyments)
+
+            foreach (var job in res) {
+                foreach (var app in job.Applyments)
                 {
                     app.FullName = _dbContext.Users.Find(app.UserId).FullName;
                 }
@@ -73,6 +73,10 @@ namespace CitySurfing.RestService.Controllers
         public async Task<IHttpActionResult> GetJob(int id)
         {
             var job = await _dbContext.Jobs.FindAsync(id);
+            foreach (var app in job.Applyments)
+            {
+                app.FullName = _dbContext.Users.Find(app.UserId).FullName;
+            }
             if (job == null)
             {
                 return NotFound();
@@ -143,6 +147,16 @@ namespace CitySurfing.RestService.Controllers
 
             jobDto = Mapper.Map<Job, JobDto>(job);
             return CreatedAtRoute("DefaultApi", new { id = jobDto.Id }, jobDto);
+        }
+
+        [HttpPost]
+        [Route("api/Jobs/SetUnavailable/{id}")]
+        public IHttpActionResult SetUnavailable(int id)
+        {
+            var job = _dbContext.Jobs.Find(id);
+            job.IsAvailable = false;
+            _dbContext.SaveChanges();
+            return Ok();
         }
 
         // DELETE: api/Jobs/5

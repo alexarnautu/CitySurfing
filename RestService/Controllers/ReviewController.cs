@@ -14,13 +14,19 @@ namespace CitySurfing.RestService.Controllers
 
         private readonly AppDbContext _dbContext = new AppDbContext();
 
-        [Authorize]
         [HttpPost]
         public IHttpActionResult PostReview([FromBody] Review rev)
         {
             _dbContext.Reviews.Add(rev);
             _dbContext.SaveChanges();
             return Ok();
+        }
+
+        [Route("api/Review/{userToId}")]
+        public IHttpActionResult GetByUserToId(string userToId)
+        {
+            return Ok(_dbContext.Reviews.Include("UserTo").Include("UserFrom")
+                .Where(x => x.UserToId == userToId));
         }
 
     }
