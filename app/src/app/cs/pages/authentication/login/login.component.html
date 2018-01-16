@@ -1,4 +1,7 @@
 <div class="col-md-6 offset-md-3" style="text-align: center">
+    <ngx-loading [show]="loading"></ngx-loading>
+
+
   <h2 class="title">Sign In</h2>
   <small class="form-text sub-title">Hello! Sign in with your email.</small>
 
@@ -7,7 +10,8 @@
     <div class="form-group">
       <label for="input-email" class="sr-only">Email address</label>
       <input name="email" [(ngModel)]="userEmail" id="input-email" pattern=".+@.+\..+" class="form-control" placeholder="Email address"
-        #email="ngModel" [class.form-control-danger]="email.invalid && email.touched || nullEmail" type="text" (ngModelChange)="emailChange($event)" autofocus>
+        #email="ngModel" [class.form-control-danger]="email.invalid && email.touched || nullEmail" type="text" (ngModelChange)="emailChange($event)"
+        autofocus>
       <small class="form-text error" *ngIf="email.invalid && email.touched && email.errors?.pattern">
         Email should be the real one!
       </small>
@@ -18,11 +22,11 @@
 
     <div class="form-group">
       <label for="input-password" class="sr-only">Password</label>
-      <input name="password" [(ngModel)]="userPassword" id="input-password" class="form-control" placeholder="Password"
-        #password="ngModel" [class.form-control-danger]="nullPassword" type="password" (ngModelChange)="passwordChange($event)">
+      <input name="password" [(ngModel)]="userPassword" id="input-password" class="form-control" placeholder="Password" #password="ngModel"
+        [class.form-control-danger]="nullPassword" type="password" (ngModelChange)="passwordChange($event)">
       <small class="form-text error" *ngIf="nullPassword">
         Password is required!
-      </small>  
+      </small>
     </div>
 
     <div class="form-group accept-group col-sm-12">

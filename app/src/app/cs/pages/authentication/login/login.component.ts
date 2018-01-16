@@ -6,6 +6,7 @@
 import { Component, Inject, Input, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { StyleService } from '../../../services/style.service';
 import { AuthenticationService } from '../../../../@core/data/authentification.service';
 
 @Component({
@@ -15,7 +16,7 @@ import { AuthenticationService } from '../../../../@core/data/authentification.s
 
 
 export class LoginComponent {
-
+  loading: boolean = false;
   userEmail: string = '';
   userPassword: string = '';
   redirectDelay: number = 0;
@@ -30,10 +31,12 @@ export class LoginComponent {
   user: any = {};
   submitted: boolean = false;
 
-  constructor(protected router: Router, protected authentificationService: AuthenticationService) {
+  constructor(protected router: Router, protected authentificationService: AuthenticationService, private styleService: StyleService) {
     this.errors = false;
     this.nullPassword = false;
     this.nullEmail = false;
+    styleService.setStyle('no_background');
+
     const rememberUser = JSON.parse(localStorage.getItem('userRemember'));
     if (rememberUser != null) {
       this.userEmail = JSON.parse(localStorage.getItem('userRemember'));
@@ -49,9 +52,11 @@ export class LoginComponent {
     if (this.userEmail.length === 0) {
       this.nullEmail = true;
     }
+    this.loading = true;
     this.authentificationService.login(this.userEmail, this.userPassword).subscribe(
       response => {
         if (response === true) {
+          this.loading = false;
           if (this.rememberMe) {
             localStorage.setItem('userRemember', JSON.stringify(this.userEmail));
             localStorage.setItem('passwordRemember', JSON.stringify(this.userPassword));
@@ -63,6 +68,7 @@ export class LoginComponent {
           this.router.navigate(['/']);
         } else {
           this.errors = true;
+          this.loading = false;
         }
       });
   }

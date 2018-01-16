@@ -1,0 +1,55 @@
+<nb-card>
+  <nb-card-header style="font-size: 30px">
+    Job details
+  </nb-card-header>
+  <nb-card-body>
+      <div class="row">
+      <div class="col-md-5 col-sm-12">
+        <div class="form-group">
+          <label style="font-size: 20px" class="form-control-label">Title:</label>
+          <input style="color: black" class="form-control" [(ngModel)]="job.Title" name="title" disabled=true>
+        </div>
+        <div class="form-group">
+          <label style="font-size: 20px" class="form-control-label">Description:</label>
+          <input style="color: black" class="form-control" [(ngModel)]="job.Description" name="description" disabled=true>
+        </div>
+        <div class="form-group">
+          <label style="font-size: 20px" class="form-control-label">Price:</label>
+          <input style="color: black" class="form-control" [(ngModel)]="job.Price" name="price" disabled=true>
+        </div>
+        <div class="form-group">
+          <label style="font-size: 20px" class="form-control-label">Location:</label>
+          <input style="color: black" class="form-control" [(ngModel)]="job.Location" name="Location" disabled=true>
+        </div>
+      </div>
+      
+      <div class="col-md-1 col-sm-12">
+        </div>
+      <!--
+        urmatorul div trebuie inlocuit cu:
+        <div class="col-md-6 col-sm-12" *ngIf="job.Creator.Email === this.getUserEmail()">
+      -->
+      <div class="col-md-6 col-sm-12">
+          <div class="form-group">
+              <label style="font-size: 20px" class="form-control-label">Applicants:</label>
+              <ul>
+                <li *ngFor="let applicants of job.Applyments">
+                    <!--
+                      Va fi redirect catre pagina utilizatorului. In viitor
+                    -->
+                      <a style="font-size:18px" routerLink="../../userDetail/{{applicants.UserId}}">
+                        {{ applicants.UserId }}
+                      </a>
+                      
+                </li>
+              </ul>
+            </div>
+      </div>
+      </div>
+  </nb-card-body>
+
+  <nb-card-footer>
+      <button class="btn btn-primary">Apply to this job</button>
+      <button class="btn btn-success">Accept this user to work for you</button>
+    </nb-card-footer>
+</nb-card>

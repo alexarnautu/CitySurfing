@@ -1,0 +1,70 @@
+<div class="col-md-6 offset-md-3" style="text-align: center">
+    <ngx-loading [show]="loading"></ngx-loading>
+    <h2 class="title">Create Job</h2>
+    <form (ngSubmit)="createJob()" #form="ngForm">
+  
+      <div class="form-group">
+        <label for="input-jobTitle" class="sr-only">Job title</label>
+        <input name="jobTitle" [(ngModel)]="jobTitleInput" id="input-jobTitle" #jobTitle="ngModel" class="form-control" placeholder="Job Title*"
+          type="text" [class.form-control-danger]="jobTitle.invalid && jobTitle.touched || nullJobTitle" (ngModelChange)="titleChange($event)">
+          <small class="form-text error" *ngIf="nullTitle">
+            Title is required!
+          </small>
+      </div>
+      <div class="form-group">
+        <label for="input-Description" class="sr-only">Description</label>
+        <input name="Description" [(ngModel)]="DescriptionInput" id="input-Description" #Description="ngModel" class="form-control" placeholder="Description*"
+          type="text" [class.form-control-danger]="Description.invalid && Description.touched || nullDescription" (ngModelChange)="descriptionChange($event)">
+        <small class="form-text error" *ngIf="nullDescription">
+            Description is required!
+        </small>
+      </div>
+  
+      <div class="form-group">
+        <label for="input-Price" class="sr-only">Price</label>
+        <input name="Price" [(ngModel)]="PriceInput" type="text" id="input-Price" class="form-control" placeholder="Price*"
+          #Price="ngModel" pattern="^(0|([1-9][0-9]*))(\.[0-9]+)?$" [class.form-control-danger]="Price.errors?.pattern || nullPrice" (ngModelChange)="priceChange($event)">
+        <small class="form-text error" *ngIf="Price.touched && Price.errors?.pattern">
+            Price is invalid!
+        </small>
+        <small class="form-text error" *ngIf="nullPrice">
+            Price is required!
+        </small>
+      </div>
+  
+      <div class="form-group">
+        <label for="input-Location" class="sr-only">Location</label>
+        <input name="Location" [(ngModel)]="LocationInput" id="input-Location" #Location="ngModel" class="form-control" placeholder="Location*"
+          type="text" [class.form-control-danger]="Location.invalid && Location.touched || nullLocation" (ngModelChange)="locationChange($event)">
+          <small class="form-text error" *ngIf="nullLocation">
+            Location is required!
+          </small>
+      </div>
+  
+  
+      <small class="form-text error" *ngIf="createError">
+        Create new job failed!
+      </small>
+      <button [disabled]="submitted || !form.valid || nullTitle || nullDescription || nullPrice || nullLocation || notLogged" class="btn btn-block btn-hero-success" [class.btn-pulse]="submitted">
+        Create
+      </button>
+      <small style="font-size: 30px" class="form-text error" *ngIf="notLogged">
+        You need to be logged in to create a new job offer! 
+      </small>
+
+      <div class="links" *ngIf="notLogged">
+          <small class="form-text">
+              Don't have an account?
+              <a routerLink="../register">
+                <strong>Sign Up</strong>
+              </a>
+            </small>
+        <small class="form-text">
+          Already have an account?
+          <a routerLink="../login">
+            <strong>Sign in</strong>
+          </a>
+        </small>
+      </div>
+    </form>
+  </div>

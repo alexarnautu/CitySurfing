@@ -8,6 +8,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { LoginComponent } from './authentication/login/login.component'
 import { RegisterComponent } from './authentication/register/register.component'
+import { CreateJobComponent } from './createJob/createJob.component';
+import { JobDetailComponent } from './jobDetails/jobDetails.component';
+import { UserDetailComponent } from './userDetails/userDetails.component';
 import { CreateApplymentComponent } from 'app/cs/pages/create-applyment/create-applyment.component';
 
 const routes: Routes = [{
@@ -34,6 +37,18 @@ const routes: Routes = [{
         component: RegisterComponent,
       },
       {
+        path: 'createJob',
+        component: CreateJobComponent,
+      },
+      {
+        path: 'jobDetail/:id',
+        component: JobDetailComponent,
+      },
+      {
+        path: 'userDetail/:id',
+        component: UserDetailComponent,
+      },
+      {
         path: 'create-applyment',
         component: CreateApplymentComponent
       },
@@ -41,7 +56,7 @@ const routes: Routes = [{
         path: '',
         redirectTo: 'landing',
         pathMatch: 'full',
-      }],
+      }]
     }];
 const config: ExtraOptions = {
   useHash: true,
