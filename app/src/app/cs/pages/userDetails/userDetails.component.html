@@ -29,8 +29,8 @@
     <nb-card-header>Reviews</nb-card-header>
     <nb-card-body>
       <div *ngFor="let rev of reviews">
-        <label style="font-size: 20px" class="form-control-label">{{rev.UserID}}:</label>
-        <textarea style="height: 100%" class="form-control" disabled=true>{{rev.text}}</textarea>
+        <label style="font-size: 20px" class="form-control-label">{{rev.UserFrom.FullName}}:</label>
+        <textarea style="height: 100%" class="form-control" disabled=true>{{rev.Comment}}</textarea>
       </div>
     </nb-card-body>
   </nb-card>
@@ -39,11 +39,15 @@
     <nb-card-header>What do you think about this person?</nb-card-header>
     <nb-card-body class="row show-grid">
         <div class="col-9">
-            <textarea placeholder="Write your review..." class="form-control"></textarea>
+            <textarea [class.form-control-danger]="reviewError" [(ngModel)]="reviewText" placeholder="Write your review..." class="form-control"></textarea>
         </div>
         <div class="col-2">
+            
+            <small class="form-text error" *ngIf="reviewError">
+                Error at review submitted. Try again later!
+            </small>
             <span class="input-group-btn">
-                <button class="btn btn-danger">
+                <button class="btn btn-danger" (click)="onReviewSubmit()">
                   Send your review
                 </button>
               </span>

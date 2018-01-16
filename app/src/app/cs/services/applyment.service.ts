@@ -8,7 +8,7 @@ import { Applyment } from '../models/applyment'
 
 @Injectable()
 export class ApplymentsService {
-  private applymentsUrl = 'http://city-surfingapi.azurewebsites.net/api/Applyments/';
+  private applymentsUrl = 'http://192.168.0.103:54278/api/Applyments/';
 
   constructor(
     private http: HttpClient,

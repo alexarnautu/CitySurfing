@@ -1,18 +1,19 @@
+<nb-card style="text-align: center">
+  <nb-card-header style="font-size: 30px">
+    Leave your proposal below
+  </nb-card-header>
+  <nb-card-body class="col-md-4 offset-md-4">
+    <form #form="ngForm" autocomplete="nope" (ngSubmit)="submit()">
 
-<form #form="ngForm" autocomplete="nope" (ngSubmit)="submit()">
-
-    <div class="form-group">
-      <label for="input-proposal">Leave your proposal below</label>
-      <textarea name="proposal" [(ngModel)]="proposalText" id="input-proposal" 
-        class="form-control proposal-input"
-        placeholder="Dear job poster..."
-        type="text" autofocus></textarea>
-      
-    </div>
-
-    <button [disabled]="submitted || !form.valid || nullEmail || nullPassword"
-      class="btn btn-block btn-hero-success" [class.btn-pulse]="submitted">
-      Apply
-    </button>
-
-</form>
+      <div class="form-group">
+        <textarea name="proposal" [(ngModel)]="proposalText" id="input-proposal" class="form-control proposal-input" placeholder="Dear job poster..."
+          type="text" autofocus></textarea>
+      </div>
+      <div style="text-align: center">
+        <button [disabled]="submitted || !form.valid || nullEmail || nullPassword" class="btn btn-block btn-hero-success" [class.btn-pulse]="submitted">
+          Apply
+        </button>
+      </div>
+    </form>
+  </nb-card-body>
+</nb-card>

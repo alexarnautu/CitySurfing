@@ -44,7 +44,17 @@ export class CreateJobComponent {
         else {
             return localStorage.getItem('currentUser').toString();
         }
-      }
+    }
+
+    getUserId(): string {
+        if (localStorage.getItem('currentUser') === null) {
+            return "false";
+        }
+        else {
+            return JSON.parse(localStorage.getItem('currentUser')).Id;
+        }
+    }
+
 
     createJob() {
         this.loading = true;
@@ -60,8 +70,9 @@ export class CreateJobComponent {
         if (this.LocationInput.length === 0) {
             this.nullLocation = true;
         }
+        var userId = this.getUserId();
         this.createJobService.createJob(this.jobTitleInput, this.DescriptionInput, this.PriceInput,
-            this.LocationInput).subscribe(
+            this.LocationInput, userId).subscribe(
             response => {
                 if (response === true) {
                     this.router.navigate(['index/login']);

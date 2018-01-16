@@ -13,7 +13,7 @@ export class JobDetailService {
     }
 
     getJobDetail(id: Number): Observable<Job> {
-        var urlGet = 'http://city-surfingapi.azurewebsites.net/api/Jobs/';
+        var urlGet = 'http://192.168.0.103:54278/api/Jobs/';
         urlGet = urlGet + id;
         return this.http.get<Job>(urlGet);
     }

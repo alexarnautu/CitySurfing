@@ -1,90 +1,87 @@
-<div class="row">
-    <div class="col-md-6 offset-md-3" style="text-align: center; padding: 10px;">
-        <div class="name bold big-text">Dashboard</div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6" style="text-align: center; padding: 10px;">
-        <div class="name bold big-text">Total posted jobs: {{jobList.length}} </div>
-        <nb-card>
-            <nb-card-header>
-                Active jobs
-            </nb-card-header>
-            <nb-card-body>
-                <div *ngIf="!activeJobs.length">
-                    You don't have any active jobs.
-                </div>
-                <ul *ngIf="activeJobs.length">
-                    <li *ngFor="let activeJob of activeJobs">
-                        <h2>
-                            <a href="#">{{activeJob.Title}}</a> <button class="btn btn-xs btn-danger" (click)="removeJob(activeJob.Id)">X</button>
-                        </h2>
-                    </li>
-                </ul>
-            </nb-card-body>
-            <nb-card-footer>
-            </nb-card-footer>
-        </nb-card>
-        <nb-card>
-            <nb-card-header>
-                Past jobs
-            </nb-card-header>
-            <nb-card-body>
-                <div *ngIf="!pastJobs.length">
-                    You don't have any past jobs.
-                </div>
-                <ul *ngIf="pastJobs.length">
-                    <li *ngFor="let pastJob of pastJobs">
-                        <h2>
-                            <a href="#">{{pastJob.Title}}</a>
-                        </h2>
-                    </li>
-                </ul>
-            </nb-card-body>
-            <nb-card-footer>
-            </nb-card-footer>
-        </nb-card>
-    </div>
-    <div class="col-md-6" style="text-align: center; padding: 10px;">
-        <div class="name bold big-text">Total Applyments: {{applymentsList.length}}</div>
-        <nb-card>
-            <nb-card-header>
-                Active applyments
-            </nb-card-header>
-            <nb-card-body>
-                <div *ngIf="!activeApplyments.length">
-                    You don't have any active applyments.
-                </div>
-                <ul *ngIf="activeApplyments.length">
-                    <li *ngFor="let activeApplyment of activeApplyments">
-                        <h2>
-                            <a href="#">{{getJobTitle(activeApplyment.JobId)}}</a> <button class="btn btn-xs btn-danger" (click)="removeApplyment(activeApplyment.UserId, activeApplyment.JobId)">X</button>
-                        </h2>
-                    </li>
-                </ul>
-            </nb-card-body>
-            <nb-card-footer>
-            </nb-card-footer>
-        </nb-card>
-        <nb-card>
-            <nb-card-header>
-                Past applyments (job names)
-            </nb-card-header>
-            <nb-card-body>
-                <div *ngIf="!pastApplyments.length">
-                    You don't have any Past applyments.
-                </div>
-                <ul *ngIf="pastApplyments.length">
+<nb-card>
+    <nb-card-header style="font-size: 30px; text-align: center">
+        Dashboard
+    </nb-card-header>
+    <nb-card-body>
+        <div class="row">
+            <div class="col-md-6" style="text-align: center; padding: 10px;">
+                <div class="name bold big-text">Total posted jobs: {{jobList.length}} </div>
+                <nb-card>
+                    <nb-card-header>
+                        Active jobs
+                    </nb-card-header>
+                    <nb-card-body>
+                        <div *ngIf="!activeJobs.length">
+                            You don't have any active jobs.
+                        </div>
+                        <ul *ngIf="activeJobs.length">
+                            <li *ngFor="let activeJob of activeJobs" style="padding-bottom:2rem">
 
-                    <li *ngFor="let pastApplyment of pastApplyments">
-                        <h2>
-                            <a href="#">{{getJobTitle(pastApplyment.JobId)  }}</a>
-                        </h2>
-                    </li>
-                </ul>
-            </nb-card-body>
-            <nb-card-footer>
-            </nb-card-footer>
-        </nb-card>
-    </div>
-</div>
+                                    <a style="padding-right:1rem" href="#/jobDetail/{{activeJob.Id}}">{{activeJob.Title}}</a>
+                                    
+                                    <button style="float: right" class="btn btn-danger" (click)="removeJob(activeJob.Id)">Delete job</button>
+                                    
+                            </li>
+                        </ul>
+                    </nb-card-body>
+                </nb-card>
+                <nb-card>
+                    <nb-card-header>
+                        Past jobs
+                    </nb-card-header>
+                    <nb-card-body class="col-md-4 offset-md-4">
+                        <div *ngIf="!pastJobs.length">
+                            You don't have any past jobs.
+                        </div>
+                        <ul *ngIf="pastJobs.length">
+                            <li *ngFor="let pastJob of pastJobs">
+
+                                <a href="#/jobDetail/{{pastJob.Id}}">{{pastJob.Title}}</a>
+
+                            </li>
+                        </ul>
+                    </nb-card-body>
+                </nb-card>
+            </div>
+            <div class="col-md-6" style="text-align: center; padding: 10px">
+                <div class="name bold big-text">Total Applyments: {{applymentsList.length}}</div>
+                <nb-card>
+                    <nb-card-header>
+                        Active applyments
+                    </nb-card-header>
+                    <nb-card-body>
+                        <div *ngIf="!activeApplyments.length">
+                            You don't have any active applyments.
+                        </div>
+                        <ul *ngIf="activeApplyments.length">
+                            <li *ngFor="let activeApplyment of activeApplyments" style="padding-bottom:2rem">
+
+                                <a href="#/jobDetail/{{activeApplyment.JobId}}">{{getJobTitle(activeApplyment.JobId)}}</a>
+                                <button style="float: right" class="btn btn-danger" (click)="removeApplyment(activeApplyment.UserId, activeApplyment.JobId)">Detele Applyment</button>
+
+                            </li>
+                        </ul>
+                    </nb-card-body>
+                </nb-card>
+                <nb-card>
+                    <nb-card-header>
+                        Past applyments (job names)
+                    </nb-card-header>
+                    <nb-card-body class="col-md-4 offset-md-4">
+                        <div *ngIf="!pastApplyments.length">
+                            You don't have any Past applyments.
+                        </div>
+                        <ul *ngIf="pastApplyments.length">
+
+                            <li *ngFor="let pastApplyment of pastApplyments">
+
+                                <a href="#/jobDetail/{{pastApplyment.JobId}}">{{getJobTitle(pastApplyment.JobId) }}</a>
+
+                            </li>
+                        </ul>
+                    </nb-card-body>
+                </nb-card>
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card>

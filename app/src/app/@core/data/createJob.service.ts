@@ -9,16 +9,16 @@ export class CreateJobService {
     }
 
     createJob(jobTitle: string, description: string, price: Number,
-        location: string): Observable<boolean> {
-        const urlPost = 'http://city-surfingapi.azurewebsites.net/api/Jobs';
+        location: string, userId: string): Observable<boolean> {
+        const urlPost = 'http://192.168.0.103:54278/api/Jobs';
         return this.http.post(urlPost, {Title: jobTitle, Description: description, Price: +price,
-            Location: location, IsAvailable: true, Category: {
+            Location: location, Creator: {"Id": userId}, IsAvailable: true, Category: {
                 "Id": 1,
                 "Name": "Babysitting",
                 "Description": "descripyion"
               }})
         .map((response: Response) => {
-            if (response.status === 200) {
+            if (response.status === 201) {
                 return true;
             } else {
                 return false;

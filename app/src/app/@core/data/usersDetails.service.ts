@@ -11,8 +11,8 @@ export class UsersDetailsService {
     constructor(private http: HttpClient) {
     }
 
-    getUsersDetails(): Observable<User[]> {
-        const urlPost = 'http://city-surfingapi.azurewebsites.net/api/Users';
-        return this.http.get<User[]>(urlPost);
+    getUsersDetails(userId: String): Observable<User> {
+        const urlPost = 'http://192.168.0.103:54278/api/Users/' + userId;
+        return this.http.get<User>(urlPost);
     }
 }

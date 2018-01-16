@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class ApplymentsService {
 
-  private jobsUrl = 'http://city-surfingapi.azurewebsites.net/api/Applyments';
+  private jobsUrl = 'http://192.168.0.103:54278/api/Applyments';
   
   constructor(
     private http: HttpClient,

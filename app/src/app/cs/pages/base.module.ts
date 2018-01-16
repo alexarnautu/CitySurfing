@@ -12,6 +12,7 @@ import { RegisterService } from '../../@core/data/register.service';
 import { CreateJobService } from '../../@core/data/createJob.service';
 import { JobDetailService } from '../../@core/data/jobDetails.service';
 import { UsersDetailsService } from '../../@core/data/usersDetails.service';
+import { ReviewService } from '../../@core/data/review.service';
 
 import { BaseRoutingModule } from './base-routing.module';
 import { ListingComponent } from './listing/listing.component';
@@ -63,6 +64,7 @@ const config: ExtraOptions = {
     CreateJobService,
     JobDetailService,
     UsersDetailsService,
+    ReviewService,
   ],
 })
 export class BaseModule {
