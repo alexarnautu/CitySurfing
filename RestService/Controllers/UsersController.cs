@@ -80,18 +80,18 @@ namespace CitySurfing.RestService.Controllers
 
         [HttpGet]
         [Authorize]
-        [Route("api/Users/GetReviews/{id}")]
-        public IHttpActionResult GetReviews(string id)
+        [Route("api/Users/GetReviews/{toId}")]
+        public IHttpActionResult GetReviews(string toId)
         {
-            return Ok(_dbContext.Reviews.Where(x => x.UserFromId == id));
+            return Ok(_dbContext.Reviews.Where(x => x.UserToId == toId));
         }
 
         [HttpGet]
         [Authorize]
-        [Route("api/Users/GetReviewsCount/{id}")]
-        public IHttpActionResult GetReviewsCount(string id)
+        [Route("api/Users/GetReviewsCount/{toId}")]
+        public IHttpActionResult GetReviewsCount(string toId)
         {
-            return Ok(_dbContext.Reviews.Where(x => x.UserFromId == id).Count());
+            return Ok(_dbContext.Reviews.Where(x => x.UserToId == toId).Count());
         }
 
     }
