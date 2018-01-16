@@ -20,7 +20,7 @@ export class JobDetailComponent {
     private user: User;
     private isCreator: boolean;
 
-    constructor(private route: ActivatedRoute, private jobDetail: JobDetailService, private styleService: StyleService) {
+    constructor(private router: Router, private route: ActivatedRoute, private jobDetail: JobDetailService, private styleService: StyleService) {
         this.job = new Job;
         styleService.setStyle('no_background');
     }
@@ -49,5 +49,9 @@ export class JobDetailComponent {
 
     ngOnDestroy() {
         this.sub.unsubscribe();
+    }
+
+    selectApp() {
+        this.router.navigate(["../../selectApplyment/" + this.id]);
     }
 }
