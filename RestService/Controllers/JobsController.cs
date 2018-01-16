@@ -55,7 +55,16 @@ namespace CitySurfing.RestService.Controllers
                 }
             }
 
-            return Ok(Mapper.Map<IEnumerable<Job>, IEnumerable<JobDto>>(await jobQuery.ToListAsync()));
+            var res = Mapper.Map<IEnumerable<Job>, IEnumerable<JobDto>>(await jobQuery.ToListAsync());
+            
+            foreach(var job in res) {
+                foreach(var app in job.Applyments)
+                {
+                    app.FullName = _dbContext.Users.Find(app.UserId).FullName;
+                }
+            }
+
+            return Ok(res);
         }
 
         // GET: api/Jobs/5

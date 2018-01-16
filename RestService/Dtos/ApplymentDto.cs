@@ -6,6 +6,7 @@ namespace CitySurfing.RestService.Dtos
     public class ApplymentDto
     {
         public string UserId { get; set; }
+        public string FullName { get; set; }
 
         public int JobId { get; set; }
 
