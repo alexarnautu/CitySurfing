@@ -1,15 +1,15 @@
 import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-
+ 
 import { StyleService } from '../../services/style.service';
-
+ 
 import { CreateJobService } from '../../../@core/data/createJob.service';
-
+ 
 @Component({
     selector: 'ngx-createJob',
     templateUrl: './createJob.component.html',
 })
-
+ 
 export class CreateJobComponent {
     loading: boolean = false;
     jobTitleInput: string = '';
@@ -36,7 +36,7 @@ export class CreateJobComponent {
             this.notLogged = false;
         }
     }
-
+ 
     getUserEmail(): string {
         if (localStorage.getItem('currentUser') === null) {
             return "false";
@@ -44,8 +44,18 @@ export class CreateJobComponent {
         else {
             return localStorage.getItem('currentUser').toString();
         }
-      }
-
+    }
+ 
+    getUserId(): string {
+        if (localStorage.getItem('currentUser') === null) {
+            return "false";
+        }
+        else {
+            return JSON.parse(localStorage.getItem('currentUser')).Id;
+        }
+    }
+ 
+ 
     createJob() {
         this.loading = true;
         if (this.jobTitleInput.length === 0) {
@@ -60,8 +70,9 @@ export class CreateJobComponent {
         if (this.LocationInput.length === 0) {
             this.nullLocation = true;
         }
+        var userId = this.getUserId();
         this.createJobService.createJob(this.jobTitleInput, this.DescriptionInput, this.PriceInput,
-            this.LocationInput).subscribe(
+            this.LocationInput, userId).subscribe(
             response => {
                 if (response === true) {
                     this.router.navigate(['index/login']);
@@ -73,7 +84,7 @@ export class CreateJobComponent {
                 }
             });
     }
-
+ 
     titleChange(newValue): void {
         if (newValue.length > 0) {
             this.nullTitle = false;
@@ -81,7 +92,7 @@ export class CreateJobComponent {
             this.nullTitle = true;
         }
     }
-
+ 
     descriptionChange(newValue): void {
         if (newValue.length > 0) {
             this.nullDescription = false;
@@ -89,7 +100,7 @@ export class CreateJobComponent {
             this.nullDescription = true;
         }
     }
-
+ 
     priceChange(newValue): void {
         if (newValue.length > 0) {
             this.nullPrice = false;
@@ -97,7 +108,7 @@ export class CreateJobComponent {
             this.nullPrice = true;
         }
     }
-
+ 
     locationChange(newValue): void {
         if (newValue.length > 0) {
             this.nullLocation = false;
@@ -105,5 +116,5 @@ export class CreateJobComponent {
             this.nullLocation = true;
         }
     }
-
+ 
 }

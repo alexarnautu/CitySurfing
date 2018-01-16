@@ -1,6 +1,6 @@
 <nb-card>
   <nb-card-header style="font-size: 30px">
-    Job details
+    Job details <span *ngIf="job.IsAvailable === false" style="color: red">Not available</span>
   </nb-card-header>
   <nb-card-body>
       <div class="row">

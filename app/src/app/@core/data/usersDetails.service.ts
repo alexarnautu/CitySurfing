@@ -12,7 +12,7 @@ export class UsersDetailsService {
     }
 
     getUsersDetails(): Observable<User[]> {
-        const urlPost = 'http://city-surfingapi.azurewebsites.net/api/Users';
+        const urlPost = 'http://192.168.0.103:54278/api/Users';
         return this.http.get<User[]>(urlPost);
     }
 }
