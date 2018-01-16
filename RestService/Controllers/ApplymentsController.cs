@@ -137,6 +137,13 @@ namespace CitySurfing.RestService.Controllers
             return Ok(Mapper.Map<Applyment, ApplymentDto>(applyment));
         }
 
+        [HttpDelete]
+        [Route("api/Applyments/ByJobId/{jobId}")]
+        public IHttpActionResult GetAllByJobId(int jobId)
+        {
+            return Ok(_dbContext.Applyments.Where(x => x.JobId == jobId));
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

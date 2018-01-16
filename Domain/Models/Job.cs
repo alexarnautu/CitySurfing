@@ -42,7 +42,5 @@ namespace CitySurfing.Domain.Models
 
         public virtual ICollection<Applyment> Applyments { get; set; } = new HashSet<Applyment>();
 
-        public virtual ICollection<Review> Reviews { get; set; } = new HashSet<Review>();
-
     }
 }
