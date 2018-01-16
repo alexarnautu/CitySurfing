@@ -47,7 +47,8 @@ const routes: Routes = [{
       {
         path: 'userDetail/:id',
         component: UserDetailComponent,
-       {
+      },
+      {
         path: 'create-applyment',
         component: CreateApplymentComponent
       },
