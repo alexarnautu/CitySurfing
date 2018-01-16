@@ -120,7 +120,7 @@ namespace CitySurfing.RestService.Controllers
             var job = Mapper.Map<JobDto, Job>(jobDto);
             job.Created = DateTime.Now;
             job.CategoryId = job.Category.Id;
-            job.Creator = await _dbContext.Users.SingleAsync(u => u.Id == job.CreatorId);
+            job.Creator = await _dbContext.Users.SingleAsync(u => u.Id == jobDto.Creator.Id);
 
             // If i delete this foreach, the skill objects are newly created in the 
             // database instead of using the already existing ones
