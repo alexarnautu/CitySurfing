@@ -63,7 +63,6 @@ namespace CitySurfing.RestService.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         [Route("api/Users/{id}")]
         public async Task<IHttpActionResult> GetById(string id)
         {

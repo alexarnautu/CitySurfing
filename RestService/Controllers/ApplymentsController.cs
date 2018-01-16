@@ -137,7 +137,7 @@ namespace CitySurfing.RestService.Controllers
             return Ok(Mapper.Map<Applyment, ApplymentDto>(applyment));
         }
 
-        [HttpDelete]
+        [HttpGet]
         [Route("api/Applyments/ByJobId/{jobId}")]
         public IHttpActionResult GetAllByJobId(int jobId)
         {
