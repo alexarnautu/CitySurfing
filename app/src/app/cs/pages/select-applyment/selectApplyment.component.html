@@ -1,0 +1,20 @@
+<nb-card>
+    <nb-card-header style="font-size: 30px">
+      Select candidate
+    </nb-card-header>
+    <nb-card-body>
+        <div class="row">
+          <div class="col-md-5 col-sm-12">
+            <div class="form-group">
+              <select multiple class="form-control" style="height: 400px" [(ngModel)]="selectedApplyments">
+                <option *ngFor="let applyment of applyments" value="{{applyment.UserId}}">{{applyment.FullName}}</option>
+              </select>
+            </div>  
+        </div>
+      </div>
+    </nb-card-body>
+  
+    <nb-card-footer>
+        <button class="btn btn-primary" (click)="selectCandidates()">Select candidate(s)</button>
+      </nb-card-footer>
+  </nb-card>

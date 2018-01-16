@@ -17,8 +17,8 @@ export class CsHeaderComponent implements OnInit {
   user: any;
 
   autentificat: boolean;
-
-  userMenu = [ { title: 'Profile' }, { title: 'Log out' }];
+  url: string ="";
+  userMenu = [];
 
   constructor(private sidebarService: NbSidebarService,
     private menuService: NbMenuService,
@@ -28,6 +28,7 @@ export class CsHeaderComponent implements OnInit {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser != null) {
       this.autentificat = true;
+      this.url = "../#/index/userDetail/" + JSON.parse(localStorage.getItem('currentUser')).Id;
     } else {
       this.autentificat = false;
     }
@@ -38,6 +39,10 @@ export class CsHeaderComponent implements OnInit {
   }
   getUserEmail(): String {
     return JSON.parse(localStorage.getItem('currentUser')).FullName;
+  }
+
+  getUserProfile() {
+    this.router.navigate(['index/userDetail/' + JSON.parse(localStorage.getItem('currentUser')).Id]);
   }
 
   getAutentificat(): boolean {

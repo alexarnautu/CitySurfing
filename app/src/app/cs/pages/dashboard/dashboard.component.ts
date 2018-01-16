@@ -49,8 +49,9 @@ export class DashboardComponent implements OnInit {
               this.applymentsService.getApplyments(JSON.parse(localStorage.getItem('currentUser')).Id).subscribe(
                 applyments =>  {
                     this.applymentsList = applyments;
-                    this.activeApplyments = applyments.filter(x => this.allJobs.filter(y => y.IsAvailable == true && x.JobId == y.Id));
-                    this.pastApplyments = applyments.filter(x => this.allJobs.filter(y => y.IsAvailable == false && x.JobId == y.Id));
+                    this.activeApplyments = applyments.filter(x => this.allJobs.filter(y => y.IsAvailable === true && x.JobId == y.Id));
+                    this.pastApplyments = applyments.filter(x => this.allJobs.filter(y => y.IsAvailable === false && x.JobId == y.Id));
+                    debugger;
                 }
             );
           },

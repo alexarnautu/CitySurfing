@@ -12,6 +12,7 @@ import { CreateJobComponent } from './createJob/createJob.component';
 import { JobDetailComponent } from './jobDetails/jobDetails.component';
 import { UserDetailComponent } from './userDetails/userDetails.component';
 import { CreateApplymentComponent } from 'app/cs/pages/create-applyment/create-applyment.component';
+import { SelectApplymentComponent } from 'app/cs/pages/select-applyment/selectApplyment';
 
 const routes: Routes = [{
       path: '',
@@ -43,6 +44,10 @@ const routes: Routes = [{
       {
         path: 'jobDetail/:id',
         component: JobDetailComponent,
+      },
+      { 
+        path: 'selectApplyment/:id',
+        component: SelectApplymentComponent,  
       },
       {
         path: 'userDetail/:id',
