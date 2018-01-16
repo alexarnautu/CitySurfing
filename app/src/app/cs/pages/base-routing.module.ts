@@ -4,12 +4,14 @@ import { Routes, ExtraOptions, RouterModule} from '@angular/router';
 import { BaseComponent } from './base.component';
 import { LandingComponent } from './landing/landing.component';
 import { ListingComponent } from './listing/listing.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { LoginComponent } from './authentication/login/login.component'
 import { RegisterComponent } from './authentication/register/register.component'
 import { CreateJobComponent } from './createJob/createJob.component';
 import { JobDetailComponent } from './jobDetails/jobDetails.component';
 import { UserDetailComponent } from './userDetails/userDetails.component';
+import { CreateApplymentComponent } from 'app/cs/pages/create-applyment/create-applyment.component';
 
 const routes: Routes = [{
       path: '',
@@ -21,6 +23,10 @@ const routes: Routes = [{
       {
         path: 'listing',
         component: ListingComponent,
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
       },
       {
         path: 'login',
@@ -41,6 +47,9 @@ const routes: Routes = [{
       {
         path: 'userDetail/:id',
         component: UserDetailComponent,
+       {
+        path: 'create-applyment',
+        component: CreateApplymentComponent
       },
       {
         path: '',

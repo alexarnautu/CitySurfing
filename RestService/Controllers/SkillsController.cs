@@ -13,12 +13,14 @@ using CitySurfing.RestService.Dtos;
 
 namespace CitySurfing.RestService.Controllers
 {
+    [Authorize]
     public class SkillsController : ApiController
     {
         private readonly AppDbContext _dbContext = new AppDbContext();
 
         // GET: api/Skills
         [HttpGet]
+        [AllowAnonymous]
         public IList<SkillDto> GetSkills()
         {
             var skills = _dbContext.Skills.ToList();
@@ -28,6 +30,7 @@ namespace CitySurfing.RestService.Controllers
 
         // GET: api/Skills/5
         [HttpGet]
+        [AllowAnonymous]
         [ResponseType(typeof(Skill))]
         public async Task<IHttpActionResult> GetSkill(int id)
         {
@@ -79,7 +82,7 @@ namespace CitySurfing.RestService.Controllers
         // POST: api/Skills
         [HttpPost]
         [ResponseType(typeof(SkillDto))]
-        public async Task<IHttpActionResult> InertSkill(SkillDto skillDto)
+        public async Task<IHttpActionResult> InsertSkill(SkillDto skillDto)
         {
             if (!ModelState.IsValid)
             {

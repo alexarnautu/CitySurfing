@@ -1,0 +1,18 @@
+
+<form #form="ngForm" autocomplete="nope" (ngSubmit)="submit()">
+
+    <div class="form-group">
+      <label for="input-proposal">Leave your proposal below</label>
+      <textarea name="proposal" [(ngModel)]="proposalText" id="input-proposal" 
+        class="form-control proposal-input"
+        placeholder="Dear job poster..."
+        type="text" autofocus></textarea>
+      
+    </div>
+
+    <button [disabled]="submitted || !form.valid || nullEmail || nullPassword"
+      class="btn btn-block btn-hero-success" [class.btn-pulse]="submitted">
+      Apply
+    </button>
+
+</form>

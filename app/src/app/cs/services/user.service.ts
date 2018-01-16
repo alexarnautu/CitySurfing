@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core'; 
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { of } from 'rxjs/observable/of';
 
@@ -15,9 +15,5 @@ export class JobsService {
 
   getJobs(): Observable<Job[]> {
     return this.http.get<Job[]>(this.jobsUrl)
-  }
-
-  deleteJob(jobId): Observable<Object> {
-    return this.http.delete(this.jobsUrl + '/' + jobId);
   }
 }
