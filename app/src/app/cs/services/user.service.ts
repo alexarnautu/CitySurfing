@@ -7,7 +7,7 @@ import { Job } from '../models/job';
 
 @Injectable()
 export class JobsService {
-  private jobsUrl = 'http://city-surfingapi.azurewebsites.net/api/Jobs';
+  private jobsUrl = 'http://192.168.0.103:54278/api/Jobs';
 
   constructor(
     private http: HttpClient,

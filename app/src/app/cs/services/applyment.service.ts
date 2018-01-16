@@ -8,14 +8,21 @@ import { Applyment } from '../models/applyment'
 
 @Injectable()
 export class ApplymentsService {
-  private applymentsUrl = 'http://city-surfingapi.azurewebsites.net/api/Applyments/';
+  private applymentsUrl = 'http://192.168.0.103:54278/api/Applyments/';
 
-  constructor(
-    private http: HttpClient,
+  constructor(private http: HttpClient,
   ) { }
 
   getApplyments(userId): Observable<Applyment[]> {
     return this.http.get<Applyment[]>(this.applymentsUrl + userId)
+  }
+
+  getApplymentsByJob(jobId): Observable<Applyment[]> {
+    return this.http.get<Applyment[]>(this.applymentsUrl + 'ByJobId/' + jobId);
+  }
+
+  approveApplyment(jobId, userId): Observable<Object> {
+      return this.http.post(this.applymentsUrl + 'Approve/' + jobId + '/' + userId, {});
   }
 
   deleteApplyment(userId, jobId): Observable<Object> {
