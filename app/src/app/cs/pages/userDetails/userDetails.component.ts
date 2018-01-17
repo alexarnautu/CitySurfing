@@ -21,11 +21,15 @@ export class UserDetailComponent {
     private reviewText: String='';
     private reviewError: boolean;
     private reviews: Review[];
+    private isLoggedIn: boolean;
+    private isMyProfile: boolean;
     
 
     constructor(private route: ActivatedRoute, private reviewService: ReviewService, private userDetail: UsersDetailsService, private styleService: StyleService) {
         this.user = new User;
         this.reviewError = false;
+        this.isLoggedIn = false;
+        this.isMyProfile = false;
         styleService.setStyle('no_background');
     }
 
@@ -41,7 +45,22 @@ export class UserDetailComponent {
         this.sub = this.route.params.subscribe(params => {
            this.id = params['id'];
            this.userDetail.getUsersDetails(this.id).subscribe (
-                userDet => this.user = userDet
+                userDet => { 
+                    
+                    this.user = userDet;
+                    if (this.getUserId() === undefined) {
+                        this.isLoggedIn = false;
+                        this.isMyProfile = false;
+                    }
+                    else if (this.getUserId() === userDet.Id) {
+                        this.isMyProfile = true;
+                        this.isLoggedIn = true;
+                    }
+                    else {
+                        this.isMyProfile = false;
+                        this.isLoggedIn = true;
+                    }
+                }
             );
             this.reviewService.getUsersReview(this.id.toString()).subscribe (
                 rev => this.reviews = rev

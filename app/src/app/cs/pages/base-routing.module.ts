@@ -54,7 +54,7 @@ const routes: Routes = [{
         component: UserDetailComponent,
       },
       {
-        path: 'create-applyment',
+        path: 'create-applyment/:id',
         component: CreateApplymentComponent
       },
       {

@@ -14,7 +14,7 @@ export class ReviewService {
     }
 
     postReview(userFrom: string, userTo: string, text: string): Observable<boolean> {
-        const urlPost = 'http://192.168.0.103:54278/api/Review';
+        const urlPost = 'http://city-surfing.servehttp.com:54278/api/Review';
         return this.http.post(urlPost, {Comment: text, UserFromId: userFrom, UserToId: userTo})
         .map((response: Response) => {
             if (response.status === 200) {
@@ -28,7 +28,7 @@ export class ReviewService {
     }
 
     getUsersReview(id: string): Observable<Review[]> {
-        const urlPost = 'http://192.168.0.103:54278/api/Review/' + id;
+        const urlPost = 'http://city-surfing.servehttp.com:54278/api/Review/' + id;
         return this.httpClient.get<Review[]>(urlPost);
     }
 }

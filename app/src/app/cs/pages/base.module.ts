@@ -27,6 +27,9 @@ import { JobDetailComponent } from './jobDetails/jobDetails.component';
 import { UserDetailComponent } from './userDetails/userDetails.component';
 import { CreateApplymentComponent } from './create-applyment/create-applyment.component';
 import { SelectApplymentComponent } from 'app/cs/pages/select-applyment/selectApplyment';
+import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
+
+import { ToasterModule } from 'angular2-toaster';
 
 
 const config: ExtraOptions = {
@@ -39,6 +42,7 @@ const config: ExtraOptions = {
     ComponentsModule,
     BaseRoutingModule,
     LoadingModule,
+    ToasterModule,
   ],
   declarations: [
     BaseComponent,
@@ -67,6 +71,7 @@ const config: ExtraOptions = {
     JobDetailService,
     UsersDetailsService,
     ReviewService,
+    ToasterService,
   ],
 })
 export class BaseModule {

@@ -13,13 +13,13 @@ export class JobDetailService {
     }
 
     getJobDetail(id: Number): Observable<Job> {
-        var urlGet = 'http://192.168.0.103:54278/api/Jobs/';
+        var urlGet = 'http://city-surfing.servehttp.com:54278/api/Jobs/';
         urlGet = urlGet + id;
         return this.http.get<Job>(urlGet);
     }
 
     setJobUnavailable(id: Number): Observable<Object> {
-        var urlPost = 'http://192.168.0.103:54278/api/Jobs/SetUnavailable/' + id;
+        var urlPost = 'http://city-surfing.servehttp.com:54278/api/Jobs/SetUnavailable/' + id;
         return this.http.post<Object>(urlPost, {});
     }
 }

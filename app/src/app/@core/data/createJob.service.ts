@@ -10,7 +10,7 @@ export class CreateJobService {
  
     createJob(jobTitle: string, description: string, price: Number,
         location: string, userId: string): Observable<boolean> {
-        const urlPost = 'http://192.168.0.103:54278/api/Jobs';
+        const urlPost = 'http://city-surfing.servehttp.com:54278/api/Jobs';
         return this.http.post(urlPost, {Title: jobTitle, Description: description, Price: +price,
             Location: location, Creator: {"Id": userId}, IsAvailable: true, Category: {
                 "Id": 1,

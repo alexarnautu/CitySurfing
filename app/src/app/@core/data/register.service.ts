@@ -10,7 +10,7 @@ export class RegisterService {
 
     register(email: string, fullName: string, phoneNumber: string,
         password: string, about: string): Observable<boolean> {
-        const urlPost = 'http://192.168.0.103:54278/api/Users';
+        const urlPost = 'http://city-surfing.servehttp.com:54278/api/Users';
         return this.http.post(urlPost, {Email: email, FullName: fullName, PhoneNumber: phoneNumber,
             Password: password, About: about, UserName: email})
         .map((response: Response) => {

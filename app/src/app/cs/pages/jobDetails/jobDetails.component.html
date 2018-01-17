@@ -48,8 +48,8 @@
       </div>
   </nb-card-body>
 
-  <nb-card-footer>
-      <button *ngIf="!isCreator" class="btn btn-primary">Apply to this job</button>
+  <nb-card-footer *ngIf="job.IsAvailable === true">
+      <button (click)="applyHere()" *ngIf="!isCreator" class="btn btn-primary">Apply to this job</button>
       <button (click)="selectApp()" *ngIf="isCreator" class="btn btn-success">Choose your candidate</button>
     </nb-card-footer>
 </nb-card>

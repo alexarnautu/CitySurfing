@@ -51,7 +51,11 @@ export class JobDetailComponent {
         this.sub.unsubscribe();
     }
 
+    applyHere() {
+        this.router.navigate(["../../create-applyment/" + this.id]);
+    }
+
     selectApp() {
-        this.router.navigate(["../../selectApplyment/" + this.id]);
+        this.router.navigate(["#/index/create-applyment?id=" + this.id]);
     }
 }

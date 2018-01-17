@@ -1,31 +1,39 @@
 <div class="col-md-12">
-<nb-card>
+  <nb-card>
     <nb-card-header style="font-size: 30px">
       Profile - {{user.FullName}}
     </nb-card-header>
-    <nb-card-body>
-        <form>
-          <div class="form-group">
-            <label style="font-size: 20px" class="form-control-label">Full name:</label>
-            <input style="color: black; border: 2px solid #dadfe6; border-radius:0.375rem" [(ngModel)]="user.FullName" name="name" disabled=true>
-          </div>
-          <div class="form-group">
-            <label style="font-size: 20px" class="form-control-label">E-mail:</label>
-            <input style="color: black; border: 2px solid #dadfe6; border-radius:0.375rem" [(ngModel)]="user.Email" name="email" disabled=true>
-          </div>
-          <div class="form-group">
-            <label style="font-size: 20px" class="form-control-label">About me:</label>
-            <input style="color: black; border: 2px solid #dadfe6; border-radius:0.375rem" [(ngModel)]="user.About" name="about" disabled=true>
-          </div>
-          <div class="form-group">
-            <label style="font-size: 20px" class="form-control-label">Phone number:</label>
-            <input style="color: black; border: 2px solid #dadfe6; border-radius:0.375rem" [(ngModel)]="user.PhoneNumber" name="phone" disabled=true>
-          </div>
-        </form>
+
+    <nb-card-body *ngIf="!isLoggedIn">
+      <H2 style="color: red">
+        You need to be logged in to see profile pages!
+      </H2>
+    </nb-card-body>
+
+    <nb-card-body *ngIf="isLoggedIn">
+      <form>
+        <div class="form-group">
+          <label style="font-size: 20px" class="form-control-label">Full name:</label>
+          <input style="color: black; border: 2px solid #dadfe6; border-radius:0.375rem" [(ngModel)]="user.FullName" name="name" disabled=true>
+        </div>
+        <div class="form-group">
+          <label style="font-size: 20px" class="form-control-label">E-mail:</label>
+          <input style="color: black; border: 2px solid #dadfe6; border-radius:0.375rem" [(ngModel)]="user.Email" name="email" disabled=true>
+        </div>
+        <div class="form-group">
+          <label style="font-size: 20px" class="form-control-label">About me:</label>
+          <input style="color: black; border: 2px solid #dadfe6; border-radius:0.375rem" [(ngModel)]="user.About" name="about" disabled=true>
+        </div>
+        <div class="form-group">
+          <label style="font-size: 20px" class="form-control-label">Phone number:</label>
+          <input style="color: black; border: 2px solid #dadfe6; border-radius:0.375rem" [(ngModel)]="user.PhoneNumber" name="phone"
+            disabled=true>
+        </div>
+      </form>
     </nb-card-body>
   </nb-card>
 
-  <nb-card>
+  <nb-card *ngIf="isLoggedIn">
     <nb-card-header>Reviews</nb-card-header>
     <nb-card-body>
       <div *ngFor="let rev of reviews">
@@ -35,24 +43,30 @@
     </nb-card-body>
   </nb-card>
 
-  <nb-card>
+  <nb-card *ngIf="isLoggedIn">
     <nb-card-header>What do you think about this person?</nb-card-header>
-    <nb-card-body class="row show-grid">
-        <div class="col-9">
-            <textarea [class.form-control-danger]="reviewError" [(ngModel)]="reviewText" placeholder="Write your review..." class="form-control"></textarea>
-        </div>
-        <div class="col-2">
-            
-            <small class="form-text error" *ngIf="reviewError">
-                Error at review submitted. Try again later!
-            </small>
-            <span class="input-group-btn">
-                <button class="btn btn-danger" (click)="onReviewSubmit()">
-                  Send your review
-                </button>
-              </span>
-        </div>
+    
+    <nb-card-body *ngIf="isMyProfile">
+      <h4 style="color: red">
+        You cannot submit reviews for yourself!
+      </h4>
+    </nb-card-body>
+    <nb-card-body *ngIf="!isMyProfile" class="row show-grid">
+      <div class="col-9">
+        <textarea [class.form-control-danger]="reviewError" [(ngModel)]="reviewText" placeholder="Write your review..."
+          class="form-control"></textarea>
+      </div>
+      <div class="col-2">
+
+        <small class="form-text error" *ngIf="reviewError">
+          Error at review submitted. Try again later!
+        </small>
+        <span class="input-group-btn">
+          <button class="btn btn-danger" (click)="onReviewSubmit()">
+            Send your review
+          </button>
+        </span>
+      </div>
     </nb-card-body>
   </nb-card>
-  
 </div>

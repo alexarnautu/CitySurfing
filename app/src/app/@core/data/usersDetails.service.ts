@@ -12,7 +12,7 @@ export class UsersDetailsService {
     }
 
     getUsersDetails(userId: String): Observable<User> {
-        const urlPost = 'http://192.168.0.103:54278/api/Users/' + userId;
+        const urlPost = 'http://city-surfing.servehttp.com:54278/api/Users/' + userId;
         return this.http.get<User>(urlPost);
     }
 }

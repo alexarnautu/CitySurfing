@@ -11,7 +11,7 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string): Observable<boolean> {
-        const urlPost = 'http://192.168.0.103:54278/api/Users/Login';
+        const urlPost = 'http://city-surfing.servehttp.com:54278/api/Users/Login';
         return this.http.post(urlPost, {Username : username , Password: password})
             .map((response: Response) => {
                 if (response.status === 200) {
