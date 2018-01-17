@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { StyleService } from '../../services/style.service';
  
 import { CreateJobService } from '../../../@core/data/createJob.service';
+
+import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
+import 'style-loader!angular2-toaster/toaster.css';
  
 @Component({
     selector: 'ngx-createJob',
@@ -22,7 +25,31 @@ export class CreateJobComponent {
     nullLocation: boolean;
     createError: boolean;
     notLogged: boolean;
-    constructor(protected router: Router, protected createJobService: CreateJobService, private styleService: StyleService) {
+    config: ToasterConfig;
+
+  position: string = 'toast-top-right';
+  animationType: string = 'fade';
+  title: string = 'Applyment result!';
+  content: string = `I'm cool toaster!`;
+  timeout: number = 5000;
+  toastsLimit: number = 5;
+  type: string = 'default';
+
+  isNewestOnTop: boolean = true;
+  isHideOnClick: boolean = true;
+  isDuplicatesPrevented: boolean = false;
+  isCloseButton: boolean = true;
+
+  types: string[] = ['success', 'error'];
+  animations: string[] = ['fade', 'flyLeft', 'flyRight', 'slideDown', 'slideUp'];
+  positions: string[] = ['toast-top-full-width', 'toast-bottom-full-width', 'toast-top-left', 'toast-top-center',
+    'toast-top-right', 'toast-bottom-right', 'toast-bottom-center', 'toast-bottom-left', 'toast-center'];
+
+  quotes = [
+     'You have created a new job.' ,
+     'Error!' ,
+  ];
+    constructor(private toasterService: ToasterService,protected router: Router, protected createJobService: CreateJobService, private styleService: StyleService) {
         this.nullTitle = false;
         this.nullDescription = false;
         this.nullPrice = false;
@@ -74,12 +101,19 @@ export class CreateJobComponent {
             this.LocationInput, userId).subscribe(
             response => {
                 if (response === true) {
-                    this.router.navigate(['index/login']);
+                    
                     this.createError = false;
                     this.loading = false;
+                    this.showToast(this.types[0], this.title, this.quotes[0]);
+                    setTimeout(() => 
+                    {
+                        this.router.navigate(['index/listing']);
+                    },
+                    5000);
                 } else {
                     this.createError = true;
                     this.loading = false;
+                    this.showToast(this.types[1], this.title, this.quotes[1]);
                 }
             });
     }
@@ -115,5 +149,24 @@ export class CreateJobComponent {
             this.nullLocation = true;
         }
     }
- 
+    private showToast(type: string, title: string, body: string) {
+        this.config = new ToasterConfig({
+          positionClass: this.position,
+          timeout: this.timeout,
+          newestOnTop: this.isNewestOnTop,
+          tapToDismiss: this.isHideOnClick,
+          preventDuplicates: this.isDuplicatesPrevented,
+          animation: this.animationType,
+          limit: this.toastsLimit,
+        });
+        const toast: Toast = {
+          type: type,
+          title: title,
+          body: body,
+          timeout: this.timeout,
+          showCloseButton: this.isCloseButton,
+          bodyOutputType: BodyOutputType.TrustedHtml,
+        };
+        this.toasterService.popAsync(toast);
+      }
 }
