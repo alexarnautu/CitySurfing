@@ -61,7 +61,6 @@ export class JobDetailComponent {
     }
 
     selectApp() {
-        debugger;
         this.router.navigate(["selectApplyment/" + this.id]);
     }
 }

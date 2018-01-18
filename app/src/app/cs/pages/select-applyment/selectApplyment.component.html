@@ -1,12 +1,24 @@
 <nb-card>
+  <nb-card>
     <nb-card-header style="font-size: 30px">
-      Select candidate
+      Here are your proposals!
     </nb-card-header>
+
+    <nb-card-body>
+        <div *ngFor="let applyment of applyments">
+          <a routerLink="../../userDetail/{{applyment.UserId}}" style="font-size: 20px" class="form-control-label">{{applyment.FullName}}:</a>
+          <textarea style="height: 100%" class="form-control" disabled=true>{{applyment.Proposal}}</textarea>
+        </div>
+      </nb-card-body>
+    </nb-card>
+      <nb-card-header style="font-size: 30px">
+          Selet your candidates here!
+        </nb-card-header>
     <nb-card-body>
         <div class="row">
           <div class="col-md-5 col-sm-12">
             <div class="form-group">
-              <select multiple class="form-control" style="height: 400px" [(ngModel)]="selectedApplyments">
+              <select multiple class="form-control" style="height: 200px" [(ngModel)]="selectedApplyments">
                 <option *ngFor="let applyment of applyments" value="{{applyment.UserId}}">{{applyment.FullName}}</option>
               </select>
             </div>  
@@ -15,6 +27,6 @@
     </nb-card-body>
   
     <nb-card-footer>
-        <button class="btn btn-primary" (click)="selectCandidates()">Select candidate(s)</button>
+        <button class="btn btn-primary" (click)="selectCandidates()">Select candidate</button>
       </nb-card-footer>
   </nb-card>
