@@ -3,14 +3,10 @@ using CitySurfing.Domain.Models;
 using CitySurfing.RestService.DAL;
 using CitySurfing.RestService.Dtos;
 using CitySurfing.RestService.Services;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Http.Description;
 
 namespace CitySurfing.RestService.Controllers
 {
