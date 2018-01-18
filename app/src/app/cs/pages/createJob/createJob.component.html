@@ -1,66 +1,96 @@
 <nb-card style="text-align: center; padding: 15px 0;">
-    <toaster-container [toasterconfig]="config"></toaster-container>
-<div class="col-md-6 offset-md-3" style="text-align: center">
+  <toaster-container [toasterconfig]="config"></toaster-container>
+  <div class="col-md-6 offset-md-3" style="text-align: center">
     <ngx-loading [show]="loading"></ngx-loading>
     <h2 class="title">Create Job</h2>
     <form (ngSubmit)="createJob()" #form="ngForm">
-  
+
       <div class="form-group">
         <label for="input-jobTitle" class="sr-only">Job title</label>
         <input name="jobTitle" [(ngModel)]="jobTitleInput" id="input-jobTitle" #jobTitle="ngModel" class="form-control" placeholder="Job Title*"
           type="text" [class.form-control-danger]="jobTitle.invalid && jobTitle.touched || nullJobTitle" (ngModelChange)="titleChange($event)">
-          <small class="form-text error" *ngIf="nullTitle">
-            Title is required!
-          </small>
+        <small class="form-text error" *ngIf="nullTitle">
+          Title is required!
+        </small>
       </div>
       <div class="form-group">
         <label for="input-Description" class="sr-only">Description</label>
-        <input name="Description" [(ngModel)]="DescriptionInput" id="input-Description" #Description="ngModel" class="form-control" placeholder="Description*"
-          type="text" [class.form-control-danger]="Description.invalid && Description.touched || nullDescription" (ngModelChange)="descriptionChange($event)">
+        <input name="Description" [(ngModel)]="DescriptionInput" id="input-Description" #Description="ngModel" class="form-control"
+          placeholder="Description*" type="text" [class.form-control-danger]="Description.invalid && Description.touched || nullDescription"
+          (ngModelChange)="descriptionChange($event)">
         <small class="form-text error" *ngIf="nullDescription">
-            Description is required!
+          Description is required!
         </small>
       </div>
-  
+
       <div class="form-group">
         <label for="input-Price" class="sr-only">Price</label>
-        <input name="Price" [(ngModel)]="PriceInput" type="text" id="input-Price" class="form-control" placeholder="Price*"
-          #Price="ngModel" pattern="^(0|([1-9][0-9]*))(\.[0-9]+)?$" [class.form-control-danger]="Price.errors?.pattern || nullPrice" (ngModelChange)="priceChange($event)">
+        <input name="Price" [(ngModel)]="PriceInput" type="text" id="input-Price" class="form-control" placeholder="Price*" #Price="ngModel"
+          pattern="^(0|([1-9][0-9]*))(\.[0-9]+)?$" [class.form-control-danger]="Price.errors?.pattern || nullPrice" (ngModelChange)="priceChange($event)">
         <small class="form-text error" *ngIf="Price.touched && Price.errors?.pattern">
-            Price is invalid!
+          Price is invalid!
         </small>
         <small class="form-text error" *ngIf="nullPrice">
-            Price is required!
+          Price is required!
         </small>
       </div>
-  
+
       <div class="form-group">
         <label for="input-Location" class="sr-only">Location</label>
-        <input name="Location" [(ngModel)]="LocationInput" id="input-Location" #Location="ngModel" class="form-control" placeholder="Location*"
+        <input name="Location" [(ngModel)]="LocationInput" id="input-Location" #Location="ngModel" class="form-control" placeholder="Location*" 
           type="text" [class.form-control-danger]="Location.invalid && Location.touched || nullLocation" (ngModelChange)="locationChange($event)">
-          <small class="form-text error" *ngIf="nullLocation">
-            Location is required!
-          </small>
+        <small class="form-text error" *ngIf="nullLocation">
+          Location is required!
+        </small>
       </div>
-  
-  
+
+      <div class="row show-grid form-group">
+        <div class="col-md-2">
+          <input name="DaysNo" style="padding-right:1rem; margin-right:1rem" pattern="[0-9]{1,2}" [class.form-control-danger]="DaysNo.errors?.pattern || invalidDays" [(ngModel)]="Days" 
+          type="text" id="input-day" class="form-control" placeholder="Day" #DaysNo="ngModel" (ngModelChange)="dayChange($event)">
+        </div>
+        <div class="col-md-2">
+          <input name="MonthNo" style="padding-right:1rem; margin-right:1rem" pattern="[0-9]{1,2}" [class.form-control-danger]="MonthNo.errors?.pattern || invalidMonth" [(ngModel)]="Month" 
+          type="text" id="input-month" class="form-control" placeholder="Month" #MonthNo="ngModel" (ngModelChange)="monthChange($event)">
+        </div>
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-2">
+          <input name="HourNo" style="padding-right:1rem; margin-right:1rem" pattern="[0-9]{1,2}" [class.form-control-danger]="HourNo.errors?.pattern || invalidHour" [(ngModel)]="Hour" 
+          type="text" id="input-hour" class="form-control" placeholder="Hour" #HourNo="ngModel" (ngModelChange)="hourChange($event)">
+        </div>
+        <div class="col-md-2">
+          <input name="MinutesNo" style="padding-right:1rem; margin-right:1rem" pattern="[0-9]{1,2}" [class.form-control-danger]="MinutesNo.errors?.pattern || invalidMinute" [(ngModel)]="Minutes" 
+          type="text" id="input-minutes" class="form-control" placeholder="Minute" #MinutesNo="ngModel" (ngModelChange)="minuteChange($event)">
+        </div>
+        <div class="col-md-12">
+        <small class="form-text error" *ngIf="invalidTime">
+          Time is invalid, please check again!
+        </small>
+      </div>
+      </div>
+
+
       <small class="form-text error" *ngIf="createError">
         Create new job failed!
       </small>
-      <button [disabled]="submitted || !form.valid || nullTitle || nullDescription || nullPrice || nullLocation || notLogged" class="btn btn-block btn-hero-success" [class.btn-pulse]="submitted">
+      <button [disabled]="submitted || invalidTime || !form.valid || nullTitle || nullDescription || nullPrice || nullLocation" class="btn btn-block btn-hero-success"
+        [class.btn-pulse]="submitted">
         Create
       </button>
       <small style="font-size: 30px" class="form-text error" *ngIf="notLogged">
-        You need to be logged in to create a new job offer! 
+        You need to be logged in to create a new job offer!
       </small>
 
       <div class="links" *ngIf="notLogged">
-          <small class="form-text">
-              Don't have an account?
-              <a routerLink="../register">
-                <strong>Sign Up</strong>
-              </a>
-            </small>
+        <small class="form-text">
+          Don't have an account?
+          <a routerLink="../register">
+            <strong>Sign Up</strong>
+          </a>
+        </small>
         <small class="form-text">
           Already have an account?
           <a routerLink="../login">
@@ -70,4 +100,4 @@
       </div>
     </form>
   </div>
-  </nb-card>
+</nb-card>

@@ -12,6 +12,7 @@ import { StyleService } from "../services/style.service";
     ]
 })
 export class BaseComponent {
+    autentificat: boolean;
     customClass = "custom_background"
     constructor(private styleService: StyleService)
     {
@@ -20,4 +21,15 @@ export class BaseComponent {
               this.customClass = newStyle;
             });
     }
+    getAutentificat(): boolean {
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser != null) {
+          this.autentificat = true;
+        } else {
+          this.autentificat = false;
+        }
+        return this.autentificat;
+      }
 }
+
+
