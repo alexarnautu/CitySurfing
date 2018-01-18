@@ -17,7 +17,7 @@ namespace CitySurfing.RestService.Controllers
         private readonly AuthProvider _authProv = new AuthProvider();
 
         [HttpGet]
-        [Authorize]
+        
         public IEnumerable<UserDto> GetUsers() =>
             Mapper.Map<IEnumerable<User>, IEnumerable<UserDto>>(_dbContext.Users.ToList());
 
@@ -75,7 +75,7 @@ namespace CitySurfing.RestService.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        
         [Route("api/Users/GetReviews/{toId}")]
         public IHttpActionResult GetReviews(string toId)
         {
@@ -83,7 +83,7 @@ namespace CitySurfing.RestService.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        
         [Route("api/Users/GetReviewsCount/{toId}")]
         public IHttpActionResult GetReviewsCount(string toId)
         {
