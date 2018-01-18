@@ -11,6 +11,7 @@ using AutoMapper;
 using CitySurfing.Domain.Models;
 using CitySurfing.RestService.DAL;
 using CitySurfing.RestService.Dtos;
+using CitySurfing.RestService.Services;
 
 namespace CitySurfing.RestService.Controllers
 {
@@ -18,6 +19,7 @@ namespace CitySurfing.RestService.Controllers
     public class ApplymentsController : ApiController
     {
         private readonly AppDbContext _dbContext = new AppDbContext();
+        private readonly EmailService _emailService = new EmailService();
 
         // GET: api/Applyments
         [HttpGet]
@@ -117,6 +119,21 @@ namespace CitySurfing.RestService.Controllers
                 throw;
             }
 
+            var job = _dbContext.Jobs.Include("Creator").FirstOrDefault(x => x.Id == applyment.JobId);
+            _emailService.SendEmail(job.Creator.Email, 
+                "New applyment to your job!",
+
+                $@"
+                Salut!
+                {_dbContext.Users.Find(applyment.UserId).FullName} tocmai a aplicat la jobul tau!
+                ({job.Title})
+
+                Propunere:
+                {applymentDto.Proposal}
+
+                Multumim ca folositi CitySurfing !
+                "
+            );
             return CreatedAtRoute("DefaultApi", new { userId = applyment.UserId, jobId = applyment.JobId }, applymentDto);
         }
 
@@ -142,7 +159,7 @@ namespace CitySurfing.RestService.Controllers
         [Route("api/Applyments/Approve/{jobId}/{userId}")]
         public IHttpActionResult Approve(int jobId, string userId)
         {
-            var app = _dbContext.Applyments
+            var app = _dbContext.Applyments.Include(x => x.Job).Include(x => x.Job.Creator)
                 .FirstOrDefault(x => x.JobId == jobId && x.UserId == userId);
             if (app == null)
             {
@@ -150,6 +167,16 @@ namespace CitySurfing.RestService.Controllers
             }
             app.IsApproved = true;
             _dbContext.SaveChanges();
+
+            _emailService.SendEmail(app.User.Email, "Ai fost acceptat pentru jobul aplicat!",
+                
+            $@"
+            Salut!
+            {app.Job.Creator.FullName} tocmai a acceptat propunerea ta pentru {app.Job.Title}
+
+            Multumim ca folositi CitySurfing !
+            ");
+
             return Ok();
         }
 
