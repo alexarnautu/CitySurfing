@@ -16,6 +16,7 @@ using System;
 
 namespace CitySurfing.RestService.Controllers
 {
+    [Authorize]
     public class JobsController : ApiController
     {
         private readonly AppDbContext _dbContext = new AppDbContext();
