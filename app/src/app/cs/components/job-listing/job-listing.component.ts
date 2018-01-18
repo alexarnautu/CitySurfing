@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import {Job} from '../../models/job';
+import { Job } from '../../models/job';
 import { JobsService } from '../../services/jobs.service';
 
 /* @TODO Remove */
@@ -22,9 +22,16 @@ export class JobListingComponent implements OnInit {
   getJobs(): void {
     var meUser = JSON.parse(localStorage.getItem('currentUser')).Id;
     this.jobListingService.getJobs().subscribe(
-      jobs => { 
+      jobs => {
         this.jobList = jobs.filter(x => x.IsAvailable === true);
         this.jobList.forEach(x => x.IsOwnJob = x.Creator.Id == meUser);
+        this.jobList.sort((a: Job, b: Job) => {
+          if (a.Created > b.Created)
+            return -1;
+          if (a.Created < b.Created)
+            return 1;
+          return 0;
+        });
       },
     );
   }
