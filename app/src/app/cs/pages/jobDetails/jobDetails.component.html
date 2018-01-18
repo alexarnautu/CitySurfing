@@ -1,9 +1,10 @@
 <nb-card>
   <nb-card-header style="font-size: 30px">
-    Job details <span *ngIf="job.IsAvailable === false" style="color: red">Not available</span>
+    Job details
+    <span *ngIf="job.IsAvailable === false" style="color: red">Not available</span>
   </nb-card-header>
   <nb-card-body>
-      <div class="row">
+    <div class="row">
       <div class="col-md-5 col-sm-12">
         <div class="form-group">
           <label style="font-size: 20px" class="form-control-label">Title:</label>
@@ -21,35 +22,46 @@
           <label style="font-size: 20px" class="form-control-label">Location:</label>
           <input style="color: black" class="form-control" [(ngModel)]="job.Location" name="Location" disabled=true>
         </div>
-      </div>
-      
-      <div class="col-md-1 col-sm-12">
+        <div class="form-group">
+          <label style="font-size: 20px" class="form-control-label">Employer email address:</label>
+          <input style="color: black" class="form-control" [(ngModel)]="creatorEmail" name="EmployerEmail" disabled=true>
         </div>
+        <div class="form-group">
+          <label style="font-size: 20px" class="form-control-label">When:</label>
+          <input style="color: black" class="form-control" [(ngModel)]="jobDate" name="EmployerEmail" disabled=true>
+        </div>
+
+        
+
+      </div>
+
+      <div class="col-md-1 col-sm-12">
+      </div>
       <!--
         urmatorul div trebuie inlocuit cu:
         <div class="col-md-6 col-sm-12" *ngIf="job.Creator.Email === this.getUserEmail()">
       -->
       <div class="col-md-6 col-sm-12" *ngIf="isCreator">
-          <div class="form-group">
-              <label style="font-size: 20px" class="form-control-label">Applicants:</label>
-              <ul>
-                <li *ngFor="let applicants of job.Applyments">
-                    <!--
+        <div class="form-group">
+          <label style="font-size: 20px" class="form-control-label">Applicants:</label>
+          <ul>
+            <li *ngFor="let applicants of job.Applyments">
+              <!--
                       Va fi redirect catre pagina utilizatorului. In viitor
                     -->
-                      <a style="font-size:18px" routerLink="../../userDetail/{{applicants.UserId}}">
-                        {{ applicants.FullName }}
-                      </a>
-                      
-                </li>
-              </ul>
-            </div>
+              <a style="font-size:18px" routerLink="../../userDetail/{{applicants.UserId}}">
+                {{ applicants.FullName }}
+              </a>
+
+            </li>
+          </ul>
+        </div>
       </div>
-      </div>
+    </div>
   </nb-card-body>
 
   <nb-card-footer *ngIf="job.IsAvailable === true">
-      <button (click)="applyHere()" *ngIf="!isCreator" class="btn btn-primary">Apply to this job</button>
-      <button (click)="selectApp()" *ngIf="isCreator" class="btn btn-success">Choose your candidate</button>
-    </nb-card-footer>
+    <button (click)="applyHere()" *ngIf="!isCreator" class="btn btn-primary">Apply to this job</button>
+    <button (click)="selectApp()" *ngIf="isCreator" class="btn btn-success">Choose your candidate</button>
+  </nb-card-footer>
 </nb-card>

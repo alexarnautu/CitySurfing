@@ -19,6 +19,8 @@ export class JobDetailComponent {
     private job: Job;
     private user: User;
     private isCreator: boolean;
+    private creatorEmail: string;
+    private jobDate: string;
 
     constructor(private router: Router, private route: ActivatedRoute, private jobDetail: JobDetailService, private styleService: StyleService) {
         this.job = new Job;
@@ -35,6 +37,9 @@ export class JobDetailComponent {
             this.jobDetail.getJobDetail(this.id).subscribe(
                 jobDet => {
                     this.job = jobDet;
+                    this.creatorEmail = jobDet.Creator.Email;
+                    var date = new Date(jobDet.StartDate);
+                    this.jobDate = date.toDateString() + "  " + date.getHours() + ":" + date.getMinutes();;
                     if (this.job.Creator.Email === this.getUserEmail()) {
                         this.isCreator = true;
                     }

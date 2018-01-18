@@ -9,10 +9,10 @@ export class CreateJobService {
     }
  
     createJob(jobTitle: string, description: string, price: Number,
-        location: string, userId: string): Observable<boolean> {
+        location: string, userId: string, jobDate: string): Observable<boolean> {
         const urlPost = 'http://city-surfing.servehttp.com:54278/api/Jobs';
         return this.http.post(urlPost, {Title: jobTitle, Description: description, Price: +price,
-            Location: location, Creator: {"Id": userId}, IsAvailable: true, Category: {
+            Location: location, StartDate: jobDate, Creator: {"Id": userId}, IsAvailable: true, Category: {
                 "Id": 1,
                 "Name": "Babysitting",
                 "Description": "descripyion"

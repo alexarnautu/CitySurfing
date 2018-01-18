@@ -5,4 +5,7 @@
   <nb-layout-column [ngClass]="customClass">
     <router-outlet></router-outlet>
   </nb-layout-column>
+  <nb-layout-footer fixed *ngIf="getAutentificat()">
+    <cs-footer></cs-footer>
+  </nb-layout-footer>
 </nb-layout>
