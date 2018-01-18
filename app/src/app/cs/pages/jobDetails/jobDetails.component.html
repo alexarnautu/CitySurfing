@@ -29,10 +29,7 @@
         <div class="form-group">
           <label style="font-size: 20px" class="form-control-label">When:</label>
           <input style="color: black" class="form-control" [(ngModel)]="jobDate" name="EmployerEmail" disabled=true>
-        </div>
-
-        
-
+        </div>  
       </div>
 
       <div class="col-md-1 col-sm-12">
@@ -63,5 +60,6 @@
   <nb-card-footer *ngIf="job.IsAvailable === true">
     <button (click)="applyHere()" *ngIf="!isCreator" class="btn btn-primary">Apply to this job</button>
     <button (click)="selectApp()" *ngIf="isCreator" class="btn btn-success">Choose your candidate</button>
+    <button (click)="reviewJob()" *ngIf="isApproved" class="btn btn-success">Review your employer</button>
   </nb-card-footer>
 </nb-card>
