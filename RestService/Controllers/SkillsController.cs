@@ -13,7 +13,7 @@ using CitySurfing.RestService.Dtos;
 
 namespace CitySurfing.RestService.Controllers
 {
-    [Authorize]
+    
     public class SkillsController : ApiController
     {
         private readonly AppDbContext _dbContext = new AppDbContext();

@@ -3,14 +3,10 @@ using CitySurfing.Domain.Models;
 using CitySurfing.RestService.DAL;
 using CitySurfing.RestService.Dtos;
 using CitySurfing.RestService.Services;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Http.Description;
 
 namespace CitySurfing.RestService.Controllers
 {
@@ -21,6 +17,7 @@ namespace CitySurfing.RestService.Controllers
         private readonly AuthProvider _authProv = new AuthProvider();
 
         [HttpGet]
+        
         public IEnumerable<UserDto> GetUsers() =>
             Mapper.Map<IEnumerable<User>, IEnumerable<UserDto>>(_dbContext.Users.ToList());
 
@@ -78,7 +75,7 @@ namespace CitySurfing.RestService.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        
         [Route("api/Users/GetReviews/{toId}")]
         public IHttpActionResult GetReviews(string toId)
         {
@@ -86,7 +83,7 @@ namespace CitySurfing.RestService.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        
         [Route("api/Users/GetReviewsCount/{toId}")]
         public IHttpActionResult GetReviewsCount(string toId)
         {

@@ -14,6 +14,7 @@ using CitySurfing.RestService.Dtos;
 
 namespace CitySurfing.RestService.Controllers
 {
+    
     public class ApplymentsController : ApiController
     {
         private readonly AppDbContext _dbContext = new AppDbContext();
