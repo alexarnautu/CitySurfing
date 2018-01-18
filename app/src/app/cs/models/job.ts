@@ -20,4 +20,5 @@ export class Job {
   Type: Category;
   RequiredSkills: Skill[];
   Applyments: Applyment[];
+  IsOwnJob: boolean;
 }

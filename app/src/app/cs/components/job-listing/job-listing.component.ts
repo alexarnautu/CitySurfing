@@ -20,8 +20,12 @@ export class JobListingComponent implements OnInit {
   constructor(private jobListingService: JobsService) { }
 
   getJobs(): void {
+    var meUser = JSON.parse(localStorage.getItem('currentUser')).Id;
     this.jobListingService.getJobs().subscribe(
-      jobs => this.jobList = jobs.filter(x => x.IsAvailable === true),
+      jobs => { 
+        this.jobList = jobs.filter(x => x.IsAvailable === true);
+        this.jobList.forEach(x => x.IsOwnJob = x.Creator.Id == meUser);
+      },
     );
   }
   ngOnInit() {
