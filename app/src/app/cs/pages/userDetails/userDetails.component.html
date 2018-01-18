@@ -37,7 +37,7 @@
     <nb-card-header>Reviews</nb-card-header>
     <nb-card-body>
       <div *ngFor="let rev of reviews">
-        <label style="font-size: 20px" class="form-control-label">{{rev.UserFrom.FullName}}:</label>
+        <a routerLink="../{{rev.UserFrom.Id}}" style="font-size: 20px" class="form-control-label">{{rev.UserFrom.FullName}}:</a>
         <textarea style="height: 100%" class="form-control" disabled=true>{{rev.Comment}}</textarea>
       </div>
     </nb-card-body>
