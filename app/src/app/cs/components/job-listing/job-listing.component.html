@@ -1,14 +1,13 @@
 <div class="job-listing">
   <ul class="job-list-wrapper">
     <li *ngFor="let jobListingItem of jobList">
-      <a href="#">
+      <a routerLink="../jobDetail/{{jobListingItem.Id}}">
         <img src="../../../../assets/images/alan.png">
       </a>
       <div>
-        <h2><a href="#">{{jobListingItem.Title}}</a></h2>
+        <h2><a routerLink="../jobDetail/{{jobListingItem.Id}}">{{jobListingItem.Title}}</a></h2>
         <p>{{jobListingItem.Description}}</p>
         <a routerLink="../jobDetail/{{jobListingItem.Id}}" class="read-more" style="display:inline-block">Read more &rarr;</a>
-
         <a *ngIf="!jobListingItem.IsOwnJob" routerLink="../create-applyment/{{jobListingItem.Id}}" class="read-more">Apply</a>
       </div>
     </li>
