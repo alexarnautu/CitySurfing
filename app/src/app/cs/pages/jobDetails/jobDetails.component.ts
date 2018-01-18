@@ -54,7 +54,7 @@ export class JobDetailComponent {
                     }
                     this.isApproved = false;
                     jobDet.Applyments.forEach(element => {
-                        if (element.UserId === this.getUserId() && element.IsApproved === true) {
+                        if (element.UserId === JSON.parse(localStorage.getItem('currentUser')).Id && element.IsApproved === true) {
                             this.isApproved = true;
                         }
                     });

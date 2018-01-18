@@ -60,6 +60,8 @@
   <nb-card-footer *ngIf="job.IsAvailable === true">
     <button (click)="applyHere()" *ngIf="!isCreator" class="btn btn-primary">Apply to this job</button>
     <button (click)="selectApp()" *ngIf="isCreator" class="btn btn-success">Choose your candidate</button>
-    <button (click)="reviewJob()" *ngIf="isApproved" class="btn btn-success">Review your employer</button>
+  </nb-card-footer>
+  <nb-card-footer *ngIf="isApproved">
+    <button (click)="reviewJob()" class="btn btn-success">Review your employer</button>
   </nb-card-footer>
 </nb-card>
