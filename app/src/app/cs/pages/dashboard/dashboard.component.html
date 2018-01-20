@@ -37,7 +37,7 @@
                     <ul *ngIf="activeApplymentsJobs.length">
                         <li *ngFor="let activeApplyment of activeApplymentsJobs" style="padding-bottom:2rem; padding-top: 2rem">
                             <a href="#/jobDetail/{{activeApplyment.Id}}">{{getJobTitle(activeApplyment.Id)}}</a>
-                            <button style="float: right; padding-top:8px" class="btn btn-danger" (click)="removeApplyment(activeApplyment.UserId, activeApplyment.JobId)">Detele Applyment</button>
+                            <button style="float: right; padding-top:8px" class="btn btn-danger" (click)="removeApplyment(activeApplyment.Id)">Detele Applyment</button>
                         </li>
                     </ul>
                 </div>

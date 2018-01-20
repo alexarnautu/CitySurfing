@@ -68,7 +68,8 @@ export class DashboardComponent implements OnInit {
         this.jobListingService.deleteJob(jobId).subscribe(() => window.location.reload());
     }
 
-    removeApplyment(userId, jobId) {
+    removeApplyment(jobId) {
+        var userId = JSON.parse(localStorage.getItem('currentUser')).Id;
         this.applymentsService.deleteApplyment(userId, jobId).subscribe(() => window.location.reload());
     }
 
