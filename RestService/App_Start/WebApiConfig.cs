@@ -11,6 +11,7 @@ namespace CitySurfing.RestService
     {
         public static void Register(HttpConfiguration config)
         {
+            config.EnableCors();
             // Web API configuration and services
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
             config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
@@ -18,8 +19,8 @@ namespace CitySurfing.RestService
 
             //Enable Cross-Origin Requests
             //Change port if your frontend application is running under a different port.
-            var cors = new EnableCorsAttribute("http://localhost:4200", "*", "*");
-            config.EnableCors(cors);
+            //var cors = new EnableCorsAttribute("http://localhost:4200", "*", "*");
+            //config.EnableCors(cors);
 
 
             // Web API routes

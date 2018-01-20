@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --live-reload false --host=0.0.0.0 --public-host=http://city-surfing.servehttp.com",
     "start:hmr": "ng serve --hmr",
     "start:aot": "ng serve --aot",
     "build": "rimraf dist && ng build",
